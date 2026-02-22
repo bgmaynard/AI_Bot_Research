@@ -44,7 +44,7 @@ class ReplayConfig:
     """Configuration for replay engine."""
 
     # Data paths (adjust for your environment)
-    reports_root: Path = Path(r"Z:\AI_BOT_DATA\reports")
+    reports_root: Path = Path(r"\\Bob1\c\ai_project_hub\store\code\IBKR_Algo_BOT_V2\reports")
     databento_root: Path = Path(r"Z:\AI_BOT_DATA\databento_cache\XNAS.ITCH\trades")
     output_root: Path = Path(r"C:\AI_Bot_Research\results")
 

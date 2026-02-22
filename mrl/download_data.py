@@ -28,7 +28,7 @@ import sys
 # ============================================================
 
 # Where Morpheus trade reports live (via Z:\ mount from trading PC)
-REPORTS_ROOT = Path(r"Z:\AI_BOT_DATA\reports")
+REPORTS_ROOT = Path(r"\\Bob1\c\ai_project_hub\store\code\IBKR_Algo_BOT_V2\reports")
 
 # Where to store downloaded Databento trade data
 OUTPUT_DIR = Path(r"Z:\AI_BOT_DATA\databento_cache\XNAS.ITCH\trades")
