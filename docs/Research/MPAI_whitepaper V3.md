@@ -691,6 +691,16 @@ Structural conditioning must pass:
 
 **If not → reject hypothesis. No exceptions.**
 
+### 16.7 Phase 10B Status (2026-02-22)
+
+**Phase 10B: INVALID** — PDH/PDL coverage failure. 81% of events had NO_DATA because Databento only stores data for dates Morpheus traded each symbol. 78% of symbols are single-day runners with no previous day in cache. Zone counts: TOP=3, BOTTOM=1, MID=212 at ATR 0.25. Untestable.
+
+**Root cause:** Daily OHLC was sourced from Databento tick data, which only exists for Morpheus trading days. Most low-float momentum stocks only appear once.
+
+**Phase 10B.1: FIX** — Replace Databento daily OHLC with yfinance API for universal coverage. Add 5-day backfill for symbols with sparse trading history. Add ATR 1.0 threshold to capture wider zone proximity. Coverage target: 90%+.
+
+**Status:** Only after zone sample sizes are sufficient (n ≥ 50 per zone minimum, n ≥ 500 for validation gate) do we interpret results. Until then, HYP-023A remains untested.
+
 ---
 
 ## 17. The Bottom Line
@@ -710,5 +720,5 @@ One validated component at a time. Data first. Always.
 
 ---
 
-*End of Document — Version 3.0*
+*End of Document — Version 3.1*
 *This is a living document. Add ideas freely. Test everything. Implement nothing until proven.*
