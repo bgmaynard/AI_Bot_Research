@@ -1,0 +1,803 @@
+{
+  "slope_filter": {
+    "baseline": {
+      "label": "ALL TRADES (baseline)",
+      "n": 420,
+      "win_rate": 43.80952380952381,
+      "mean_pnl": 0.0007921142857106762,
+      "median_pnl": 0.0,
+      "total_pnl": 0.332687999998484,
+      "mean_pnl_pct": -0.010988184020153757,
+      "median_mfe": 0.0,
+      "mean_mfe": 0.6807616771962172,
+      "median_mae": 0.08363719228975924,
+      "mean_mae": 0.6956889560774256,
+      "median_reward_risk": 0.0,
+      "mean_reward_risk": 3.9849925264382975,
+      "mean_hold_sec": 87.42619047619047,
+      "unique_symbols": 64,
+      "unique_dates": 15
+    },
+    "thresholds": [
+      {
+        "threshold": -0.01,
+        "label": "slope >= -0.01 (loose)",
+        "pass": {
+          "label": "PASS (slope >= -0.01 (loose))",
+          "n": 286,
+          "win_rate": 41.60839160839161,
+          "mean_pnl": -0.02779165034965439,
+          "median_pnl": 0.0,
+          "total_pnl": -7.948412000001156,
+          "mean_pnl_pct": -0.01721837788200601,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.7378491327048302,
+          "median_mae": 0.0861642317670184,
+          "mean_mae": 0.7137823867516413,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 3.915769294042325,
+          "mean_hold_sec": 85.46153846153847,
+          "unique_symbols": 57,
+          "unique_dates": 15
+        },
+        "reject": {
+          "label": "REJECT (slope >= -0.01 (loose))",
+          "n": 134,
+          "win_rate": 48.507462686567166,
+          "mean_pnl": 0.06179925373134155,
+          "median_pnl": 0.0,
+          "total_pnl": 8.281099999999768,
+          "mean_pnl_pct": 0.0023090954163369946,
+          "median_mfe": 0.014125468579325454,
+          "mean_mfe": 0.5589183020061922,
+          "median_mae": 0.08206009813402473,
+          "mean_mae": 0.6570716338921596,
+          "median_reward_risk": 0.08943173411555369,
+          "mean_reward_risk": 4.13273763438791,
+          "mean_hold_sec": 91.61940298507463,
+          "unique_symbols": 40,
+          "unique_dates": 14
+        },
+        "p_winrate": 0.2065,
+        "p_pnl": 0.9835,
+        "ci_winrate_95": [
+          35.66433566433567,
+          47.55244755244755
+        ],
+        "ci_reward_risk_95": [
+          0.0,
+          0.12500000000000833
+        ]
+      },
+      {
+        "threshold": 0.0,
+        "label": "slope >= 0 (neutral)",
+        "pass": {
+          "label": "PASS (slope >= 0 (neutral))",
+          "n": 243,
+          "win_rate": 41.56378600823045,
+          "mean_pnl": 0.35790859259258767,
+          "median_pnl": 0.0,
+          "total_pnl": 86.97178799999881,
+          "mean_pnl_pct": 0.037656416931495296,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.796548933880497,
+          "median_mae": 0.06412311638345487,
+          "mean_mae": 0.7111361434635776,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 3.927469342190478,
+          "mean_hold_sec": 87.89711934156378,
+          "unique_symbols": 55,
+          "unique_dates": 15
+        },
+        "reject": {
+          "label": "REJECT (slope >= 0 (neutral))",
+          "n": 177,
+          "win_rate": 46.89265536723164,
+          "mean_pnl": -0.48948644067796765,
+          "median_pnl": 0.0,
+          "total_pnl": -86.63910000000027,
+          "mean_pnl_pct": -0.07777144973343458,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.521799511239833,
+          "median_mae": 0.12836970474967632,
+          "mean_mae": 0.6744818005133867,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 4.063965033625981,
+          "mean_hold_sec": 86.77966101694915,
+          "unique_symbols": 48,
+          "unique_dates": 15
+        },
+        "p_winrate": 0.3195,
+        "p_pnl": 0.8945,
+        "ci_winrate_95": [
+          35.390946502057616,
+          47.73662551440329
+        ],
+        "ci_reward_risk_95": [
+          0.0,
+          0.06918238993710102
+        ]
+      },
+      {
+        "threshold": 0.005,
+        "label": "slope >= 0.005 (mild)",
+        "pass": {
+          "label": "PASS (slope >= 0.005 (mild))",
+          "n": 156,
+          "win_rate": 44.230769230769226,
+          "mean_pnl": 0.8635480769230702,
+          "median_pnl": 0.0,
+          "total_pnl": 134.71349999999896,
+          "mean_pnl_pct": 0.10031672737754313,
+          "median_mfe": 0.0,
+          "mean_mfe": 1.0145876053826253,
+          "median_mae": 0.09723461457739105,
+          "mean_mae": 0.8621991729545879,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 4.183725587334627,
+          "mean_hold_sec": 93.53846153846153,
+          "unique_symbols": 44,
+          "unique_dates": 13
+        },
+        "reject": {
+          "label": "REJECT (slope >= 0.005 (mild))",
+          "n": 264,
+          "win_rate": 43.56060606060606,
+          "mean_pnl": -0.509018227272729,
+          "median_pnl": 0.0,
+          "total_pnl": -134.38081200000047,
+          "mean_pnl_pct": -0.07675926802788381,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.4835009014497033,
+          "median_mae": 0.07928659181569109,
+          "mean_mae": 0.5972965551954663,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 3.8675593540904663,
+          "mean_hold_sec": 83.81439393939394,
+          "unique_symbols": 56,
+          "unique_dates": 15
+        },
+        "p_winrate": 0.9125,
+        "p_pnl": 0.779,
+        "ci_winrate_95": [
+          36.53846153846154,
+          51.92307692307692
+        ],
+        "ci_reward_risk_95": [
+          0.0,
+          1.4499999999999504
+        ]
+      },
+      {
+        "threshold": 0.01,
+        "label": "slope >= 0.01 (moderate)",
+        "pass": {
+          "label": "PASS (slope >= 0.01 (moderate))",
+          "n": 129,
+          "win_rate": 44.18604651162791,
+          "mean_pnl": 1.4493565891472793,
+          "median_pnl": 0.0,
+          "total_pnl": 186.96699999999902,
+          "mean_pnl_pct": 0.18257722754103115,
+          "median_mfe": 0.0,
+          "mean_mfe": 1.1377451241246916,
+          "median_mae": 0.09649404953361575,
+          "mean_mae": 0.8693459751910436,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 4.274109228861245,
+          "mean_hold_sec": 97.89147286821705,
+          "unique_symbols": 36,
+          "unique_dates": 13
+        },
+        "reject": {
+          "label": "REJECT (slope >= 0.01 (moderate))",
+          "n": 291,
+          "win_rate": 43.6426116838488,
+          "mean_pnl": -0.6413550240549843,
+          "median_pnl": 0.0,
+          "total_pnl": -186.63431200000045,
+          "mean_pnl_pct": -0.0967955314132564,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.47818138628977996,
+          "median_mae": 0.0802353570473419,
+          "mean_mae": 0.6187069785322137,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 3.8568273903126604,
+          "mean_hold_sec": 82.78694158075601,
+          "unique_symbols": 57,
+          "unique_dates": 15
+        },
+        "p_winrate": 1.0,
+        "p_pnl": 0.5795,
+        "ci_winrate_95": [
+          35.65891472868217,
+          51.93798449612403
+        ],
+        "ci_reward_risk_95": [
+          0.0,
+          1.714285714285671
+        ]
+      },
+      {
+        "threshold": 0.02,
+        "label": "slope >= 0.02 (strong)",
+        "pass": {
+          "label": "PASS (slope >= 0.02 (strong))",
+          "n": 91,
+          "win_rate": 43.956043956043956,
+          "mean_pnl": 3.668221978021968,
+          "median_pnl": 0.0,
+          "total_pnl": 333.8081999999991,
+          "mean_pnl_pct": 0.5014155091121462,
+          "median_mfe": 0.0,
+          "mean_mfe": 1.4278921816793912,
+          "median_mae": 0.0,
+          "mean_mae": 0.7880953252551437,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 4.323737258495624,
+          "mean_hold_sec": 110.49450549450549,
+          "unique_symbols": 29,
+          "unique_dates": 13
+        },
+        "reject": {
+          "label": "REJECT (slope >= 0.02 (strong))",
+          "n": 329,
+          "win_rate": 43.76899696048632,
+          "mean_pnl": -1.0136033799392115,
+          "median_pnl": 0.0,
+          "total_pnl": -333.4755120000006,
+          "mean_pnl_pct": -0.15271686509930057,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.4741085589349136,
+          "median_mae": 0.08787346221442498,
+          "mean_mae": 0.6701297475814613,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 3.891297175018185,
+          "mean_hold_sec": 81.04559270516717,
+          "unique_symbols": 59,
+          "unique_dates": 15
+        },
+        "p_winrate": 1.0,
+        "p_pnl": 0.179,
+        "ci_winrate_95": [
+          34.065934065934066,
+          53.84615384615385
+        ],
+        "ci_reward_risk_95": [
+          0.0,
+          10.0
+        ]
+      }
+    ]
+  },
+  "volume_accel": {
+    "baseline": {
+      "label": "ALL TRADES (baseline)",
+      "n": 420,
+      "win_rate": 43.80952380952381,
+      "mean_pnl": 0.0007921142857106762,
+      "median_pnl": 0.0,
+      "total_pnl": 0.332687999998484,
+      "mean_pnl_pct": -0.010988184020153757,
+      "median_mfe": 0.0,
+      "mean_mfe": 0.6807616771962172,
+      "median_mae": 0.08363719228975924,
+      "mean_mae": 0.6956889560774256,
+      "median_reward_risk": 0.0,
+      "mean_reward_risk": 3.9849925264382975,
+      "mean_hold_sec": 87.42619047619047,
+      "unique_symbols": 64,
+      "unique_dates": 15
+    },
+    "quantiles": [
+      {
+        "quantile": 0.5,
+        "threshold": 0.0,
+        "label": "vol_accel >= P50 (0.0)",
+        "pass": {
+          "label": "PASS (vol_accel >= P50 (0.0))",
+          "n": 232,
+          "win_rate": 43.53448275862069,
+          "mean_pnl": -1.043656086206901,
+          "median_pnl": 0.0,
+          "total_pnl": -242.12821200000104,
+          "mean_pnl_pct": -0.17285756848068792,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.4547805921712701,
+          "median_mae": 0.039997243241396974,
+          "mean_mae": 0.6125124716821293,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 4.04022778317325,
+          "mean_hold_sec": 79.08189655172414,
+          "unique_symbols": 52,
+          "unique_dates": 14
+        },
+        "reject": {
+          "label": "REJECT (vol_accel >= P50 (0.0))",
+          "n": 188,
+          "win_rate": 44.148936170212764,
+          "mean_pnl": 1.2896856382978703,
+          "median_pnl": -0.07790000000000052,
+          "total_pnl": 242.4608999999996,
+          "mean_pnl_pct": 0.18876552446305864,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.959631952333386,
+          "median_mae": 0.17540914063373897,
+          "mean_mae": 0.7983322772460895,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 3.916829869190909,
+          "mean_hold_sec": 97.72340425531915,
+          "unique_symbols": 47,
+          "unique_dates": 15
+        },
+        "p_winrate": 0.922,
+        "p_pnl": 0.5515,
+        "ci_winrate_95": [
+          36.63793103448276,
+          50.0
+        ],
+        "ci_reward_risk_95": [
+          0.0,
+          0.6928355298973057
+        ]
+      },
+      {
+        "quantile": 0.6,
+        "threshold": 0.0,
+        "label": "vol_accel >= P60 (0.0)",
+        "pass": {
+          "label": "PASS (vol_accel >= P60 (0.0))",
+          "n": 232,
+          "win_rate": 43.53448275862069,
+          "mean_pnl": -1.043656086206901,
+          "median_pnl": 0.0,
+          "total_pnl": -242.12821200000104,
+          "mean_pnl_pct": -0.17285756848068792,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.4547805921712701,
+          "median_mae": 0.039997243241396974,
+          "mean_mae": 0.6125124716821293,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 4.04022778317325,
+          "mean_hold_sec": 79.08189655172414,
+          "unique_symbols": 52,
+          "unique_dates": 14
+        },
+        "reject": {
+          "label": "REJECT (vol_accel >= P60 (0.0))",
+          "n": 188,
+          "win_rate": 44.148936170212764,
+          "mean_pnl": 1.2896856382978703,
+          "median_pnl": -0.07790000000000052,
+          "total_pnl": 242.4608999999996,
+          "mean_pnl_pct": 0.18876552446305864,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.959631952333386,
+          "median_mae": 0.17540914063373897,
+          "mean_mae": 0.7983322772460895,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 3.916829869190909,
+          "mean_hold_sec": 97.72340425531915,
+          "unique_symbols": 47,
+          "unique_dates": 15
+        },
+        "p_winrate": 0.922,
+        "p_pnl": 0.5515,
+        "ci_winrate_95": [
+          36.63793103448276,
+          50.0
+        ],
+        "ci_reward_risk_95": [
+          0.0,
+          0.6928355298973057
+        ]
+      },
+      {
+        "quantile": 0.7,
+        "threshold": 15.178496240601497,
+        "label": "vol_accel >= P70 (15.2)",
+        "pass": {
+          "label": "PASS (vol_accel >= P70 (15.2))",
+          "n": 126,
+          "win_rate": 46.82539682539682,
+          "mean_pnl": -1.4599143809523865,
+          "median_pnl": 0.0,
+          "total_pnl": -183.9492120000007,
+          "mean_pnl_pct": -0.254839974908785,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.5060612339398257,
+          "median_mae": 0.032061558191727436,
+          "mean_mae": 0.7462059750036691,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 4.374423315289367,
+          "mean_hold_sec": 67.46031746031746,
+          "unique_symbols": 37,
+          "unique_dates": 13
+        },
+        "reject": {
+          "label": "REJECT (vol_accel >= P70 (15.2))",
+          "n": 294,
+          "win_rate": 42.517006802721085,
+          "mean_pnl": 0.6268091836734667,
+          "median_pnl": 0.0,
+          "total_pnl": 184.2818999999992,
+          "mean_pnl_pct": 0.0935197263606882,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.7556332957346706,
+          "median_mae": 0.0861642317670184,
+          "mean_mae": 0.6740388051090357,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 3.818093616930696,
+          "mean_hold_sec": 95.98299319727892,
+          "unique_symbols": 58,
+          "unique_dates": 15
+        },
+        "p_winrate": 0.456,
+        "p_pnl": 0.5655,
+        "ci_winrate_95": [
+          38.095238095238095,
+          55.55555555555556
+        ],
+        "ci_reward_risk_95": [
+          0.0,
+          10.0
+        ]
+      },
+      {
+        "quantile": 0.8,
+        "threshold": 48.00123900293255,
+        "label": "vol_accel >= P80 (48.0)",
+        "pass": {
+          "label": "PASS (vol_accel >= P80 (48.0))",
+          "n": 84,
+          "win_rate": 47.61904761904761,
+          "mean_pnl": -1.812568000000011,
+          "median_pnl": 0.0,
+          "total_pnl": -152.25571200000093,
+          "mean_pnl_pct": -0.3270243016975113,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.4294333411478108,
+          "median_mae": 0.10903367554154623,
+          "mean_mae": 0.7843172167585312,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 4.375127036426115,
+          "mean_hold_sec": 66.64285714285714,
+          "unique_symbols": 31,
+          "unique_dates": 13
+        },
+        "reject": {
+          "label": "REJECT (vol_accel >= P80 (48.0))",
+          "n": 336,
+          "win_rate": 42.857142857142854,
+          "mean_pnl": 0.45413214285714126,
+          "median_pnl": 0.0,
+          "total_pnl": 152.58839999999947,
+          "mean_pnl_pct": 0.06802084539918563,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.7435937612083187,
+          "median_mae": 0.08206009813402473,
+          "mean_mae": 0.6735318909071494,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 3.887458898941343,
+          "mean_hold_sec": 92.62202380952381,
+          "unique_symbols": 60,
+          "unique_dates": 15
+        },
+        "p_winrate": 0.4745,
+        "p_pnl": 0.446,
+        "ci_winrate_95": [
+          36.904761904761905,
+          59.523809523809526
+        ],
+        "ci_reward_risk_95": [
+          0.0,
+          10.0
+        ]
+      },
+      {
+        "quantile": 0.9,
+        "threshold": 147.53781745546453,
+        "label": "vol_accel >= P90 (147.5)",
+        "pass": {
+          "label": "PASS (vol_accel >= P90 (147.5))",
+          "n": 42,
+          "win_rate": 42.857142857142854,
+          "mean_pnl": -4.044759523809537,
+          "median_pnl": -0.31500000000001194,
+          "total_pnl": -169.87990000000056,
+          "mean_pnl_pct": -0.7179810748572096,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.33295257535868356,
+          "median_mae": 0.12953760564911176,
+          "mean_mae": 1.0829041060444204,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 3.949641803624078,
+          "mean_hold_sec": 64.5,
+          "unique_symbols": 19,
+          "unique_dates": 12
+        },
+        "reject": {
+          "label": "REJECT (vol_accel >= P90 (147.5))",
+          "n": 378,
+          "win_rate": 43.91534391534391,
+          "mean_pnl": 0.4502978518518497,
+          "median_pnl": 0.0,
+          "total_pnl": 170.2125879999992,
+          "mean_pnl_pct": 0.06756658162840805,
+          "median_mfe": 0.0,
+          "mean_mfe": 0.719407132955943,
+          "median_mae": 0.08076808502774235,
+          "mean_mae": 0.6526650505255375,
+          "median_reward_risk": 0.0,
+          "mean_reward_risk": 3.988920384528766,
+          "mean_hold_sec": 89.97354497354497,
+          "unique_symbols": 62,
+          "unique_dates": 15
+        },
+        "p_winrate": 1.0,
+        "p_pnl": 0.174,
+        "ci_winrate_95": [
+          28.571428571428573,
+          57.142857142857146
+        ],
+        "ci_reward_risk_95": [
+          0.0,
+          10.0
+        ]
+      }
+    ]
+  },
+  "combined_gate": {
+    "slope_threshold": 0.0,
+    "vol_quantile": 0.8,
+    "vol_threshold": 48.00123900293255,
+    "baseline": {
+      "label": "ALL",
+      "n": 420,
+      "win_rate": 43.80952380952381,
+      "mean_pnl": 0.0007921142857106762,
+      "median_pnl": 0.0,
+      "total_pnl": 0.332687999998484,
+      "mean_pnl_pct": -0.010988184020153757,
+      "median_mfe": 0.0,
+      "mean_mfe": 0.6807616771962172,
+      "median_mae": 0.08363719228975924,
+      "mean_mae": 0.6956889560774256,
+      "median_reward_risk": 0.0,
+      "mean_reward_risk": 3.9849925264382975,
+      "mean_hold_sec": 87.42619047619047,
+      "unique_symbols": 64,
+      "unique_dates": 15
+    },
+    "both_pass": {
+      "label": "BOTH PASS",
+      "n": 70,
+      "win_rate": 44.285714285714285,
+      "mean_pnl": -2.8356016000000106,
+      "median_pnl": 0.0,
+      "total_pnl": -198.49211200000073,
+      "mean_pnl_pct": -0.4922201241970021,
+      "median_mfe": 0.0,
+      "mean_mfe": 0.38932289019548877,
+      "median_mae": 0.12984742425539986,
+      "mean_mae": 0.8722471431282495,
+      "median_reward_risk": 0.0,
+      "mean_reward_risk": 4.371570796460161,
+      "mean_hold_sec": 64.57142857142857,
+      "unique_symbols": 27,
+      "unique_dates": 13
+    },
+    "slope_only": {
+      "label": "SLOPE ONLY",
+      "n": 173,
+      "win_rate": 40.46242774566474,
+      "mean_pnl": 1.6500803468208065,
+      "median_pnl": 0.0,
+      "total_pnl": 285.4638999999995,
+      "mean_pnl_pct": 0.252057329526841,
+      "median_mfe": 0.0,
+      "mean_mfe": 0.9613224775680724,
+      "median_mae": 0.047589229805886354,
+      "mean_mae": 0.6459467216339415,
+      "median_reward_risk": 0.0,
+      "mean_reward_risk": 3.7477751121391614,
+      "mean_hold_sec": 97.33526011560694,
+      "unique_symbols": 48,
+      "unique_dates": 15
+    },
+    "vol_only": {
+      "label": "VOL ONLY",
+      "n": 14,
+      "win_rate": 64.28571428571429,
+      "mean_pnl": 3.302599999999987,
+      "median_pnl": 1.0768999999999895,
+      "total_pnl": 46.23639999999982,
+      "mean_pnl_pct": 0.49895481079994236,
+      "median_mfe": 0.16408041112723443,
+      "mean_mfe": 0.6299855959094206,
+      "median_mae": 0.0,
+      "mean_mae": 0.34466758490993854,
+      "median_reward_risk": 0.7503576537911325,
+      "mean_reward_risk": 4.3929082362558765,
+      "mean_hold_sec": 77.0,
+      "unique_symbols": 10,
+      "unique_dates": 9
+    },
+    "neither": {
+      "label": "NEITHER",
+      "n": 163,
+      "win_rate": 45.39877300613497,
+      "mean_pnl": -0.8151871165644174,
+      "median_pnl": 0.0,
+      "total_pnl": -132.87550000000005,
+      "mean_pnl_pct": -0.12730622057679208,
+      "median_mfe": 0.0,
+      "mean_mfe": 0.5125074548878439,
+      "median_mae": 0.14736871100582494,
+      "mean_mae": 0.7028094018535602,
+      "median_reward_risk": 0.0,
+      "mean_reward_risk": 4.035712243216051,
+      "mean_hold_sec": 87.61963190184049,
+      "unique_symbols": 46,
+      "unique_dates": 15
+    },
+    "p_wr_both_vs_neither": 0.885,
+    "p_pnl_both_vs_neither": 0.274,
+    "p_wr_both_vs_baseline": 1.0,
+    "p_pnl_both_vs_baseline": 0.2975,
+    "ci_winrate_95": [
+      32.857142857142854,
+      55.714285714285715
+    ],
+    "ci_reward_risk_95": [
+      0.0,
+      10.0
+    ]
+  },
+  "ticker_stability": {
+    "ALXO": {
+      "n_all": 13,
+      "n_pass": 2,
+      "wr_all": 53.84615384615385,
+      "wr_pass": 50.0,
+      "delta": -3.8461538461538467
+    },
+    "AQST": {
+      "n_all": 16,
+      "n_pass": 5,
+      "wr_all": 25.0,
+      "wr_pass": 40.0,
+      "delta": 15.0
+    },
+    "BOXL": {
+      "n_all": 12,
+      "n_pass": 1,
+      "wr_all": 33.33333333333333,
+      "wr_pass": 100.0,
+      "delta": 66.66666666666667
+    },
+    "CATX": {
+      "n_all": 10,
+      "n_pass": 0,
+      "wr_all": 60.0,
+      "wr_pass": NaN,
+      "delta": NaN
+    },
+    "CISS": {
+      "n_all": 99,
+      "n_pass": 15,
+      "wr_all": 41.41414141414141,
+      "wr_pass": 26.666666666666668,
+      "delta": -14.747474747474744
+    },
+    "CONL": {
+      "n_all": 16,
+      "n_pass": 4,
+      "wr_all": 37.5,
+      "wr_pass": 75.0,
+      "delta": 37.5
+    },
+    "DPRO": {
+      "n_all": 12,
+      "n_pass": 0,
+      "wr_all": 25.0,
+      "wr_pass": NaN,
+      "delta": NaN
+    },
+    "LIMN": {
+      "n_all": 12,
+      "n_pass": 1,
+      "wr_all": 25.0,
+      "wr_pass": 0.0,
+      "delta": -25.0
+    },
+    "LUNR": {
+      "n_all": 12,
+      "n_pass": 1,
+      "wr_all": 58.333333333333336,
+      "wr_pass": 100.0,
+      "delta": 41.666666666666664
+    },
+    "MSTZ": {
+      "n_all": 11,
+      "n_pass": 0,
+      "wr_all": 45.45454545454545,
+      "wr_pass": NaN,
+      "delta": NaN
+    },
+    "NAMM": {
+      "n_all": 13,
+      "n_pass": 2,
+      "wr_all": 30.76923076923077,
+      "wr_pass": 0.0,
+      "delta": -30.76923076923077
+    },
+    "PINS": {
+      "n_all": 12,
+      "n_pass": 3,
+      "wr_all": 41.66666666666667,
+      "wr_pass": 33.33333333333333,
+      "delta": -8.333333333333343
+    },
+    "RDW": {
+      "n_all": 11,
+      "n_pass": 1,
+      "wr_all": 36.36363636363637,
+      "wr_pass": 0.0,
+      "delta": -36.36363636363637
+    },
+    "RGTI": {
+      "n_all": 11,
+      "n_pass": 0,
+      "wr_all": 81.81818181818183,
+      "wr_pass": NaN,
+      "delta": NaN
+    },
+    "SMCL": {
+      "n_all": 24,
+      "n_pass": 6,
+      "wr_all": 54.166666666666664,
+      "wr_pass": 83.33333333333334,
+      "delta": 29.16666666666668
+    }
+  },
+  "tod_stability": {
+    "pre_market": {
+      "n_all": 163,
+      "n_pass": 23,
+      "wr_all": 41.104294478527606,
+      "wr_pass": 26.08695652173913,
+      "delta": -15.017337956788477,
+      "pnl_all": -0.13275398773006314,
+      "pnl_pass": -8.33348695652175
+    },
+    "open": {
+      "n_all": 90,
+      "n_pass": 16,
+      "wr_all": 48.888888888888886,
+      "wr_pass": 56.25,
+      "delta": 7.361111111111114,
+      "pnl_all": 0.20604653333332806,
+      "pnl_pass": -0.23797575000001026
+    },
+    "mid": {
+      "n_all": 116,
+      "n_pass": 21,
+      "wr_all": 45.689655172413794,
+      "wr_pass": 52.38095238095239,
+      "delta": 6.691297208538593,
+      "pnl_all": 0.12620603448275328,
+      "pnl_pass": 0.47708095238094167
+    },
+    "close": {
+      "n_all": 51,
+      "n_pass": 10,
+      "wr_all": 39.21568627450981,
+      "wr_pass": 50.0,
+      "delta": 10.784313725490193,
+      "pnl_all": -0.21985294117647022,
+      "pnl_pass": -1.3033000000000117
+    }
+  }
+}

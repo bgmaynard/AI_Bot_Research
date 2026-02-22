@@ -1,0 +1,160 @@
+{
+  "n_real": 420,
+  "n_control": 912,
+  "real_summary": {
+    "peak_pressure_z": {
+      "mean": 2.080210570335363,
+      "median": 2.2728004301363125,
+      "std": 1.3597318981943252,
+      "min": 0.0,
+      "max": 4.223304487947288,
+      "n": 420
+    },
+    "mean_pressure_z": {
+      "mean": 0.003522778685352306,
+      "median": 0.0,
+      "std": 0.32153770479058325,
+      "min": -2.3863513446256484,
+      "max": 1.4055336005069519,
+      "n": 420
+    },
+    "buildup_rate": {
+      "mean": -0.001680937734029022,
+      "median": 0.0,
+      "std": 0.1353070743613771,
+      "min": -1.0460190348543361,
+      "max": 1.4517616541061964,
+      "n": 420
+    },
+    "first_cross_sec": {
+      "mean": 107.16101744106464,
+      "median": 112.667591,
+      "std": 55.59445241579543,
+      "min": 1.2353939999999999,
+      "max": 206.954518,
+      "n": 263
+    },
+    "bars_above_threshold": {
+      "mean": 1.7380952380952381,
+      "median": 1.0,
+      "std": 1.9180784507706294,
+      "min": 0.0,
+      "max": 10.0,
+      "n": 420
+    },
+    "pressure_consistency": {
+      "mean": 0.562463626992261,
+      "median": 0.5714285714285714,
+      "std": 0.2815038286185513,
+      "min": 0.0,
+      "max": 1.0,
+      "n": 420
+    },
+    "volume_acceleration": {
+      "mean": 13.622375985225283,
+      "median": 0.0,
+      "std": 400.1407412068409,
+      "min": -3079.600000000001,
+      "max": 6323.8,
+      "n": 420
+    }
+  },
+  "control_summary": {
+    "peak_pressure_z": {
+      "mean": 1.9838663346025038,
+      "median": 1.9725824025695258,
+      "std": 1.3541531057541314,
+      "n": 912
+    },
+    "mean_pressure_z": {
+      "mean": -0.01453022769790082,
+      "median": 0.0,
+      "std": 0.38930845016678894,
+      "n": 912
+    },
+    "buildup_rate": {
+      "mean": -0.005172767475912121,
+      "median": 0.0,
+      "std": 0.1409437361094572,
+      "n": 912
+    },
+    "first_cross_sec": {
+      "mean": 95.45335136000001,
+      "median": 97.3015535,
+      "std": 53.06650228474173,
+      "n": 550
+    },
+    "bars_above_threshold": {
+      "mean": 1.4287280701754386,
+      "median": 1.0,
+      "std": 1.6508129724211096,
+      "n": 912
+    },
+    "pressure_consistency": {
+      "mean": 0.6009127470430025,
+      "median": 0.6198686371100164,
+      "std": 0.2855803265635454,
+      "n": 912
+    },
+    "volume_acceleration": {
+      "mean": -28.85645272668467,
+      "median": 0.0,
+      "std": 323.86303598951065,
+      "n": 912
+    }
+  },
+  "statistical_tests": {
+    "peak_pressure_z": {
+      "observed_diff": 0.09634423573285922,
+      "p_value": 0.229,
+      "significant_05": false,
+      "significant_01": false,
+      "ci_95_lower": -0.05234527869113376,
+      "ci_95_upper": 0.2427070026421645
+    },
+    "buildup_rate": {
+      "observed_diff": 0.0034918297418830993,
+      "p_value": 0.689,
+      "significant_05": false,
+      "significant_01": false,
+      "ci_95_lower": -0.012127889130455828,
+      "ci_95_upper": 0.020231393114207134
+    },
+    "volume_acceleration": {
+      "observed_diff": 42.478828711909955,
+      "p_value": 0.038,
+      "significant_05": true,
+      "significant_01": false,
+      "ci_95_lower": 3.246128886803968,
+      "ci_95_upper": 85.57376007259903
+    }
+  },
+  "lead_time_analysis": {
+    "n_events_with_precursor": 263,
+    "pct_events_with_precursor": 62.61904761904762,
+    "mean_lead_sec": 107.16101744106464,
+    "median_lead_sec": 112.667591,
+    "std_lead_sec": 55.59445241579543,
+    "min_lead_sec": 1.2353939999999999,
+    "max_lead_sec": 206.954518,
+    "pct_above_5sec": 98.47908745247148,
+    "pct_above_30sec": 88.212927756654,
+    "pct_above_60sec": 74.90494296577947
+  },
+  "winner_vs_loser": {
+    "winners": {
+      "n": 184,
+      "mean_peak_pressure_z": 2.165347415041007,
+      "mean_buildup_rate": 2.9705917618869213e-05,
+      "mean_consistency": 0.5602488896015092,
+      "pct_with_precursor": 65.76086956521739
+    },
+    "losers": {
+      "n": 236,
+      "mean_peak_pressure_z": 2.0138326914123184,
+      "mean_buildup_rate": -0.003014659903110427,
+      "mean_consistency": 0.56419037139861,
+      "pct_with_precursor": 60.16949152542372
+    }
+  }
+}
