@@ -413,9 +413,10 @@ Beyond the MPAI components above, these are additional directions worth explorin
 | HYP-020 | Trade arrival acceleration predicts vol expansion | UNTESTED | Hawkes process |
 | HYP-021 | Delta-hedge flow creates detectable signatures | UNTESTED | Options origin |
 | HYP-022 | Multi-timeframe pressure agreement = stronger signal | UNTESTED | Easy to test |
-| HYP-023 | Pressure slope ≥ 0 filter improves trade quality | **UNTESTED — PRIORITY** | Winners: 0.000, Losers: -0.003 divergence found in HYP-013 data |
-| HYP-024 | Volume acceleration threshold improves ignition readiness | **SUPPORTED p=0.038** | Statistically significant vs controls. Need threshold optimization. |
-| HYP-025 | Combined gate: (vol_accel > X) AND (slope ≥ 0) | **UNTESTED — PRIORITY** | Intersection of HYP-023 + HYP-024 |
+| HYP-023 | Pressure slope ≥ 0 filter improves trade quality | **FALSIFIED** | Phase 9 v2. All thresholds ns. Best p=0.464. REJECT group had higher WR. |
+| HYP-024 | Volume acceleration threshold improves ignition readiness | **FALSIFIED as filter** | Confirmed precursor (p=0.038 vs controls) but zero quality filtering power. Phase 9 v2: all thresholds ns. |
+| HYP-025 | Combined gate: (vol_accel > X) AND (slope ≥ 0) | **FALSIFIED** | Phase 9 v2. p=0.888. NEITHER group was better. |
+| HYP-023A | Pressure behavior near PDH/PDL structural zones differs from mid-range | **UNTESTED — NEW TRACK** | Conditioning layer, not signal. Needs PDH/PDL + ATR data per trade. |
 
 ---
 
@@ -574,7 +575,125 @@ Priority:
 
 ---
 
-## 16. The Bottom Line
+## 16. Structural Liquidity Zone Conditioning (New Research Track)
+
+### Origin
+
+Observation: discretionary traders frequently use the previous day high (PDH) and previous day low (PDL) as "institutional reversal zones." The intuition claim is:
+
+*"Institutions react at prior highs/lows and reverse the move."*
+
+We do NOT accept that claim at face value. We formalize it under microstructure theory.
+
+### 16.1 Microstructure Interpretation
+
+PDH and PDL represent:
+- Obvious stop clusters
+- Breakout trigger zones
+- Liquidity pools
+- Dealer hedge pivot levels
+- Gamma-related supply/demand flips
+
+These are **structural liquidity concentrations**, not mystical price levels.
+
+When price approaches PDH/PDL:
+1. Stop orders cluster
+2. Breakout algos activate
+3. Market makers must absorb flow
+4. Inventory stress increases
+
+This creates:
+- Liquidity shock
+- Absorption
+- Spread stress
+- Aggressor imbalance
+- Potential short-term mean reversion
+
+This is consistent with:
+- **Phase 8 finding:** High-vol pressure spikes revert within ~60 seconds
+- Inventory control literature
+- Liquidity sweep mechanics
+
+### 16.2 Formal Hypothesis (HYP-023A)
+
+**Pressure behavior near structural liquidity zones (PDH/PDL) differs materially from pressure behavior mid-range.**
+
+Specifically:
+1. Inventory-driven fade signals may be **stronger** near PDH/PDL.
+2. Absorption + spread stress near PDH/PDL may **precede** ignition events.
+3. Pressure invalidation near PDH/PDL may produce **higher-quality** momentum trades.
+4. Ignition events near PDH/PDL may show **distinct MFE/MAE profiles**.
+
+### 16.3 Structural Zone Definition (Quant Formalization)
+
+We define structural zones using normalized distance:
+
+```
+distance_to_PDH = (PDH - current_price) / ATR
+distance_to_PDL = (current_price - PDL) / ATR
+```
+
+Zone thresholds:
+
+```
+ZONE_TOP    = distance_to_PDH <= 0.25 ATR
+ZONE_BOTTOM = distance_to_PDL <= 0.25 ATR
+ZONE_MID    = neither condition true
+```
+
+Alternative sensitivity tests:
+- 0.10 ATR
+- 0.25 ATR
+- 0.50 ATR
+
+Zones must be tested parametrically.
+
+### 16.4 Research Questions
+
+1. Are pressure spikes near PDH/PDL more likely to revert?
+2. Do Morpheus ignition events cluster near structural zones?
+3. Does pressure buildup occur BEFORE ignition more frequently near zones?
+4. Do trades near zones have:
+   - Larger MFE?
+   - Smaller MAE?
+   - Different decay profiles?
+5. Does pressure invalidation near zones predict breakout continuation?
+
+### 16.5 Integration with MPAI
+
+Structural zones are NOT a signal. They are a **conditioning layer**.
+
+MPAI may become:
+
+```
+MPAI = f(pressure, absorption, spread_dynamics, RSI, zone_context)
+```
+
+Where:
+
+```
+zone_context ∈ {TOP, BOTTOM, MID}
+```
+
+Only if zone conditioning materially improves:
+- Lead time
+- MFE
+- R:R
+- Stability across symbols
+
+### 16.6 Validation Gate
+
+Structural conditioning must pass:
+- n ≥ 500 per condition
+- Bootstrap CI excludes 50% baseline (for hit-rate metrics)
+- Improvement consistent across ≥ 60% of tickers
+- Not concentrated in single time-of-day bucket
+
+**If not → reject hypothesis. No exceptions.**
+
+---
+
+## 17. The Bottom Line
 
 We trade momentum. Morpheus is good at detecting when momentum ignites. But by that point, some of the move is gone.
 
