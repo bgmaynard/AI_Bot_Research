@@ -1,15 +1,18 @@
 """
 Morpheus Lab — CLI Interface
 ==============================
-Command-line entrypoints for hypothesis testing, scoring, and promotion.
+Command-line entrypoints for the full research pipeline.
 
 Usage:
-    python -m engine.cli load    <hypothesis.yaml>       # Load & validate hypothesis
-    python -m engine.cli run     <hypothesis.yaml>       # Run full grid test
-    python -m engine.cli score   <hypothesis_id>         # Score against baseline
-    python -m engine.cli promote <hypothesis_id>         # Promote validated hypothesis
-    python -m engine.cli status  <hypothesis_id>         # Check hypothesis status
-    python -m engine.cli shadow  <hypothesis_id>         # Generate shadow checklist
+    python -m Morpheus_Lab.cli inspect-databento --cache <path> [--deep]
+    python -m Morpheus_Lab.cli backtest --cache <path> --mode auto|bars_1s|trades
+                                        --symbols-file <file> --start <date> --end <date>
+    python -m Morpheus_Lab.cli load      <hypothesis.yaml>
+    python -m Morpheus_Lab.cli run       <hypothesis.yaml>
+    python -m Morpheus_Lab.cli score     <hypothesis_id>
+    python -m Morpheus_Lab.cli promote   <hypothesis_id>
+    python -m Morpheus_Lab.cli status    <hypothesis_id>
+    python -m Morpheus_Lab.cli shadow    <hypothesis_id>
 """
 
 import argparse
@@ -18,17 +21,114 @@ import logging
 import sys
 from pathlib import Path
 
-from engine.hypothesis_loader import (
-    load_hypothesis,
-    generate_grid_combinations,
-    generate_execution_variants,
-)
-
 logger = logging.getLogger("morpheus_lab")
 
 
+# ─────────────────────────────────────────────────────────────
+#  DATABENTO COMMANDS
+# ─────────────────────────────────────────────────────────────
+
+def cmd_inspect_databento(args: argparse.Namespace) -> None:
+    """Inspect Databento cache and produce dataset_profile.json."""
+    from datafeeds.databento_inspector import inspect_cache, print_inspection_report
+
+    report_path = args.report or "reports/dataset_profile.json"
+
+    profile = inspect_cache(
+        cache_path=args.cache,
+        quick=not args.deep,
+        report_path=report_path,
+    )
+    print_inspection_report(profile)
+    print(f"  Report saved: {report_path}")
+
+
+def cmd_backtest(args: argparse.Namespace) -> None:
+    """Run backtest over Databento cache data."""
+    from datafeeds.databento_feed import DatabentoFeed
+    from core.market_replay import MarketReplay, TradeCollector
+    from engine.metrics import compute_metrics
+
+    # Load symbols
+    symbols = None
+    if args.symbols_file:
+        sf = Path(args.symbols_file)
+        if not sf.exists():
+            print(f"Error: symbols file not found: {args.symbols_file}")
+            sys.exit(1)
+        with open(sf) as f:
+            symbols = [line.strip() for line in f if line.strip() and not line.startswith("#")]
+        print(f"Loaded {len(symbols)} symbols from {args.symbols_file}")
+
+    if args.symbols:
+        symbols = [s.strip() for s in args.symbols.split(",")]
+        print(f"Using {len(symbols)} symbols from --symbols flag")
+
+    # Initialize feed
+    print(f"\nInitializing Databento feed: {args.cache}")
+    feed = DatabentoFeed(args.cache)
+
+    print(f"Available schemas: {feed.available_schemas}")
+    resolved_mode = feed._resolve_mode(args.mode)
+    print(f"Mode: {args.mode} -> {resolved_mode}")
+
+    # Initialize replay
+    replay = MarketReplay(feed)
+    collector = TradeCollector()
+
+    # Event counter callback
+    event_count = {"bars": 0, "trades": 0}
+
+    def count_bars(bar):
+        event_count["bars"] += 1
+
+    def count_trades(trade):
+        event_count["trades"] += 1
+
+    replay.on_bar(count_bars)
+    replay.on_trade(count_trades)
+
+    # Run replay
+    print(f"\nRunning replay: {args.start} -> {args.end}, mode={resolved_mode}")
+    print("-" * 60)
+
+    stats = replay.run(
+        symbols=symbols,
+        start=args.start,
+        end=args.end,
+        mode=args.mode,
+    )
+
+    print("-" * 60)
+    print(f"\n{stats.summary()}")
+
+    # If we have collected trades from a strategy, compute metrics
+    if collector.trades:
+        metrics = compute_metrics(collector.trades)
+        print(f"\nMetrics:")
+        for k, v in metrics.to_dict().items():
+            print(f"  {k}: {v}")
+    else:
+        print(
+            "\nNo strategy attached - replay ran in observation mode. "
+            "Attach a strategy via replay.on_bar() to generate trades."
+        )
+
+    print()
+
+
+# ─────────────────────────────────────────────────────────────
+#  HYPOTHESIS COMMANDS
+# ─────────────────────────────────────────────────────────────
+
 def cmd_load(args: argparse.Namespace) -> None:
     """Load and validate a hypothesis file."""
+    from engine.hypothesis_loader import (
+        load_hypothesis,
+        generate_grid_combinations,
+        generate_execution_variants,
+    )
+
     hyp = load_hypothesis(args.hypothesis_file)
     grid = generate_grid_combinations(hyp.parameter_grid)
     exec_vars = generate_execution_variants(hyp.execution_models)
@@ -39,7 +139,7 @@ def cmd_load(args: argparse.Namespace) -> None:
     print(f"  Description:  {hyp.description.strip()}")
     print(f"  Target:       {hyp.target_system}")
     print(f"  Author:       {hyp.author}")
-    print(f"  Window:       {hyp.evaluation_window.start} → {hyp.evaluation_window.end}")
+    print(f"  Window:       {hyp.evaluation_window.start} -> {hyp.evaluation_window.end}")
     print(f"  Grid combos:  {len(grid)}")
     print(f"  Exec variants: {len(exec_vars)}")
     print(f"  Total runs:   {hyp.total_runs()}")
@@ -53,12 +153,13 @@ def cmd_load(args: argparse.Namespace) -> None:
     print(f"  Slippage:  {hyp.execution_models.slippage}")
     print(f"  Latency:   {hyp.execution_models.latency_ms}")
 
-    print(f"\n✓ Hypothesis is valid and ready for testing.\n")
+    print(f"\n  Hypothesis is valid and ready for testing.\n")
 
 
 def cmd_run(args: argparse.Namespace) -> None:
     """Run grid test for a hypothesis."""
     from engine.grid_runner import GridRunner
+    from engine.hypothesis_loader import load_hypothesis
 
     hyp = load_hypothesis(args.hypothesis_file)
 
@@ -66,30 +167,9 @@ def cmd_run(args: argparse.Namespace) -> None:
     print(f"Total runs: {hyp.total_runs()}")
     print(f"Output: results/candidates/{hyp.hypothesis_id}/\n")
 
-    # NOTE: You must provide your own backtest function.
-    # This is a placeholder that demonstrates the interface.
     def placeholder_backtest(config, eval_window, seed):
-        """
-        Replace this with your actual backtest function.
-
-        Must accept:
-            config: dict - merged config parameters
-            eval_window: dict with 'start' and 'end' date strings
-            seed: int - for deterministic reproducibility
-
-        Must return:
-            List of trade dicts, each with at minimum:
-                - pnl: float
-                - date: str (YYYY-MM-DD)
-                - entry_price: float
-                - exit_price: float
-                - direction: str ("long" or "short")
-                - shares: int
-        """
-        print(
-            "  WARNING: Using placeholder backtest. "
-            "Integrate your actual backtest function in engine/cli.py"
-        )
+        """PLACEHOLDER - replace with actual backtest logic."""
+        print("  WARNING: Using placeholder backtest. Wire your actual backtest function.")
         import random
         random.seed(seed)
         trades = []
@@ -133,10 +213,8 @@ def cmd_score(args: argparse.Namespace) -> None:
     from scoring.promotion_score import compute_promotion_score, save_scoring_result
 
     print(f"\nScoring hypothesis: {args.hypothesis_id}")
-    print("NOTE: Provide normalized 0-1 scores for each dimension.\n")
+    print("Provide normalized 0-1 scores for each dimension:\n")
 
-    # In production, these would be computed from baseline_comparator
-    # For now, prompt for manual input or load from files
     try:
         result = compute_promotion_score(
             hypothesis_id=args.hypothesis_id,
@@ -196,7 +274,7 @@ def cmd_shadow(args: argparse.Namespace) -> None:
     print(f"  SHADOW VALIDATION CHECKLIST: {args.hypothesis_id}")
     print(f"{'='*60}")
     print(f"  Shadow period: {checklist['shadow_period_days']} days")
-    print(f"  Supervisor signoff required: {checklist['supervisor_signoff_required']}")
+    print(f"  Supervisor signoff: {checklist['supervisor_signoff_required']}")
     print(f"\n  Items:")
     for key, item in checklist["checklist"].items():
         print(f"    [ ] {item['description']}")
@@ -219,7 +297,6 @@ def cmd_status(args: argparse.Namespace) -> None:
             print(f"  Location:   {scoring_file}\n")
             return
 
-    # Check run results
     run_dir = results_base / "candidates" / hyp_id
     if run_dir.exists():
         completed = run_dir / "_completed.json"
@@ -235,60 +312,81 @@ def cmd_status(args: argparse.Namespace) -> None:
     print(f"\n  Hypothesis {hyp_id}: NOT FOUND\n")
 
 
+# ─────────────────────────────────────────────────────────────
+#  MAIN
+# ─────────────────────────────────────────────────────────────
+
 def main():
     parser = argparse.ArgumentParser(
         prog="morpheus-lab",
-        description="Morpheus Research & Promotion Framework CLI",
+        description="Morpheus Research & Promotion Framework",
     )
-    parser.add_argument(
-        "-v", "--verbose",
-        action="store_true",
-        help="Enable verbose logging",
-    )
+    parser.add_argument("-v", "--verbose", action="store_true", help="Verbose logging")
 
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
-    # load
+    # -- inspect-databento --
+    p_inspect = subparsers.add_parser(
+        "inspect-databento",
+        help="Inspect Databento cache: schemas, symbols, date range",
+    )
+    p_inspect.add_argument("--cache", required=True, help="Path to Databento cache root")
+    p_inspect.add_argument("--deep", action="store_true", help="Deep scan (reads all records, slow)")
+    p_inspect.add_argument("--report", default=None, help="Output report path")
+
+    # -- backtest --
+    p_bt = subparsers.add_parser("backtest", help="Run backtest over Databento data")
+    p_bt.add_argument("--cache", required=True, help="Path to Databento cache root")
+    p_bt.add_argument("--mode", default="auto", choices=["auto", "bars_1s", "trades", "bars_1m"],
+                       help="Data mode (default: auto)")
+    p_bt.add_argument("--symbols-file", default=None, help="File with one symbol per line")
+    p_bt.add_argument("--symbols", default=None, help="Comma-separated symbol list")
+    p_bt.add_argument("--start", default=None, help="Start date YYYY-MM-DD")
+    p_bt.add_argument("--end", default=None, help="End date YYYY-MM-DD")
+
+    # -- load --
     p_load = subparsers.add_parser("load", help="Load & validate hypothesis")
     p_load.add_argument("hypothesis_file", help="Path to hypothesis YAML file")
 
-    # run
+    # -- run --
     p_run = subparsers.add_parser("run", help="Run grid test")
     p_run.add_argument("hypothesis_file", help="Path to hypothesis YAML file")
-    p_run.add_argument("--workers", type=int, default=1, help="Parallel workers (default: 1)")
-    p_run.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
+    p_run.add_argument("--workers", type=int, default=1, help="Parallel workers")
+    p_run.add_argument("--seed", type=int, default=42, help="Random seed")
     p_run.add_argument("--baseline", default=None, help="Override baseline config path")
 
-    # score
+    # -- score --
     p_score = subparsers.add_parser("score", help="Score hypothesis")
     p_score.add_argument("hypothesis_id", help="Hypothesis ID")
 
-    # promote
+    # -- promote --
     p_promote = subparsers.add_parser("promote", help="Promote validated hypothesis")
     p_promote.add_argument("hypothesis_id", help="Hypothesis ID")
     p_promote.add_argument("--target", required=True, help="Target system")
     p_promote.add_argument("--approved", action="store_true", help="Supervisor approved")
 
-    # shadow
+    # -- shadow --
     p_shadow = subparsers.add_parser("shadow", help="Generate shadow checklist")
     p_shadow.add_argument("hypothesis_id", help="Hypothesis ID")
 
-    # status
+    # -- status --
     p_status = subparsers.add_parser("status", help="Check hypothesis status")
     p_status.add_argument("hypothesis_id", help="Hypothesis ID")
 
     args = parser.parse_args()
 
     if args.verbose:
-        logging.basicConfig(level=logging.DEBUG)
+        logging.basicConfig(level=logging.DEBUG, format="%(levelname)s:%(name)s: %(message)s")
     else:
-        logging.basicConfig(level=logging.INFO)
+        logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
     if args.command is None:
         parser.print_help()
         sys.exit(0)
 
     commands = {
+        "inspect-databento": cmd_inspect_databento,
+        "backtest": cmd_backtest,
         "load": cmd_load,
         "run": cmd_run,
         "score": cmd_score,

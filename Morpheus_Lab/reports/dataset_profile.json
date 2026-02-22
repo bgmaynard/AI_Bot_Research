@@ -1,0 +1,3184 @@
+{
+  "cache_path": "Z:\\AI_BOT_DATA\\databento_cache",
+  "scan_timestamp": "2026-02-22T18:34:32.773575+00:00",
+  "total_files": 239,
+  "total_size_bytes": 117174197,
+  "total_size_mb": 111.75,
+  "datasets": [
+    "XNAS.ITCH"
+  ],
+  "schemas_available": {
+    "mbp-10": 1,
+    "trades": 238
+  },
+  "schema_priority": "trades",
+  "symbol_coverage": {
+    "NVDA": 4194634,
+    "TSLA": 2395409,
+    "AAPL": 1556750,
+    "AMD": 1086541,
+    "RIVN": 198623,
+    "CISS": 197483,
+    "FSLY": 139231,
+    "SMX": 130955,
+    "JDZG": 128132,
+    "MLEC": 115328,
+    "UOKA": 96045,
+    "SER": 86882,
+    "RIME": 76157,
+    "CMPS": 75181,
+    "VIVS": 72620,
+    "AQST": 67558,
+    "MSTZ": 66556,
+    "BBAI": 62838,
+    "DCX": 62379,
+    "RGTI": 60922,
+    "MNTS": 57246,
+    "LIMN": 56990,
+    "LYFT": 56880,
+    "CDIO": 55316,
+    "ABP": 53389,
+    "OPEN": 51217,
+    "ELPW": 50657,
+    "BOXL": 48948,
+    "LFS": 44787,
+    "CCHH": 44116,
+    "RNAZ": 40754,
+    "RPGL": 40001,
+    "VHUB": 39972,
+    "RXT": 39380,
+    "CATX": 38292,
+    "RIOT": 38148,
+    "NAMM": 37828,
+    "FATBB": 37552,
+    "BENF": 35486,
+    "ELAB": 34465,
+    "RDW": 34363,
+    "XHLD": 33637,
+    "PINS": 33550,
+    "AZI": 32638,
+    "GCTS": 29904,
+    "WHLR": 29731,
+    "ANL": 29145,
+    "TRX": 28709,
+    "LUNR": 28441,
+    "IRDM": 27655
+  },
+  "date_range": {
+    "earliest": "2026-01-29 08:00:00+00:00",
+    "latest": "2026-02-20 21:00:00+00:00"
+  },
+  "estimated_total_events": 12810629,
+  "ts_resolution": "nanosecond",
+  "files": [
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\mbp-10\\BBAI_2026-02-06T120000_2026-02-06T143000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "mbp-10",
+      "size_bytes": 57640,
+      "start": "2026-02-06 12:00:00+00:00",
+      "end": "2026-02-06 14:30:00+00:00",
+      "symbols": [
+        "BBAI"
+      ],
+      "record_count": 1120,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AAPL_20260209T1200_20260209T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1475236,
+      "start": "2026-02-09 12:00:00+00:00",
+      "end": "2026-02-09 20:00:00+00:00",
+      "symbols": [
+        "AAPL"
+      ],
+      "record_count": 161353,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AAPL_20260210T1200_20260210T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 969618,
+      "start": "2026-02-10 12:00:00+00:00",
+      "end": "2026-02-10 20:00:00+00:00",
+      "symbols": [
+        "AAPL"
+      ],
+      "record_count": 106051,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AAPL_20260211T1200_20260211T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 2106714,
+      "start": "2026-02-11 12:00:00+00:00",
+      "end": "2026-02-11 20:00:00+00:00",
+      "symbols": [
+        "AAPL"
+      ],
+      "record_count": 230421,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AAPL_20260212T1200_20260212T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 2599384,
+      "start": "2026-02-12 12:00:00+00:00",
+      "end": "2026-02-12 20:00:00+00:00",
+      "symbols": [
+        "AAPL"
+      ],
+      "record_count": 284307,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AAPL_20260213T1200_20260213T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1596345,
+      "start": "2026-02-13 12:00:00+00:00",
+      "end": "2026-02-13 20:00:00+00:00",
+      "symbols": [
+        "AAPL"
+      ],
+      "record_count": 174600,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AAPL_20260216T1200_20260216T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 93,
+      "start": "2026-02-16 12:00:00+00:00",
+      "end": "2026-02-16 20:00:00+00:00",
+      "symbols": [
+        "AAPL"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AAPL_20260217T1200_20260217T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1767055,
+      "start": "2026-02-17 12:00:00+00:00",
+      "end": "2026-02-17 20:00:00+00:00",
+      "symbols": [
+        "AAPL"
+      ],
+      "record_count": 193271,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AAPL_20260218T1200_20260218T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1126680,
+      "start": "2026-02-18 12:00:00+00:00",
+      "end": "2026-02-18 20:00:00+00:00",
+      "symbols": [
+        "AAPL"
+      ],
+      "record_count": 123230,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AAPL_20260219T1200_20260219T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 965894,
+      "start": "2026-02-19 12:00:00+00:00",
+      "end": "2026-02-19 20:00:00+00:00",
+      "symbols": [
+        "AAPL"
+      ],
+      "record_count": 105644,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AAPL_20260220T1200_20260220T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1626181,
+      "start": "2026-02-20 12:00:00+00:00",
+      "end": "2026-02-20 20:00:00+00:00",
+      "symbols": [
+        "AAPL"
+      ],
+      "record_count": 177863,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ABP_20260210T0800_20260210T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 488128,
+      "start": "2026-02-10 08:00:00+00:00",
+      "end": "2026-02-10 21:00:00+00:00",
+      "symbols": [
+        "ABP"
+      ],
+      "record_count": 53389,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AIMD_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 11685,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "AIMD"
+      ],
+      "record_count": 1278,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ALXO_20260205T0800_20260205T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 52952,
+      "start": "2026-02-05 08:00:00+00:00",
+      "end": "2026-02-05 21:00:00+00:00",
+      "symbols": [
+        "ALXO"
+      ],
+      "record_count": 5791,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AMD_20260209T1200_20260209T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1507986,
+      "start": "2026-02-09 12:00:00+00:00",
+      "end": "2026-02-09 20:00:00+00:00",
+      "symbols": [
+        "AMD"
+      ],
+      "record_count": 164935,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AMD_20260210T1200_20260210T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 931303,
+      "start": "2026-02-10 12:00:00+00:00",
+      "end": "2026-02-10 20:00:00+00:00",
+      "symbols": [
+        "AMD"
+      ],
+      "record_count": 101861,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AMD_20260211T1200_20260211T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1246757,
+      "start": "2026-02-11 12:00:00+00:00",
+      "end": "2026-02-11 20:00:00+00:00",
+      "symbols": [
+        "AMD"
+      ],
+      "record_count": 136364,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AMD_20260212T1200_20260212T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1056435,
+      "start": "2026-02-12 12:00:00+00:00",
+      "end": "2026-02-12 20:00:00+00:00",
+      "symbols": [
+        "AMD"
+      ],
+      "record_count": 115547,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AMD_20260213T1200_20260213T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 898143,
+      "start": "2026-02-13 12:00:00+00:00",
+      "end": "2026-02-13 20:00:00+00:00",
+      "symbols": [
+        "AMD"
+      ],
+      "record_count": 98234,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AMD_20260216T1200_20260216T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 93,
+      "start": "2026-02-16 12:00:00+00:00",
+      "end": "2026-02-16 20:00:00+00:00",
+      "symbols": [
+        "AMD"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AMD_20260217T1200_20260217T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1090236,
+      "start": "2026-02-17 12:00:00+00:00",
+      "end": "2026-02-17 20:00:00+00:00",
+      "symbols": [
+        "AMD"
+      ],
+      "record_count": 119244,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AMD_20260218T1200_20260218T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1235118,
+      "start": "2026-02-18 12:00:00+00:00",
+      "end": "2026-02-18 20:00:00+00:00",
+      "symbols": [
+        "AMD"
+      ],
+      "record_count": 135091,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AMD_20260219T1200_20260219T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 791103,
+      "start": "2026-02-19 12:00:00+00:00",
+      "end": "2026-02-19 20:00:00+00:00",
+      "symbols": [
+        "AMD"
+      ],
+      "record_count": 86526,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AMD_20260220T1200_20260220T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1176954,
+      "start": "2026-02-20 12:00:00+00:00",
+      "end": "2026-02-20 20:00:00+00:00",
+      "symbols": [
+        "AMD"
+      ],
+      "record_count": 128729,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ANL_20260130T0800_20260130T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 241072,
+      "start": "2026-01-30 08:00:00+00:00",
+      "end": "2026-01-30 21:00:00+00:00",
+      "symbols": [
+        "ANL"
+      ],
+      "record_count": 26367,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ANL_20260131T0800_20260131T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 95,
+      "start": "2026-01-31 08:00:00+00:00",
+      "end": "2026-01-31 21:00:00+00:00",
+      "symbols": [
+        "ANL"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ANL_20260201T0800_20260201T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 95,
+      "start": "2026-02-01 08:00:00+00:00",
+      "end": "2026-02-01 21:00:00+00:00",
+      "symbols": [
+        "ANL"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ANL_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 25221,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "ANL"
+      ],
+      "record_count": 2758,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ANPA_20260220T0800_20260220T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 112843,
+      "start": "2026-02-20 08:00:00+00:00",
+      "end": "2026-02-20 21:00:00+00:00",
+      "symbols": [
+        "ANPA"
+      ],
+      "record_count": 12342,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AQST_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 527827,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "AQST"
+      ],
+      "record_count": 57731,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AQST_20260203T0800_20260203T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 89852,
+      "start": "2026-02-03 08:00:00+00:00",
+      "end": "2026-02-03 21:00:00+00:00",
+      "symbols": [
+        "AQST"
+      ],
+      "record_count": 9827,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ARAI_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 21771,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "ARAI"
+      ],
+      "record_count": 2381,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AREB_20260205T0800_20260205T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 87557,
+      "start": "2026-02-05 08:00:00+00:00",
+      "end": "2026-02-05 21:00:00+00:00",
+      "symbols": [
+        "AREB"
+      ],
+      "record_count": 9576,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ASTI_20260205T0800_20260205T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 30437,
+      "start": "2026-02-05 08:00:00+00:00",
+      "end": "2026-02-05 21:00:00+00:00",
+      "symbols": [
+        "ASTI"
+      ],
+      "record_count": 3329,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ASTL_20260214T0800_20260214T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 95,
+      "start": "2026-02-14 08:00:00+00:00",
+      "end": "2026-02-14 21:00:00+00:00",
+      "symbols": [
+        "ASTL"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AUID_20260130T0800_20260130T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 153997,
+      "start": "2026-01-30 08:00:00+00:00",
+      "end": "2026-01-30 21:00:00+00:00",
+      "symbols": [
+        "AUID"
+      ],
+      "record_count": 16843,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AUST_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 32019,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "AUST"
+      ],
+      "record_count": 3502,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\AZI_20260210T0800_20260210T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 298411,
+      "start": "2026-02-10 08:00:00+00:00",
+      "end": "2026-02-10 21:00:00+00:00",
+      "symbols": [
+        "AZI"
+      ],
+      "record_count": 32638,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BATL_20260130T0800_20260130T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 15746,
+      "start": "2026-01-30 08:00:00+00:00",
+      "end": "2026-01-30 21:00:00+00:00",
+      "symbols": [
+        "BATL"
+      ],
+      "record_count": 1722,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BATL_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 7228,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "BATL"
+      ],
+      "record_count": 790,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BBAI_2026-02-06T120000_2026-02-06T143000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 3366,
+      "start": "2026-02-06 12:00:00+00:00",
+      "end": "2026-02-06 14:30:00+00:00",
+      "symbols": [
+        "BBAI"
+      ],
+      "record_count": 368,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BBAI_20260209T1200_20260209T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 71579,
+      "start": "2026-02-09 12:00:00+00:00",
+      "end": "2026-02-09 20:00:00+00:00",
+      "symbols": [
+        "BBAI"
+      ],
+      "record_count": 7828,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BBAI_20260210T1200_20260210T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 55950,
+      "start": "2026-02-10 12:00:00+00:00",
+      "end": "2026-02-10 20:00:00+00:00",
+      "symbols": [
+        "BBAI"
+      ],
+      "record_count": 6119,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BBAI_20260211T1200_20260211T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 61793,
+      "start": "2026-02-11 12:00:00+00:00",
+      "end": "2026-02-11 20:00:00+00:00",
+      "symbols": [
+        "BBAI"
+      ],
+      "record_count": 6758,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BBAI_20260212T1200_20260212T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 85241,
+      "start": "2026-02-12 12:00:00+00:00",
+      "end": "2026-02-12 20:00:00+00:00",
+      "symbols": [
+        "BBAI"
+      ],
+      "record_count": 9323,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BBAI_20260213T1200_20260213T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 76285,
+      "start": "2026-02-13 12:00:00+00:00",
+      "end": "2026-02-13 20:00:00+00:00",
+      "symbols": [
+        "BBAI"
+      ],
+      "record_count": 8343,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BBAI_20260216T1200_20260216T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 95,
+      "start": "2026-02-16 12:00:00+00:00",
+      "end": "2026-02-16 20:00:00+00:00",
+      "symbols": [
+        "BBAI"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BBAI_20260217T1200_20260217T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 52094,
+      "start": "2026-02-17 12:00:00+00:00",
+      "end": "2026-02-17 20:00:00+00:00",
+      "symbols": [
+        "BBAI"
+      ],
+      "record_count": 5697,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BBAI_20260218T1200_20260218T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 50197,
+      "start": "2026-02-18 12:00:00+00:00",
+      "end": "2026-02-18 20:00:00+00:00",
+      "symbols": [
+        "BBAI"
+      ],
+      "record_count": 5490,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BBAI_20260219T1200_20260219T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 43919,
+      "start": "2026-02-19 12:00:00+00:00",
+      "end": "2026-02-19 20:00:00+00:00",
+      "symbols": [
+        "BBAI"
+      ],
+      "record_count": 4803,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BBAI_20260220T1200_20260220T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 63812,
+      "start": "2026-02-20 12:00:00+00:00",
+      "end": "2026-02-20 20:00:00+00:00",
+      "symbols": [
+        "BBAI"
+      ],
+      "record_count": 6979,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BENF_20260218T0800_20260218T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 324446,
+      "start": "2026-02-18 08:00:00+00:00",
+      "end": "2026-02-18 21:00:00+00:00",
+      "symbols": [
+        "BENF"
+      ],
+      "record_count": 35486,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BGMS_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 18459,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "BGMS"
+      ],
+      "record_count": 2018,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BMNU_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 27945,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "BMNU"
+      ],
+      "record_count": 3056,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BNRG_20260211T0800_20260211T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 236279,
+      "start": "2026-02-11 08:00:00+00:00",
+      "end": "2026-02-11 21:00:00+00:00",
+      "symbols": [
+        "BNRG"
+      ],
+      "record_count": 25843,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BOXL_20260205T0800_20260205T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 27216,
+      "start": "2026-02-05 08:00:00+00:00",
+      "end": "2026-02-05 21:00:00+00:00",
+      "symbols": [
+        "BOXL"
+      ],
+      "record_count": 2976,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BOXL_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 255586,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "BOXL"
+      ],
+      "record_count": 27954,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BOXL_20260219T0800_20260219T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 164744,
+      "start": "2026-02-19 08:00:00+00:00",
+      "end": "2026-02-19 21:00:00+00:00",
+      "symbols": [
+        "BOXL"
+      ],
+      "record_count": 18018,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BQ_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 3794,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "BQ"
+      ],
+      "record_count": 414,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BTCZ_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 30582,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "BTCZ"
+      ],
+      "record_count": 3344,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\BTQ_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 48852,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "BTQ"
+      ],
+      "record_count": 5343,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CATX_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 209781,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "CATX"
+      ],
+      "record_count": 22944,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CATX_20260203T0800_20260203T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 140332,
+      "start": "2026-02-03 08:00:00+00:00",
+      "end": "2026-02-03 21:00:00+00:00",
+      "symbols": [
+        "CATX"
+      ],
+      "record_count": 15348,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CCHH_20260209T0800_20260209T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 301910,
+      "start": "2026-02-09 08:00:00+00:00",
+      "end": "2026-02-09 21:00:00+00:00",
+      "symbols": [
+        "CCHH"
+      ],
+      "record_count": 33021,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CCHH_20260211T0800_20260211T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 101446,
+      "start": "2026-02-11 08:00:00+00:00",
+      "end": "2026-02-11 21:00:00+00:00",
+      "symbols": [
+        "CCHH"
+      ],
+      "record_count": 11095,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CDIO_20260220T0800_20260220T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 505755,
+      "start": "2026-02-20 08:00:00+00:00",
+      "end": "2026-02-20 21:00:00+00:00",
+      "symbols": [
+        "CDIO"
+      ],
+      "record_count": 55316,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CISS_20260130T0800_20260130T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 293898,
+      "start": "2026-01-30 08:00:00+00:00",
+      "end": "2026-01-30 21:00:00+00:00",
+      "symbols": [
+        "CISS"
+      ],
+      "record_count": 32145,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CISS_20260131T0800_20260131T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 95,
+      "start": "2026-01-31 08:00:00+00:00",
+      "end": "2026-01-31 21:00:00+00:00",
+      "symbols": [
+        "CISS"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CISS_20260201T0800_20260201T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 95,
+      "start": "2026-02-01 08:00:00+00:00",
+      "end": "2026-02-01 21:00:00+00:00",
+      "symbols": [
+        "CISS"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CISS_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 696387,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "CISS"
+      ],
+      "record_count": 76167,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CISS_20260205T0800_20260205T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 442005,
+      "start": "2026-02-05 08:00:00+00:00",
+      "end": "2026-02-05 21:00:00+00:00",
+      "symbols": [
+        "CISS"
+      ],
+      "record_count": 48344,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CISS_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 20438,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "CISS"
+      ],
+      "record_count": 2235,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CISS_20260219T0800_20260219T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 352666,
+      "start": "2026-02-19 08:00:00+00:00",
+      "end": "2026-02-19 21:00:00+00:00",
+      "symbols": [
+        "CISS"
+      ],
+      "record_count": 38572,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CMPS_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 687374,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "CMPS"
+      ],
+      "record_count": 75181,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CNVS_20260213T0800_20260213T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 71218,
+      "start": "2026-02-13 08:00:00+00:00",
+      "end": "2026-02-13 21:00:00+00:00",
+      "symbols": [
+        "CNVS"
+      ],
+      "record_count": 7789,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CONL_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 154700,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "CONL"
+      ],
+      "record_count": 16920,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\CORD_20260220T0800_20260220T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 11179,
+      "start": "2026-02-20 08:00:00+00:00",
+      "end": "2026-02-20 21:00:00+00:00",
+      "symbols": [
+        "CORD"
+      ],
+      "record_count": 1222,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\DBGI_20260213T0800_20260213T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 35995,
+      "start": "2026-02-13 08:00:00+00:00",
+      "end": "2026-02-13 21:00:00+00:00",
+      "symbols": [
+        "DBGI"
+      ],
+      "record_count": 3936,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\DCX_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 570329,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "DCX"
+      ],
+      "record_count": 62379,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\DDL_20260210T0800_20260210T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 46227,
+      "start": "2026-02-10 08:00:00+00:00",
+      "end": "2026-02-10 21:00:00+00:00",
+      "symbols": [
+        "DDL"
+      ],
+      "record_count": 5056,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\DFDV_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 100701,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "DFDV"
+      ],
+      "record_count": 11014,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\DHX_20260205T0800_20260205T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 89872,
+      "start": "2026-02-05 08:00:00+00:00",
+      "end": "2026-02-05 21:00:00+00:00",
+      "symbols": [
+        "DHX"
+      ],
+      "record_count": 9829,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\DHX_20260209T0800_20260209T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 11872,
+      "start": "2026-02-09 08:00:00+00:00",
+      "end": "2026-02-09 21:00:00+00:00",
+      "symbols": [
+        "DHX"
+      ],
+      "record_count": 1298,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\DOGZ_20260203T0800_20260203T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 10979,
+      "start": "2026-02-03 08:00:00+00:00",
+      "end": "2026-02-03 21:00:00+00:00",
+      "symbols": [
+        "DOGZ"
+      ],
+      "record_count": 1200,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\DPRO_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 97223,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "DPRO"
+      ],
+      "record_count": 10633,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\DRMA_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 18010,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "DRMA"
+      ],
+      "record_count": 1969,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\DRMA_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 22400,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "DRMA"
+      ],
+      "record_count": 2450,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\DUO_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 47943,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "DUO"
+      ],
+      "record_count": 5243,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\DUST_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 21798,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "DUST"
+      ],
+      "record_count": 2384,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\DXF_20260210T0800_20260210T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1867,
+      "start": "2026-02-10 08:00:00+00:00",
+      "end": "2026-02-10 21:00:00+00:00",
+      "symbols": [
+        "DXF"
+      ],
+      "record_count": 204,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ECX_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 71053,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "ECX"
+      ],
+      "record_count": 7771,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\EGHT_20260205T0800_20260205T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 67739,
+      "start": "2026-02-05 08:00:00+00:00",
+      "end": "2026-02-05 21:00:00+00:00",
+      "symbols": [
+        "EGHT"
+      ],
+      "record_count": 7408,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ELAB_20260211T0800_20260211T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 315117,
+      "start": "2026-02-11 08:00:00+00:00",
+      "end": "2026-02-11 21:00:00+00:00",
+      "symbols": [
+        "ELAB"
+      ],
+      "record_count": 34465,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ELOG_20260213T0800_20260213T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 15589,
+      "start": "2026-02-13 08:00:00+00:00",
+      "end": "2026-02-13 21:00:00+00:00",
+      "symbols": [
+        "ELOG"
+      ],
+      "record_count": 1705,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ELPW_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 389988,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "ELPW"
+      ],
+      "record_count": 42654,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ELPW_20260205T0800_20260205T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 38246,
+      "start": "2026-02-05 08:00:00+00:00",
+      "end": "2026-02-05 21:00:00+00:00",
+      "symbols": [
+        "ELPW"
+      ],
+      "record_count": 4183,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ELPW_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 34931,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "ELPW"
+      ],
+      "record_count": 3820,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\EVTV_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 78807,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "EVTV"
+      ],
+      "record_count": 8619,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\EVTV_20260220T0800_20260220T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 62539,
+      "start": "2026-02-20 08:00:00+00:00",
+      "end": "2026-02-20 21:00:00+00:00",
+      "symbols": [
+        "EVTV"
+      ],
+      "record_count": 6840,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\EWCZ_20260210T0800_20260210T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 57143,
+      "start": "2026-02-10 08:00:00+00:00",
+      "end": "2026-02-10 21:00:00+00:00",
+      "symbols": [
+        "EWCZ"
+      ],
+      "record_count": 6250,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\FATBB_20260130T0800_20260130T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 343341,
+      "start": "2026-01-30 08:00:00+00:00",
+      "end": "2026-01-30 21:00:00+00:00",
+      "symbols": [
+        "FATBB"
+      ],
+      "record_count": 37552,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\FRGT_20260205T0800_20260205T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 7724,
+      "start": "2026-02-05 08:00:00+00:00",
+      "end": "2026-02-05 21:00:00+00:00",
+      "symbols": [
+        "FRGT"
+      ],
+      "record_count": 844,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\FRGT_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 96307,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "FRGT"
+      ],
+      "record_count": 10533,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\FSLY_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1272972,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "FSLY"
+      ],
+      "record_count": 139231,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\FUSE_20260203T0800_20260203T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 104251,
+      "start": "2026-02-03 08:00:00+00:00",
+      "end": "2026-02-03 21:00:00+00:00",
+      "symbols": [
+        "FUSE"
+      ],
+      "record_count": 11402,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\GCTS_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 273411,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "GCTS"
+      ],
+      "record_count": 29904,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\GDXD_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 21143,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "GDXD"
+      ],
+      "record_count": 2312,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\GITS_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 14860,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "GITS"
+      ],
+      "record_count": 1625,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\GMM_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 31946,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "GMM"
+      ],
+      "record_count": 3494,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\GRAB_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 216364,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "GRAB"
+      ],
+      "record_count": 23664,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\GXAI_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 15848,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "GXAI"
+      ],
+      "record_count": 1733,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\HIMZ_20260219T0800_20260219T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 37340,
+      "start": "2026-02-19 08:00:00+00:00",
+      "end": "2026-02-19 21:00:00+00:00",
+      "symbols": [
+        "HIMZ"
+      ],
+      "record_count": 4084,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\HUMA_20260210T0800_20260210T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 23470,
+      "start": "2026-02-10 08:00:00+00:00",
+      "end": "2026-02-10 21:00:00+00:00",
+      "symbols": [
+        "HUMA"
+      ],
+      "record_count": 2567,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\HURA_20260211T0800_20260211T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 59144,
+      "start": "2026-02-11 08:00:00+00:00",
+      "end": "2026-02-11 21:00:00+00:00",
+      "symbols": [
+        "HURA"
+      ],
+      "record_count": 6468,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\IBRX_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 98263,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "IBRX"
+      ],
+      "record_count": 10747,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\INMD_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 79082,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "INMD"
+      ],
+      "record_count": 8649,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\IONX_20260213T0800_20260213T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 58132,
+      "start": "2026-02-13 08:00:00+00:00",
+      "end": "2026-02-13 21:00:00+00:00",
+      "symbols": [
+        "IONX"
+      ],
+      "record_count": 6358,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\IRDM_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 252846,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "IRDM"
+      ],
+      "record_count": 27655,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\IRE_20260213T0800_20260213T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 60585,
+      "start": "2026-02-13 08:00:00+00:00",
+      "end": "2026-02-13 21:00:00+00:00",
+      "symbols": [
+        "IRE"
+      ],
+      "record_count": 6626,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\JBLU_20260203T0800_20260203T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 160059,
+      "start": "2026-02-03 08:00:00+00:00",
+      "end": "2026-02-03 21:00:00+00:00",
+      "symbols": [
+        "JBLU"
+      ],
+      "record_count": 17506,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\JDST_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 8805,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "JDST"
+      ],
+      "record_count": 963,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\JDZG_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 411619,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "JDZG"
+      ],
+      "record_count": 45020,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\JDZG_20260213T0800_20260213T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 506266,
+      "start": "2026-02-13 08:00:00+00:00",
+      "end": "2026-02-13 21:00:00+00:00",
+      "symbols": [
+        "JDZG"
+      ],
+      "record_count": 55372,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\JDZG_20260218T0800_20260218T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 253631,
+      "start": "2026-02-18 08:00:00+00:00",
+      "end": "2026-02-18 21:00:00+00:00",
+      "symbols": [
+        "JDZG"
+      ],
+      "record_count": 27740,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\KD_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 206984,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "KD"
+      ],
+      "record_count": 22638,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\KOS_20260220T0800_20260220T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 104078,
+      "start": "2026-02-20 08:00:00+00:00",
+      "end": "2026-02-20 21:00:00+00:00",
+      "symbols": [
+        "KOS"
+      ],
+      "record_count": 11383,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\LFS_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 409487,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "LFS"
+      ],
+      "record_count": 44787,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\LIMN_20260205T0800_20260205T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 288273,
+      "start": "2026-02-05 08:00:00+00:00",
+      "end": "2026-02-05 21:00:00+00:00",
+      "symbols": [
+        "LIMN"
+      ],
+      "record_count": 31529,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\LIMN_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 232795,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "LIMN"
+      ],
+      "record_count": 25461,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\LPTH_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 185101,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "LPTH"
+      ],
+      "record_count": 20245,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\LUNR_20260203T0800_20260203T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 260035,
+      "start": "2026-02-03 08:00:00+00:00",
+      "end": "2026-02-03 21:00:00+00:00",
+      "symbols": [
+        "LUNR"
+      ],
+      "record_count": 28441,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\LYFT_20260203T0800_20260203T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 261534,
+      "start": "2026-02-03 08:00:00+00:00",
+      "end": "2026-02-03 21:00:00+00:00",
+      "symbols": [
+        "LYFT"
+      ],
+      "record_count": 28605,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\LYFT_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 258517,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "LYFT"
+      ],
+      "record_count": 28275,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MAXN_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 43210,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "MAXN"
+      ],
+      "record_count": 4726,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MCW_20260218T0800_20260218T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 117445,
+      "start": "2026-02-18 08:00:00+00:00",
+      "end": "2026-02-18 21:00:00+00:00",
+      "symbols": [
+        "MCW"
+      ],
+      "record_count": 12845,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MLEC_20260213T0800_20260213T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1054430,
+      "start": "2026-02-13 08:00:00+00:00",
+      "end": "2026-02-13 21:00:00+00:00",
+      "symbols": [
+        "MLEC"
+      ],
+      "record_count": 115328,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MNDR_20260218T0800_20260218T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 56644,
+      "start": "2026-02-18 08:00:00+00:00",
+      "end": "2026-02-18 21:00:00+00:00",
+      "symbols": [
+        "MNDR"
+      ],
+      "record_count": 6195,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MNTS_20260209T0800_20260209T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 523396,
+      "start": "2026-02-09 08:00:00+00:00",
+      "end": "2026-02-09 21:00:00+00:00",
+      "symbols": [
+        "MNTS"
+      ],
+      "record_count": 57246,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MRNO_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 50933,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "MRNO"
+      ],
+      "record_count": 5570,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MRNO_20260203T0800_20260203T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 8654,
+      "start": "2026-02-03 08:00:00+00:00",
+      "end": "2026-02-03 21:00:00+00:00",
+      "symbols": [
+        "MRNO"
+      ],
+      "record_count": 946,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MRNO_20260205T0800_20260205T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 5472,
+      "start": "2026-02-05 08:00:00+00:00",
+      "end": "2026-02-05 21:00:00+00:00",
+      "symbols": [
+        "MRNO"
+      ],
+      "record_count": 598,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MSTU_20260209T0800_20260209T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 140292,
+      "start": "2026-02-09 08:00:00+00:00",
+      "end": "2026-02-09 21:00:00+00:00",
+      "symbols": [
+        "MSTU"
+      ],
+      "record_count": 15344,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MSTX_20260209T0800_20260209T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 92054,
+      "start": "2026-02-09 08:00:00+00:00",
+      "end": "2026-02-09 21:00:00+00:00",
+      "symbols": [
+        "MSTX"
+      ],
+      "record_count": 10068,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MSTX_20260214T0800_20260214T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 96,
+      "start": "2026-02-14 08:00:00+00:00",
+      "end": "2026-02-14 21:00:00+00:00",
+      "symbols": [
+        "MSTX"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MSTX_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 31434,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "MSTX"
+      ],
+      "record_count": 3438,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MSTZ_20260209T0800_20260209T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 421767,
+      "start": "2026-02-09 08:00:00+00:00",
+      "end": "2026-02-09 21:00:00+00:00",
+      "symbols": [
+        "MSTZ"
+      ],
+      "record_count": 46130,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\MSTZ_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 186753,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "MSTZ"
+      ],
+      "record_count": 20426,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NAMM_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 231897,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "NAMM"
+      ],
+      "record_count": 25363,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NAMM_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 113974,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "NAMM"
+      ],
+      "record_count": 12465,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NBIG_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 46764,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "NBIG"
+      ],
+      "record_count": 5114,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NCI_20260214T0800_20260214T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 95,
+      "start": "2026-02-14 08:00:00+00:00",
+      "end": "2026-02-14 21:00:00+00:00",
+      "symbols": [
+        "NCI"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NCI_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 35255,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "NCI"
+      ],
+      "record_count": 3856,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NVDA_20260209T1200_20260209T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 5441893,
+      "start": "2026-02-09 12:00:00+00:00",
+      "end": "2026-02-09 20:00:00+00:00",
+      "symbols": [
+        "NVDA"
+      ],
+      "record_count": 595207,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NVDA_20260210T1200_20260210T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 3149780,
+      "start": "2026-02-10 12:00:00+00:00",
+      "end": "2026-02-10 20:00:00+00:00",
+      "symbols": [
+        "NVDA"
+      ],
+      "record_count": 344507,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NVDA_20260211T1200_20260211T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 4374722,
+      "start": "2026-02-11 12:00:00+00:00",
+      "end": "2026-02-11 20:00:00+00:00",
+      "symbols": [
+        "NVDA"
+      ],
+      "record_count": 478485,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NVDA_20260212T1200_20260212T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 5142305,
+      "start": "2026-02-12 12:00:00+00:00",
+      "end": "2026-02-12 20:00:00+00:00",
+      "symbols": [
+        "NVDA"
+      ],
+      "record_count": 562439,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NVDA_20260213T1200_20260213T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 4870985,
+      "start": "2026-02-13 12:00:00+00:00",
+      "end": "2026-02-13 20:00:00+00:00",
+      "symbols": [
+        "NVDA"
+      ],
+      "record_count": 532763,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NVDA_20260216T1200_20260216T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 96,
+      "start": "2026-02-16 12:00:00+00:00",
+      "end": "2026-02-16 20:00:00+00:00",
+      "symbols": [
+        "NVDA"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NVDA_20260217T1200_20260217T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 4386763,
+      "start": "2026-02-17 12:00:00+00:00",
+      "end": "2026-02-17 20:00:00+00:00",
+      "symbols": [
+        "NVDA"
+      ],
+      "record_count": 479802,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NVDA_20260218T1200_20260218T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 3420092,
+      "start": "2026-02-18 12:00:00+00:00",
+      "end": "2026-02-18 20:00:00+00:00",
+      "symbols": [
+        "NVDA"
+      ],
+      "record_count": 374072,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NVDA_20260219T1200_20260219T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 2901319,
+      "start": "2026-02-19 12:00:00+00:00",
+      "end": "2026-02-19 20:00:00+00:00",
+      "symbols": [
+        "NVDA"
+      ],
+      "record_count": 317331,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\NVDA_20260220T1200_20260220T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 4663023,
+      "start": "2026-02-20 12:00:00+00:00",
+      "end": "2026-02-20 20:00:00+00:00",
+      "symbols": [
+        "NVDA"
+      ],
+      "record_count": 510018,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\OCG_20260130T0800_20260130T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 62320,
+      "start": "2026-01-30 08:00:00+00:00",
+      "end": "2026-01-30 21:00:00+00:00",
+      "symbols": [
+        "OCG"
+      ],
+      "record_count": 6816,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\OCG_20260131T0800_20260131T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 95,
+      "start": "2026-01-31 08:00:00+00:00",
+      "end": "2026-01-31 21:00:00+00:00",
+      "symbols": [
+        "OCG"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\OCG_20260201T0800_20260201T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 95,
+      "start": "2026-02-01 08:00:00+00:00",
+      "end": "2026-02-01 21:00:00+00:00",
+      "symbols": [
+        "OCG"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\OCG_20260211T0800_20260211T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 8065,
+      "start": "2026-02-11 08:00:00+00:00",
+      "end": "2026-02-11 21:00:00+00:00",
+      "symbols": [
+        "OCG"
+      ],
+      "record_count": 882,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ONCY_20260214T0800_20260214T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 96,
+      "start": "2026-02-14 08:00:00+00:00",
+      "end": "2026-02-14 21:00:00+00:00",
+      "symbols": [
+        "ONCY"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\OPEN_20260220T0800_20260220T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 468276,
+      "start": "2026-02-20 08:00:00+00:00",
+      "end": "2026-02-20 21:00:00+00:00",
+      "symbols": [
+        "OPEN"
+      ],
+      "record_count": 51217,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ORKT_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 16966,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "ORKT"
+      ],
+      "record_count": 1855,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ORKT_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 33236,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "ORKT"
+      ],
+      "record_count": 3635,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\PCLA_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 6249,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "PCLA"
+      ],
+      "record_count": 683,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\PHIO_20260211T0800_20260211T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 65839,
+      "start": "2026-02-11 08:00:00+00:00",
+      "end": "2026-02-11 21:00:00+00:00",
+      "symbols": [
+        "PHIO"
+      ],
+      "record_count": 7201,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\PHIO_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 24101,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "PHIO"
+      ],
+      "record_count": 2636,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\PINS_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 306750,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "PINS"
+      ],
+      "record_count": 33550,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\PLBY_20260209T0800_20260209T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 146885,
+      "start": "2026-02-09 08:00:00+00:00",
+      "end": "2026-02-09 21:00:00+00:00",
+      "symbols": [
+        "PLBY"
+      ],
+      "record_count": 16065,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\PLRZ_20260203T0800_20260203T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 6787,
+      "start": "2026-02-03 08:00:00+00:00",
+      "end": "2026-02-03 21:00:00+00:00",
+      "symbols": [
+        "PLRZ"
+      ],
+      "record_count": 742,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\PODC_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 20187,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "PODC"
+      ],
+      "record_count": 2207,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\PRFX_20260211T0800_20260211T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 241819,
+      "start": "2026-02-11 08:00:00+00:00",
+      "end": "2026-02-11 21:00:00+00:00",
+      "symbols": [
+        "PRFX"
+      ],
+      "record_count": 26448,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\PTRN_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 41711,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "PTRN"
+      ],
+      "record_count": 4562,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\QBTZ_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 71288,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "QBTZ"
+      ],
+      "record_count": 7797,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\QUBT_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 157302,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "QUBT"
+      ],
+      "record_count": 17204,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RDIB_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 82387,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "RDIB"
+      ],
+      "record_count": 9011,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RDW_20260203T0800_20260203T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 196048,
+      "start": "2026-02-03 08:00:00+00:00",
+      "end": "2026-02-03 21:00:00+00:00",
+      "symbols": [
+        "RDW"
+      ],
+      "record_count": 21442,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RDW_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 118136,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "RDW"
+      ],
+      "record_count": 12921,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RGTI_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 557005,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "RGTI"
+      ],
+      "record_count": 60922,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RIME_20260213T0800_20260213T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 696295,
+      "start": "2026-02-13 08:00:00+00:00",
+      "end": "2026-02-13 21:00:00+00:00",
+      "symbols": [
+        "RIME"
+      ],
+      "record_count": 76157,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RIOT_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 348790,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "RIOT"
+      ],
+      "record_count": 38148,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RITR_20260209T0800_20260209T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 206021,
+      "start": "2026-02-09 08:00:00+00:00",
+      "end": "2026-02-09 21:00:00+00:00",
+      "symbols": [
+        "RITR"
+      ],
+      "record_count": 22533,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RIVN_20260210T0800_20260210T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 340436,
+      "start": "2026-02-10 08:00:00+00:00",
+      "end": "2026-02-10 21:00:00+00:00",
+      "symbols": [
+        "RIVN"
+      ],
+      "record_count": 37235,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RIVN_20260213T0800_20260213T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1475465,
+      "start": "2026-02-13 08:00:00+00:00",
+      "end": "2026-02-13 21:00:00+00:00",
+      "symbols": [
+        "RIVN"
+      ],
+      "record_count": 161378,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RIVN_20260214T0800_20260214T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 96,
+      "start": "2026-02-14 08:00:00+00:00",
+      "end": "2026-02-14 21:00:00+00:00",
+      "symbols": [
+        "RIVN"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RKLZ_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 44739,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "RKLZ"
+      ],
+      "record_count": 4893,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RNAZ_20260205T0800_20260205T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 372617,
+      "start": "2026-02-05 08:00:00+00:00",
+      "end": "2026-02-05 21:00:00+00:00",
+      "symbols": [
+        "RNAZ"
+      ],
+      "record_count": 40754,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RPGL_20260130T0800_20260130T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 365726,
+      "start": "2026-01-30 08:00:00+00:00",
+      "end": "2026-01-30 21:00:00+00:00",
+      "symbols": [
+        "RPGL"
+      ],
+      "record_count": 40001,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\RXT_20260220T0800_20260220T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 360046,
+      "start": "2026-02-20 08:00:00+00:00",
+      "end": "2026-02-20 21:00:00+00:00",
+      "symbols": [
+        "RXT"
+      ],
+      "record_count": 39380,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\SEGG_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 30336,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "SEGG"
+      ],
+      "record_count": 3318,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\SER_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 794350,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "SER"
+      ],
+      "record_count": 86882,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\SHPH_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 4744,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "SHPH"
+      ],
+      "record_count": 518,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\SLGB_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 25912,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "SLGB"
+      ],
+      "record_count": 2834,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\SMCL_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 46716,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "SMCL"
+      ],
+      "record_count": 5109,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\SMU_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 32031,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "SMU"
+      ],
+      "record_count": 3503,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\SMX_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 997427,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "SMX"
+      ],
+      "record_count": 109093,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\SMX_20260209T0800_20260209T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 199882,
+      "start": "2026-02-09 08:00:00+00:00",
+      "end": "2026-02-09 21:00:00+00:00",
+      "symbols": [
+        "SMX"
+      ],
+      "record_count": 21862,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\SOLT_20260212T0800_20260212T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 24019,
+      "start": "2026-02-12 08:00:00+00:00",
+      "end": "2026-02-12 21:00:00+00:00",
+      "symbols": [
+        "SOLT"
+      ],
+      "record_count": 2627,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\SOLT_20260213T0800_20260213T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 24378,
+      "start": "2026-02-13 08:00:00+00:00",
+      "end": "2026-02-13 21:00:00+00:00",
+      "symbols": [
+        "SOLT"
+      ],
+      "record_count": 2666,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\SOLT_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 27317,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "SOLT"
+      ],
+      "record_count": 2987,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\SPOG_20260210T0800_20260210T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 13966,
+      "start": "2026-02-10 08:00:00+00:00",
+      "end": "2026-02-10 21:00:00+00:00",
+      "symbols": [
+        "SPOG"
+      ],
+      "record_count": 1527,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\SPWH_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 6764,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "SPWH"
+      ],
+      "record_count": 739,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\STIM_20260211T0800_20260211T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 159462,
+      "start": "2026-02-11 08:00:00+00:00",
+      "end": "2026-02-11 21:00:00+00:00",
+      "symbols": [
+        "STIM"
+      ],
+      "record_count": 17441,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\TRX_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 262491,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "TRX"
+      ],
+      "record_count": 28709,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\TSLA_20260209T1200_20260209T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 2331407,
+      "start": "2026-02-09 12:00:00+00:00",
+      "end": "2026-02-09 20:00:00+00:00",
+      "symbols": [
+        "TSLA"
+      ],
+      "record_count": 254997,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\TSLA_20260210T1200_20260210T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 2388781,
+      "start": "2026-02-10 12:00:00+00:00",
+      "end": "2026-02-10 20:00:00+00:00",
+      "symbols": [
+        "TSLA"
+      ],
+      "record_count": 261272,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\TSLA_20260211T1200_20260211T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 2806796,
+      "start": "2026-02-11 12:00:00+00:00",
+      "end": "2026-02-11 20:00:00+00:00",
+      "symbols": [
+        "TSLA"
+      ],
+      "record_count": 306993,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\TSLA_20260212T1200_20260212T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 3084287,
+      "start": "2026-02-12 12:00:00+00:00",
+      "end": "2026-02-12 20:00:00+00:00",
+      "symbols": [
+        "TSLA"
+      ],
+      "record_count": 337343,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\TSLA_20260213T1200_20260213T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 2148611,
+      "start": "2026-02-13 12:00:00+00:00",
+      "end": "2026-02-13 20:00:00+00:00",
+      "symbols": [
+        "TSLA"
+      ],
+      "record_count": 235004,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\TSLA_20260216T1200_20260216T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 96,
+      "start": "2026-02-16 12:00:00+00:00",
+      "end": "2026-02-16 20:00:00+00:00",
+      "symbols": [
+        "TSLA"
+      ],
+      "record_count": 10,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\TSLA_20260217T1200_20260217T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 2789538,
+      "start": "2026-02-17 12:00:00+00:00",
+      "end": "2026-02-17 20:00:00+00:00",
+      "symbols": [
+        "TSLA"
+      ],
+      "record_count": 305105,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\TSLA_20260218T1200_20260218T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1880776,
+      "start": "2026-02-18 12:00:00+00:00",
+      "end": "2026-02-18 20:00:00+00:00",
+      "symbols": [
+        "TSLA"
+      ],
+      "record_count": 205709,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\TSLA_20260219T1200_20260219T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 1912378,
+      "start": "2026-02-19 12:00:00+00:00",
+      "end": "2026-02-19 20:00:00+00:00",
+      "symbols": [
+        "TSLA"
+      ],
+      "record_count": 209166,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\TSLA_20260220T1200_20260220T2000.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 2558266,
+      "start": "2026-02-20 12:00:00+00:00",
+      "end": "2026-02-20 20:00:00+00:00",
+      "symbols": [
+        "TSLA"
+      ],
+      "record_count": 279810,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\UGRO_20260218T0800_20260218T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 27345,
+      "start": "2026-02-18 08:00:00+00:00",
+      "end": "2026-02-18 21:00:00+00:00",
+      "symbols": [
+        "UGRO"
+      ],
+      "record_count": 2990,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\UOKA_20260209T0800_20260209T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 878126,
+      "start": "2026-02-09 08:00:00+00:00",
+      "end": "2026-02-09 21:00:00+00:00",
+      "symbols": [
+        "UOKA"
+      ],
+      "record_count": 96045,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\USAS_20260210T0800_20260210T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 103922,
+      "start": "2026-02-10 08:00:00+00:00",
+      "end": "2026-02-10 21:00:00+00:00",
+      "symbols": [
+        "USAS"
+      ],
+      "record_count": 11366,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\VHUB_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 266209,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "VHUB"
+      ],
+      "record_count": 29116,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\VHUB_20260217T0800_20260217T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 99260,
+      "start": "2026-02-17 08:00:00+00:00",
+      "end": "2026-02-17 21:00:00+00:00",
+      "symbols": [
+        "VHUB"
+      ],
+      "record_count": 10856,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\VIVS_20260130T0800_20260130T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 663963,
+      "start": "2026-01-30 08:00:00+00:00",
+      "end": "2026-01-30 21:00:00+00:00",
+      "symbols": [
+        "VIVS"
+      ],
+      "record_count": 72620,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\VNET_20260218T0800_20260218T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 189663,
+      "start": "2026-02-18 08:00:00+00:00",
+      "end": "2026-02-18 21:00:00+00:00",
+      "symbols": [
+        "VNET"
+      ],
+      "record_count": 20744,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\WATT_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 23047,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "WATT"
+      ],
+      "record_count": 2520,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\WBUY_20260218T0800_20260218T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 55667,
+      "start": "2026-02-18 08:00:00+00:00",
+      "end": "2026-02-18 21:00:00+00:00",
+      "symbols": [
+        "WBUY"
+      ],
+      "record_count": 6088,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\WHLR_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 271831,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "WHLR"
+      ],
+      "record_count": 29731,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\WHLRP_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 67960,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "WHLRP"
+      ],
+      "record_count": 7433,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\XHLD_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 293943,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "XHLD"
+      ],
+      "record_count": 32150,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\XHLD_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 13598,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "XHLD"
+      ],
+      "record_count": 1487,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\XPON_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 71411,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "XPON"
+      ],
+      "record_count": 7810,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\XRPT_20260209T0800_20260209T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 25358,
+      "start": "2026-02-09 08:00:00+00:00",
+      "end": "2026-02-09 21:00:00+00:00",
+      "symbols": [
+        "XRPT"
+      ],
+      "record_count": 2773,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\XXRP_20260209T0800_20260209T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 20499,
+      "start": "2026-02-09 08:00:00+00:00",
+      "end": "2026-02-09 21:00:00+00:00",
+      "symbols": [
+        "XXRP"
+      ],
+      "record_count": 2242,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ZSL_20260202T0800_20260202T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 166212,
+      "start": "2026-02-02 08:00:00+00:00",
+      "end": "2026-02-02 21:00:00+00:00",
+      "symbols": [
+        "ZSL"
+      ],
+      "record_count": 18179,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ZSL_20260206T0800_20260206T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 34576,
+      "start": "2026-02-06 08:00:00+00:00",
+      "end": "2026-02-06 21:00:00+00:00",
+      "symbols": [
+        "ZSL"
+      ],
+      "record_count": 3781,
+      "ts_resolution": "nanosecond"
+    },
+    {
+      "path": "Z:\\AI_BOT_DATA\\databento_cache\\XNAS.ITCH\\trades\\ZSTK_20260129T0800_20260129T2100.dbn.zst",
+      "dataset": "XNAS.ITCH",
+      "schema": "trades",
+      "size_bytes": 63366,
+      "start": "2026-01-29 08:00:00+00:00",
+      "end": "2026-01-29 21:00:00+00:00",
+      "symbols": [
+        "ZSTK"
+      ],
+      "record_count": 6930,
+      "ts_resolution": "nanosecond"
+    }
+  ],
+  "recommended_mode": "trades",
+  "recommendation_reason": "'trades' is available (238 files). This is the highest-priority schema for backtesting."
+}
