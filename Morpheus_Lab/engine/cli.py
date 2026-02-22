@@ -4,10 +4,10 @@ Morpheus Lab — CLI Interface
 Command-line entrypoints for the full research pipeline.
 
 Usage:
-    python -m Morpheus_Lab.cli inspect-databento --cache <path> [--deep]
-    python -m Morpheus_Lab.cli backtest --cache <path> --mode auto|bars_1s|trades
-                                        --symbols-file <file> --start <date> --end <date>
-    python -m Morpheus_Lab.cli load      <hypothesis.yaml>
+    python -m engine.cli inspect-databento --cache <path> [--deep]
+    python -m engine.cli benchmark-replay --cache <path> --symbols CISS,BOXL --start 2026-02-05 --end 2026-02-05
+    python -m engine.cli backtest --cache <path> --mode auto|bars_1s|trades
+    python -m engine.cli load      <hypothesis.yaml>
     python -m Morpheus_Lab.cli run       <hypothesis.yaml>
     python -m Morpheus_Lab.cli score     <hypothesis_id>
     python -m Morpheus_Lab.cli promote   <hypothesis_id>
@@ -41,6 +41,90 @@ def cmd_inspect_databento(args: argparse.Namespace) -> None:
     )
     print_inspection_report(profile)
     print(f"  Report saved: {report_path}")
+
+
+def cmd_benchmark_replay(args: argparse.Namespace) -> None:
+    """Benchmark the trade-level replay engine."""
+    import os
+    import tracemalloc
+
+    from core.dbn_loader import DatabentoTradeLoader
+    from core.market_replay import MarketReplayEngine
+
+    # Parse symbols
+    symbols = None
+    if args.symbols:
+        symbols = [s.strip().upper() for s in args.symbols.split(",")]
+    elif args.symbols_file:
+        sf = Path(args.symbols_file)
+        if not sf.exists():
+            print(f"Error: symbols file not found: {args.symbols_file}")
+            sys.exit(1)
+        with open(sf) as f:
+            symbols = [line.strip().upper() for line in f if line.strip() and not line.startswith("#")]
+
+    # Initialize loader
+    print(f"\n{'='*64}")
+    print(f"  MORPHEUS LAB — REPLAY BENCHMARK")
+    print(f"{'='*64}")
+    print(f"  Cache:    {args.cache}")
+
+    loader = DatabentoTradeLoader(args.cache)
+
+    if not symbols:
+        symbols = loader.symbols
+        print(f"  Symbols:  ALL ({len(symbols)} available)")
+    else:
+        print(f"  Symbols:  {', '.join(symbols)}")
+
+    print(f"  Start:    {args.start or 'all'}")
+    print(f"  End:      {args.end or 'all'}")
+    single_mode = len(symbols) == 1
+    print(f"  Mode:     {'single-symbol fast' if single_mode else 'multi-symbol heap merge'}")
+    print(f"{'='*64}")
+    print()
+
+    # Track memory
+    tracemalloc.start()
+
+    engine = MarketReplayEngine(loader)
+    stats = engine.benchmark(
+        symbols=symbols,
+        start_date=args.start,
+        end_date=args.end,
+        single_mode=single_mode,
+    )
+
+    # Memory snapshot
+    current_mem, peak_mem = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+
+    # Results
+    print(f"  {'─'*58}")
+    print(f"  Total events:     {stats.total_events:>14,}")
+    print(f"  Symbols (data):   {stats.symbols_with_data:>14} / {stats.symbols_requested}")
+    print(f"  Elapsed:          {stats.elapsed_seconds:>14.3f} s")
+    print(f"  Throughput:       {stats.events_per_second:>14,.0f} evt/s")
+    print(f"  Memory current:   {current_mem / 1024 / 1024:>14.1f} MB")
+    print(f"  Memory peak:      {peak_mem / 1024 / 1024:>14.1f} MB")
+    print(f"  {'─'*58}")
+
+    # Performance assessment
+    if stats.total_events > 0:
+        if stats.events_per_second >= 1_000_000:
+            grade = "EXCELLENT"
+        elif stats.events_per_second >= 500_000:
+            grade = "GOOD"
+        elif stats.events_per_second >= 100_000:
+            grade = "ACCEPTABLE"
+        else:
+            grade = "NEEDS OPTIMIZATION"
+        print(f"  Performance:      {grade}")
+
+    if peak_mem / 1024 / 1024 > 500:
+        print(f"  WARNING: Peak memory exceeded 500 MB — investigate streaming")
+
+    print(f"{'='*64}\n")
 
 
 def cmd_backtest(args: argparse.Namespace) -> None:
@@ -334,6 +418,17 @@ def main():
     p_inspect.add_argument("--deep", action="store_true", help="Deep scan (reads all records, slow)")
     p_inspect.add_argument("--report", default=None, help="Output report path")
 
+    # -- benchmark-replay --
+    p_bench = subparsers.add_parser(
+        "benchmark-replay",
+        help="Benchmark trade-level replay engine throughput",
+    )
+    p_bench.add_argument("--cache", required=True, help="Path to Databento cache root")
+    p_bench.add_argument("--symbols", default=None, help="Comma-separated symbol list (e.g. CISS,BOXL)")
+    p_bench.add_argument("--symbols-file", default=None, help="File with one symbol per line")
+    p_bench.add_argument("--start", default=None, help="Start date YYYY-MM-DD")
+    p_bench.add_argument("--end", default=None, help="End date YYYY-MM-DD")
+
     # -- backtest --
     p_bt = subparsers.add_parser("backtest", help="Run backtest over Databento data")
     p_bt.add_argument("--cache", required=True, help="Path to Databento cache root")
@@ -386,6 +481,7 @@ def main():
 
     commands = {
         "inspect-databento": cmd_inspect_databento,
+        "benchmark-replay": cmd_benchmark_replay,
         "backtest": cmd_backtest,
         "load": cmd_load,
         "run": cmd_run,
