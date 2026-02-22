@@ -72,5 +72,27 @@ C:\AI_Bot_Research\
 3. **Capital preservation first** — failures exit immediately
 4. **Research is read-only** — never writes to trading infrastructure
 
+## Morpheus Trading Profile
+- **Style:** Warrior Trading methodology, 5 pillars of stock selection
+- **Price range:** $1-$20 stocks (low-float, low-price momentum)
+- **Trade data:** 1,914 trades across 132 unique symbols, 17 trading days
+- **Top symbols:** CISS (411), ANL (81), OCG (79), ALXO (68), SMCL (68), PLRZ (67)
+- **Entry signal:** `momentum_spike` via ignition funnel pipeline
+- **Reports location:** `reports/{date}/trade_ledger.jsonl` (IBKR_Algo_BOT_V2)
+- **Trade ledger fields:** entry_time, entry_price, entry_signal, pnl, max_gain_percent, max_drawdown_percent, entry_momentum_score, entry_momentum_state, volatility_regime, secondary_triggers (spread, rvol, change%, float, volume)
+
+## Related Repository
+- **ai_project_hub:** https://github.com/bgmaynard/ai_project_hub
+- Contains full IBKR_Algo_BOT_V2 codebase (Morpheus)
+- Key files: `morpheus_trading_api.py`, `ai/ignition_funnel.py`, `ai/momentum_scorer.py`
+- Reports: `store/code/IBKR_Algo_BOT_V2/reports/`
+
+## Current Research Status
+- **Phase 8:** COMPLETE — inventory fade validated (HYP-003: 56.1%, 2.22 R:R, n=435)
+- **Next gate:** V2.5 — Prove pressure precedes Morpheus ignition (HYP-013)
+- **Blocker resolved:** Databento data needs to match Morpheus-traded symbols (not AAPL/TSLA)
+- **Data gap:** Need to download Databento XNAS.ITCH trades for 132 momentum symbols across 174 symbol-date pairs
+
 ## Setup History
 - **2025-02-21:** GitHub repo `AI_Bot_Research` created, Git installed on research server, initial commit with 14 files (mrl package), pushed to main branch successfully.
+- **2025-02-21:** Built replay_engine.py for HYP-013 (pressure precedes ignition?). Rebuilt download_data.py as smart downloader that reads trade_ledger.jsonl to download only Morpheus-traded symbols from Databento. Discovered data mismatch: Morpheus trades $1-$20 momentum stocks, original Databento download had AAPL/TSLA/NVDA.
