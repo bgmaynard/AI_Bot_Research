@@ -1,0 +1,22 @@
+{
+    "_meta": {
+        "version": "runtime_config_v10",
+        "description": "Morpheus baseline runtime config — DO NOT EDIT MANUALLY",
+        "last_validated": "2026-02-20"
+    },
+    "signal_confirm_hold_seconds": 1.75,
+    "spread_stability_ratio": 1.35,
+    "exit_model": "fixed_R",
+    "entry_gate_enabled": true,
+    "min_relative_volume": 2.0,
+    "min_price": 5.0,
+    "max_price": 20.0,
+    "max_spread_pct": 0.02,
+    "risk_per_trade_dollars": 50.0,
+    "max_daily_trades": 10,
+    "hard_stop_pct": 0.05,
+    "timeout_minutes": 15,
+    "trailing_stop_enabled": true,
+    "trailing_stop_activation_R": 1.5,
+    "trailing_stop_distance_pct": 0.02
+}

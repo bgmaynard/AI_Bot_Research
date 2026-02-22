@@ -1,0 +1,40 @@
+# ============================================================
+# MORPHEUS LAB — SAMPLE HYPOTHESIS
+# ============================================================
+# Copy this file and modify for each new research hypothesis.
+# All fields are required unless marked (optional).
+# ============================================================
+
+hypothesis_id: H-2026-02-22-A
+description: >
+  Increase signal_confirm_hold_seconds from 1.75 to 2.25
+  to reduce false breakouts on dead tape regimes.
+author: Bob Maynard
+created: 2026-02-22
+
+# Baseline config to compare against
+baseline_config: strategies/runtime_config_baseline.json
+
+# Parameter grid — all combinations will be tested
+parameter_grid:
+  signal_confirm_hold_seconds: [1.75, 2.0, 2.25, 2.5]
+  spread_stability_ratio: [1.35, 1.45]
+  exit_model: ["fixed_R", "EMA9", "VWAP_loss"]
+
+# Date range for backtesting
+evaluation_window:
+  start: "2026-01-01"
+  end: "2026-02-20"
+
+# Execution sensitivity modeling
+execution_models:
+  slippage: [0.01, 0.03, 0.05]
+  latency_ms: [0, 150, 300]
+
+# Target bot (morpheus_ai | ibkr_morpheus | max_ai)
+target_system: morpheus_ai
+
+# (optional) Notes
+notes: >
+  Testing whether longer confirmation windows filter out
+  dead tape false signals without degrading momentum entries.
