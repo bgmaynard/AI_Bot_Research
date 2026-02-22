@@ -2,7 +2,7 @@
 # Microstructure Pressure & Arbitrage Index (MPAI)
 ## Brainstorming & Research Whitepaper
 
-Version: 3.0
+Version: 3.1
 Last Updated: 2026-02-21
 Type: Living Brainstorm Document
 
@@ -403,39 +403,42 @@ Beyond the MPAI components above, these are additional directions worth explorin
 | HYP-010 | MPAI + Morpheus correlation = better entries | UNTESTED | Core validation |
 | HYP-011 | Pressure invalidation = momentum quality signal | UNTESTED | PIM concept |
 | HYP-012 | Regime-adaptive weights improve detection | UNTESTED | Multi-component |
-| HYP-013 | Pressure buildup precedes Morpheus ignition | **UNTESTED — TOP PRIORITY** | The key question |
+| HYP-013 | Pressure buildup precedes Morpheus ignition | **FALSIFIED** | Phase 9. n=420 real vs 912 control. peak_pz p=0.229, buildup p=0.689. Not significant. |
 | HYP-014 | Volume-at-price clustering creates gravity zones | UNTESTED | Ghost prints concept |
 | HYP-015 | VPIN distinguishes informed vs uninformed pressure | UNTESTED | Follow vs fade |
 | HYP-016 | Volume-clock bars produce cleaner signals | UNTESTED | Easy to test |
 | HYP-017 | RSI + pressure agreement improves entry timing | UNTESTED | Correlation study |
-| HYP-018 | Trades with pressure precursor have better MFE/MAE | **UNTESTED — CORE VALIDATION** | Proves/disproves entire concept |
+| HYP-018 | Trades with pressure precursor have better MFE/MAE | **PARTIALLY SUPPORTED** | Winners had precursors 65.8% vs losers 60.2%. Modest edge. |
 | HYP-019 | Cross-ticker pressure predicts sympathy moves | UNTESTED | Multi-symbol |
 | HYP-020 | Trade arrival acceleration predicts vol expansion | UNTESTED | Hawkes process |
 | HYP-021 | Delta-hedge flow creates detectable signatures | UNTESTED | Options origin |
 | HYP-022 | Multi-timeframe pressure agreement = stronger signal | UNTESTED | Easy to test |
+| HYP-023 | Pressure slope ≥ 0 filter improves trade quality | **UNTESTED — PRIORITY** | Winners: 0.000, Losers: -0.003 divergence found in HYP-013 data |
+| HYP-024 | Volume acceleration threshold improves ignition readiness | **SUPPORTED p=0.038** | Statistically significant vs controls. Need threshold optimization. |
+| HYP-025 | Combined gate: (vol_accel > X) AND (slope ≥ 0) | **UNTESTED — PRIORITY** | Intersection of HYP-023 + HYP-024 |
 
 ---
 
 ## 11. Priority Research Path
 
-### IMMEDIATE — Use What We Have
-1. **HYP-013:** Replay Databento data around known Morpheus ignition events. Does pressure build beforehand? This is the single most important test.
-2. **HYP-018:** Compare MFE/MAE on Morpheus trades that had pressure precursors vs those that didn't. This proves or kills the concept.
-3. **HYP-008/017:** Merge Morpheus enriched data (spread_dynamics, absorption, RSI) into research engine. All data already exists.
+### IMMEDIATE — Phase 9 (Current)
+1. **HYP-023:** Grid sweep pressure_slope thresholds on existing 18-day/1,944-trade dataset. Does slope ≥ 0 filter improve win rate, PnL, MFE/MAE?
+2. **HYP-024:** Grid sweep volume_acceleration quantile thresholds (60/70/80/90th pct). Find optimal threshold.
+3. **HYP-025:** Test combined gate (vol_accel > X AND slope ≥ 0). Measure interaction effect.
+4. **Stability checks:** Confirm findings hold per-ticker and across time-of-day buckets (open/mid/close).
 
-### SHORT TERM — Low Effort, High Value
-4. **HYP-016:** Test volume-clock bars vs time bars. Same data, different aggregation.
-5. **HYP-015:** Compute VPIN. Uses existing buy/sell classification. Strong academic backing.
-6. **Statistical rigor:** Bootstrap + permutation on all Phase 8 findings.
+### SHORT TERM — Validate and Harden
+5. **Per-symbol breakdown:** Ensure winner/loser divergence isn't driven by 1-2 dominant tickers (CISS = 413 trades).
+6. **HYP-016:** Test volume-clock bars vs time bars. Same data, different aggregation.
+7. **HYP-015:** Compute VPIN. Uses existing buy/sell classification. Strong academic backing.
+8. **Coverage improvement:** Investigate why only 420/1944 events (21.6%) computed valid profiles. Sparse tick data? Time alignment?
 
-### MEDIUM TERM — New Capabilities
-7. **HYP-003 expansion:** Get n > 1000 for the fade finding. More tickers, more days.
-8. **HYP-019:** Build cross-ticker correlation engine. Requires multi-symbol in-memory.
-9. **HYP-009:** Add futures data if Databento subscription allows.
+### MEDIUM TERM — If Phase 9 Confirms
+9. **Prototype Morpheus filter gate:** If HYP-023/024/025 confirm, build a filter that rejects entries with fading pressure + low volume acceleration.
+10. **Paper execution simulation:** Run filter retroactively on all 1,944 trades, compute hypothetical PnL improvement.
+11. **HYP-003 expansion:** Get n > 1000 for the fade finding. More tickers, more days.
 
-### LONGER TERM — Full MPAI
-10. Combine validated components into composite score
-11. Paper execution with Morpheus correlation
+### LONGER TERM — Production Path
 12. Shadow validation against live trades
 13. Production integration ONLY after all gates passed
 
@@ -449,10 +452,13 @@ Each stage requires passing a gate before moving forward.
 - **V1.5** — Raw pressure falsified, conditioning discovered (COMPLETE)
 - **V2.0** — Inventory fade validated as first detectable signal (COMPLETE)
   - **GATE:** Expand to n > 1000, confirm per-ticker stability
-- **V2.5** — Prove pressure precedes Morpheus ignition (NEXT)
-  - **GATE:** Measurable lead time with statistical significance
-- **V3.0** — Prove pressure improves entry quality (MFE/MAE)
-  - **GATE:** Entries with pressure confirmation must beat entries without
+- **V2.5** — Prove pressure precedes Morpheus ignition (**FALSIFIED**)
+  - **GATE:** Measurable lead time with statistical significance → **FAILED p=0.229**
+  - **Pivot:** Pressure doesn't predict ignition timing, but volume acceleration does (p=0.038)
+- **V2.5R** — Phase 9: Prove volume acceleration + pressure slope improve entry QUALITY (CURRENT)
+  - **GATE:** Combined filter must improve win rate or reward:risk with p < 0.05 and n ≥ 50 per bucket
+- **V3.0** — Prove pressure-based filter improves Morpheus PnL
+  - **GATE:** Filtered entries must beat unfiltered entries in MFE/MAE and net PnL
 - **V4.0** — Add spread/absorption/RSI correlation
   - **GATE:** Multi-indicator combination must outperform single pressure signal
 - **V5.0** — Composite MPAI score with validated components
@@ -467,7 +473,60 @@ Each stage requires passing a gate before moving forward.
 
 ---
 
-## 13. Open Questions
+## 13. Phase 9 — Pivot: From Pressure Timing to Ignition Precursors + Quality Filters
+
+### Background: What HYP-013 Proved and Disproved
+
+HYP-013 asked: *Does pressure_z build before Morpheus fires an entry signal?* The full test (420 real ignition events vs 912 random control windows, 142 symbols, 18 trading days) showed:
+
+- **Pressure_z does NOT predict ignition timing.** Peak pressure before real ignitions (mean 2.080) was not statistically different from random windows (mean 1.984), p=0.229. Pressure buildup rate was also not significant, p=0.689. These $1-$20 momentum stocks live in a permanently high-pressure environment — pressure is the norm, not a predictive signal.
+
+- **Volume acceleration IS a real precursor.** Volume ramps up significantly more before real ignitions than at random times, p=0.038. Bootstrap 95% CI [3.25, 85.57] excludes zero. The market gets measurably "louder" before Morpheus fires.
+
+- **Pressure slope separates winners from losers.** Winning trades had stable/flat pressure buildup (rate = 0.000) going into entry. Losing trades had fading pressure (rate = -0.003). Winners also had pressure precursors more often (65.8% vs 60.2%) and higher peak pressure (2.165 vs 2.014).
+
+### Why This Is Still Millisecond-Relevant
+
+The MPAI objective was never to predict price direction from raw pressure — Phase 1-7 already killed that idea. The millisecond value proposition is now sharper and more defensible:
+
+1. **Earlier readiness, not earlier entry.** Volume acceleration tells us the environment is priming for a move. We don't try to front-run Morpheus — we use the precursor to pre-allocate attention, pre-check risk limits, and reduce execution latency when the signal fires.
+
+2. **Better selection, not more signals.** Pressure slope as a quality filter means we can reject Morpheus entries that are firing into fading microstructure. This doesn't change timing — it changes whether we participate at all. Every rejected bad trade is a loss avoided.
+
+3. **The filter is computationally trivial.** A rolling slope over 5-second pressure bars requires ~100 multiplications. This runs in microseconds, not milliseconds. It can sit inside the Morpheus ignition funnel as a gate with zero latency cost.
+
+### Phase 9 Experiment Design
+
+**Dataset:** Same 18-day / 1,944-trade / 420-profile dataset from HYP-013. No new data collection needed.
+
+**Experiment 1 — HYP-023: Pressure Slope Filter**
+- Split trades by pressure_buildup_rate: ≥ 0 vs < 0, and ≥ small positive thresholds
+- Measure: win rate, mean PnL, median MFE, median MAE, reward:risk (MFE/MAE)
+
+**Experiment 2 — HYP-024: Volume Acceleration Threshold**
+- Sweep volume_acceleration at quantile thresholds: 50th, 60th, 70th, 80th, 90th percentile
+- Measure: same metrics. Find the threshold that maximizes reward:risk.
+
+**Experiment 3 — HYP-025: Combined Gate**
+- Test intersection: (volume_accel > optimal threshold) AND (pressure_slope ≥ 0)
+- Measure: same metrics. Look for interaction effect beyond additive.
+
+**Stability Checks (all experiments):**
+- Per-ticker breakdown (remove CISS dominance, check n ≥ 10 per bucket)
+- Time-of-day buckets: pre-market (< 09:30 ET), open (09:30-10:30), mid (10:30-14:00), close (14:00-16:00), after-hours (> 16:00)
+- Bootstrap 95% CIs on all key metrics
+
+**Pass/Fail Criteria:**
+- At least one filter must improve win rate OR reward:risk with p < 0.05
+- Effect must hold in at least 3 of 5 time-of-day buckets
+- Effect must not be driven by a single ticker
+- Minimum n ≥ 50 in the filtered group
+
+**Deliverable:** `docs/Research/PHASE9_IgnitionPrecursors_Results.md`
+
+---
+
+## 14. Open Questions
 
 ### About Pressure Detection
 1. Is pressure predictive or reactive? (Are we detecting the cause or the effect?)
@@ -494,7 +553,7 @@ Each stage requires passing a gate before moving forward.
 
 ---
 
-## 14. Brainstorm & Observation Log
+## 15. Brainstorm & Observation Log
 
 ### How to Use This Section
 When you notice something — a pattern during live trading, an anomaly in the data, a "what if" thought — drop it here. Don't polish it. Just capture the thought. We'll formalize and test later.
@@ -515,7 +574,7 @@ Priority:
 
 ---
 
-## 15. The Bottom Line
+## 16. The Bottom Line
 
 We trade momentum. Morpheus is good at detecting when momentum ignites. But by that point, some of the move is gone.
 
