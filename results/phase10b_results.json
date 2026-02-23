@@ -1,0 +1,26 @@
+{
+  "n_total": 1944,
+  "n_active": 1148,
+  "n_ohlc_bars": 222,
+  "zone_distribution": {
+    "0.1": {
+      "TOP_ZONE": 1,
+      "BOTTOM_ZONE": 1,
+      "MID": 214,
+      "NO_DATA": 932
+    },
+    "0.25": {
+      "TOP_ZONE": 3,
+      "BOTTOM_ZONE": 1,
+      "MID": 212,
+      "NO_DATA": 932
+    },
+    "0.5": {
+      "TOP_ZONE": 5,
+      "BOTTOM_ZONE": 4,
+      "MID": 207,
+      "NO_DATA": 932
+    }
+  },
+  "pressure_profiled": 73
+}

@@ -1,98 +1,219 @@
-# CLAUDE.md — AI_Bot_Research Project Context
+# CLAUDE.md -- Morpheus Lab Project Context
+# Last Updated: 2026-02-23 (Session: Phase 8 + Strategy Price Matrix)
+# Location: C:\AI_Bot_Research\Morpheus_Lab\CLAUDE.md
 
-## Project Owner
-- **GitHub:** bgmaynard
-- **Email:** bgmaynard@hotmail.com
-- **Repo:** https://github.com/bgmaynard/AI_Bot_Research
+## PROJECT OVERVIEW
 
-## Infrastructure
+Morpheus_Lab is a research-grade backtesting and strategy validation laboratory
+for the Morpheus Trading Platform ecosystem. It operates as a separate layer
+from production bots, enforcing hypothesis-driven validation before any
+configuration change enters live trading.
 
-### Research Server (this machine)
-- **Purpose:** Standalone research & development — completely isolated from live trading
-- **Repo Path:** `C:\AI_Bot_Research`
-- **Access:** Read-only access to trading data via network mount
-- **Git:** v2.53.0 installed, authenticated via browser OAuth
-- **Branch:** `main`
+**Governing Doctrine**: No config change enters live trading unless statistically
+validated, regime segmented, execution stress tested, and friction survivable.
 
-### Trading PC (separate machine)
-- **Purpose:** Live trading only — NO research activity touches this
-- **Platform:** IBKR (Interactive Brokers)
-- **Software:** Morpheus Trading Platform (localhost:9100)
-- **Project Path:** `C:\ai_project_hub\store\code\IBKR_Algo_BOT_V2`
-- **Rule:** Research server NEVER writes to or modifies anything on the trading PC
+## ARCHITECTURE
 
-## Project: Morpheus AI Trading Platform
-- Algorithmic momentum stock trading system running on IBKR
-- Uses RSI, MFE/MAE profiles, momentum_score, and ignition gates
-
-## Project: MPAI (Microstructure Pressure & Arbitrage Index)
-- **Purpose:** Early warning pressure detection layer that sits UNDERNEATH Morpheus
-- **Problem it solves:** By the time Morpheus detects momentum ignition and fires an entry signal, some of the profitable move has already occurred
-- **Goal:** Detect building pressure in market microstructure data BEFORE price moves become visible — millisecond-level edge for earlier entries
-- **Inspiration:** Don Kaufman's TheoTrade "Ghost Prints" methodology (institutional pressure detection between brokers and market makers), adapted for equity momentum trading
-- **Components under investigation:** 18 pressure detection components including aggressor flow analysis, dark pool divergence detection, and others
-- **Validation approach:** Correlate with existing Morpheus indicators, strict hypothesis testing protocols
-
-## Project: HRDC (Halt Resumption Directional Confirmation)
-- **Purpose:** Halt resumption trading strategy within Morpheus
-- **Framework:** Regime-based — Early Morning Momentum, Post-Open Transition, Midday, Power Hour
-- **Key Parameters:**
-  - 3-second evaluation window for gap-up scenarios
-  - 0-second (immediate) exit for any resume below halt price
-  - Philosophy: "Failures get 0 seconds, winners get 3 seconds to prove themselves"
-- **Decision States:** EXIT_IMMEDIATELY | MOMENTUM_ALLOWED | FLAT_ONLY
-
-## Repo Structure (as of initial commit)
 ```
-C:\AI_Bot_Research\
-├── .gitignore
-├── README.md
-├── setup.ps1
-├── tickers.txt
-└── mrl/
-    ├── __init__.py
-    ├── config.py
-    ├── download_data.py
-    ├── main.py
-    ├── events/
-    │   └── mfe_mae.py
-    ├── features/
-    │   ├── doi_ttl.py
-    │   ├── pressure.py
-    │   └── vdi.py
-    ├── replay/
-    │   └── replay_engine.py
-    └── store/
-        └── writer.py
+C:\AI_Bot_Research\Morpheus_Lab\     <- Research laboratory (this project)
+C:\ai_project_hub\store\code\IBKR_Algo_BOT_V2\  <- IBKR trading bot (Bob1 PC)
+C:\morpheus\morpheus_ai\             <- Morpheus_AI trading bot (Bob1 PC)
 ```
 
-## Key Principles
-1. **Strict isolation** between research and live trading systems
-2. **Validate and correlate data BEFORE implementing any trading logic**
-3. **Capital preservation first** — failures exit immediately
-4. **Research is read-only** — never writes to trading infrastructure
+Three independent systems:
+- **Max_AI**: Scanner (finds candidates)
+- **Morpheus_AI**: Trading bot (independent codebase)
+- **IBKR_Morpheus**: Trading bot (independent codebase, IBKR execution)
 
-## Morpheus Trading Profile
-- **Style:** Warrior Trading methodology, 5 pillars of stock selection
-- **Price range:** $1-$20 stocks (low-float, low-price momentum)
-- **Trade data:** 1,914 trades across 132 unique symbols, 17 trading days
-- **Top symbols:** CISS (411), ANL (81), OCG (79), ALXO (68), SMCL (68), PLRZ (67)
-- **Entry signal:** `momentum_spike` via ignition funnel pipeline
-- **Reports location:** `reports/{date}/trade_ledger.jsonl` (IBKR_Algo_BOT_V2)
-- **Trade ledger fields:** entry_time, entry_price, entry_signal, pnl, max_gain_percent, max_drawdown_percent, entry_momentum_score, entry_momentum_state, volatility_regime, secondary_triggers (spread, rvol, change%, float, volume)
+Bots are PEERS, not a pipeline. Each has its own codebase and reports.
 
-## Related Repository
-- **ai_project_hub:** https://github.com/bgmaynard/ai_project_hub
-- Contains full IBKR_Algo_BOT_V2 codebase (Morpheus)
-- Key files: `morpheus_trading_api.py`, `ai/ignition_funnel.py`, `ai/momentum_scorer.py`
-- Reports: `store/code/IBKR_Algo_BOT_V2/reports/`
+**Workflow**: Research (Claude Project) -> Validate (Morpheus_Lab) -> Promote ->
+Claude Code in each bot's native repo to implement. No manual runtime edits.
 
-## Current Research Status
-- **Phase 8:** COMPLETE — inventory fade validated (HYP-003: 56.1%, 2.22 R:R, n=435)
-- **Next gate:** V2.5 — Prove pressure precedes Morpheus ignition (HYP-013)
-- **Blocker resolved:** Databento data needs to match Morpheus-traded symbols (not AAPL/TSLA)
-- **Data gap:** Need to download Databento XNAS.ITCH trades for 132 momentum symbols across 174 symbol-date pairs
+## DATA SOURCES
 
-## Setup History
-- **2025-02-21:** GitHub repo `AI_Bot_Research` created, Git installed on research server, initial commit with 14 files (mrl package), pushed to main branch successfully.
-- **2025-02-21:** Built replay_engine.py for HYP-013 (pressure precedes ignition?). Rebuilt download_data.py as smart downloader that reads trade_ledger.jsonl to download only Morpheus-traded symbols from Databento. Discovered data mismatch: Morpheus trades $1-$20 momentum stocks, original Databento download had AAPL/TSLA/NVDA.
+- **Databento Cache**: `Z:\AI_BOT_DATA\databento_cache` (~239 files, 146 symbols, XNAS.ITCH)
+- **Bot EOD Reports**: 
+  - IBKR: `C:\ai_project_hub\store\code\IBKR_Algo_BOT_V2\reports\`
+  - Morpheus_AI: `C:\morpheus\morpheus_ai\reports\`
+- **Test Universe**: CISS, BOXL, ELPW, BATL, ANL (Jan 30 - Feb 20, 2026)
+
+## COMPLETED PHASES
+
+### Phase 1: Deterministic Replay Engine
+- Streaming Databento loader with vectorized numpy filtering
+- Heap-merge replay across multiple symbol-days
+- Benchmark: 1.06M events/second
+- Files: `core/dbn_loader.py`, `core/market_replay.py`, `core/event_types.py`
+
+### Phase 2: Batch Backtest Engine  
+- BatchStrategy base class with on_batch() interface
+- BatchBacktestEngine processes full symbol-day arrays
+- MomentumBreakout (v1) strategy: vectorized signal + forward-scan exit
+- Files: `strategies/batch_strategy.py`, `strategies/momentum_breakout.py`,
+  `engine/batch_backtest.py`
+
+### Phase 3: Edge Discovery Layer
+- Parameter grid search engine (expand combinations, run per config)
+- Walk-forward validation (IS/OOS split, stability scoring)
+- Comprehensive metrics: PF, WR, Sharpe, max DD, expectancy
+- Formal promotion gate with configurable thresholds
+- Files: `engine/grid_engine.py`, `engine/walk_forward.py`,
+  `engine/edge_metrics.py`, `core/promotion_gate.py`, `engine/report_generator.py`
+
+### Phase 4: Regime Decomposition
+- 6-regime classifier: TREND_UP, TREND_DOWN, HIGH_VOL_BREAKOUT,
+  LOW_VOL_CHOP, MEAN_REVERT, VOLATILE_CHOP
+- Vectorized classification using rolling volatility + trend slope
+- Regime-conditioned metrics and breakdown reporting
+- Files: `engine/regime_classifier.py`, updated `engine/cli.py`
+
+### Phase 5: Strategy Evolution (flush_reclaim_v1)
+- MomentumContinuationV2 (v2): regime-gated with entry type classification
+- Entry type analysis revealed flush_reclaim as strongest pattern (PF 1.27)
+- FlushReclaimV1 (fr1): standalone strategy isolated from v2 analysis
+- Walk-forward validated: IS_PF=1.64, OOS_PF=1.63, stability=0.996
+- Promoted params: lookback=100, flush_pct=0.3, reclaim_window=100,
+  reward_multiple=1.5, allowed_regimes=LOW_VOL_CHOP
+- All 5 walk-forward candidates qualified (first strategy to pass gate)
+- Full backtest: 494 trades, 52% WR, PF 1.64, Sharpe 3.9
+- Files: `strategies/flush_reclaim_v1.py`, `strategies/momentum_continuation_v2.py`
+
+### Phase 6: Shadow Mode Deployment
+- Shadow trading infrastructure: replay from cache, log signals without execution
+- JSONL trade logging (per-trade with timestamps, entry/exit, regime tags)
+- Daily summary comparison module (Shadow vs Production)
+- Runtime config with promoted parameters
+- Architectural fix: full symbol-day batches matching batch backtest exactly
+- Validated: perfect alignment with backtest (494 trades, $600 PnL, PF 1.64)
+- Files: `shadow/shadow_runner.py`, `shadow/shadow_logger.py`,
+  `shadow/runtime_config.json`
+
+### Phase 7: Friction Stress Testing
+- FrictionConfig dataclass: slippage, latency, spread, commission, tick_size
+- FrictionModel: post-processing layer, applies friction without modifying originals
+- CLI flags: --slippage-ticks, --latency-ticks, --spread-cost, --commission
+- **CRITICAL FINDING**: Baseline PF 1.64 collapsed to PF 0.55 under realistic
+  friction (1 tick + $0.50 commission = $2.50/trade)
+- Root cause: avg winner $6.05, avg loser -$3.94, edge $1.21 vs friction $2.50
+- Price tier diagnostic: sub-$5 unviable, $5+ stocks survive friction
+- Files: `engine/friction_model.py`
+
+### Phase 8: Friction Tier Survivability Diagnostic
+- Automated price-tier analysis tool (931 lines)
+- Edge Buffer Ratio (EBR) = avg_winner_per_share / friction_per_share
+- Verdicts: DEAD (<1.0 EBR), FRAGILE (1-2), VIABLE (2-3), ROBUST (>3)
+- Recommendation engine: requires Net PF >= 1.2, Avg PnL > 0, EBR >= 2.0
+- **RESULT ON REAL DATA**:
+  - $1-$3 (359 trades): PF 0.25 net, EBR 1.4 -> FRAGILE (24% winners flipped)
+  - $3-$5 (103 trades): PF 0.65 net, EBR 2.4 -> VIABLE (but fails PF criteria)
+  - $5-$7 (5 trades): insufficient data
+  - $7-$10 (21 trades): PF 1.57 net, EBR 9.2 -> ROBUST (only qualifying tier)
+  - $10-$20 (6 trades): insufficient data
+- **RECOMMENDATION**: $7.00 min-price filter, HIGH confidence
+- ASCII-safe for Windows cp1252 (all Unicode replaced)
+- Files: `analysis/friction_price_tier_analysis.py`, `analysis/__init__.py`
+
+### Phase 8.5: Strategy x Price Tier Research Matrix
+- Multi-strategy comparison across price tiers under identical conditions
+- Runs all 3 strategies (v1, v2, fr1) through batch-backtest
+- Slices trades into 6 tiers: $1-$3, $3-$5, $5-$7, $7-$10, $10-$15, $15+
+- Applies standardized realistic friction ($0.03/share)
+- Deployment criteria: Net PF >= 1.20, Avg PnL > 0, EBR >= 2.0, N >= 50
+- Generates routing map: which strategy owns each price tier
+- Output: reports/strategy_price_matrix.json, reports/strategy_price_matrix.md
+- Files: `analysis/strategy_price_matrix.py`
+- **STATUS**: Built, tested, awaiting first run on live data (scheduled Feb 24)
+
+## CURRENT STRATEGIES
+
+| Strategy | Code | WR | PF (gross) | Status |
+|----------|------|----|------------|--------|
+| momentum_breakout | v1 | 22% | 1.06-1.13 | Baseline, poor edge |
+| momentum_continuation_v2 | v2 | ~35% | ~0.9 | Regime-gated, entry classification |
+| flush_reclaim_v1 | fr1 | 52% | 1.64 | Validated, promoted, friction-tested |
+
+## KEY FINDINGS
+
+1. **flush_reclaim_v1 is the only strategy with validated edge** (PF 1.64, Sharpe 3.9)
+2. **Friction destroys sub-$5 edge**: avg winner $0.04/share vs $0.03/share friction
+3. **$7+ is the survivable price tier**: EBR 9.2, net PF 1.57
+4. **Only 21 trades in qualifying tier**: Need expanded universe for deployment
+5. **Price-aware routing is the path forward**: different tiers may need different strategies
+
+## CLI COMMANDS
+
+```bash
+# Batch backtest (any strategy)
+python -m engine.cli batch-backtest --cache Z:\AI_BOT_DATA\databento_cache --symbols CISS,BOXL,ELPW,BATL,ANL --start 2026-01-30 --end 2026-02-20 --strategy fr1
+
+# Shadow replay
+python -m engine.cli shadow-replay --cache Z:\AI_BOT_DATA\databento_cache --symbols CISS,BOXL,ELPW,BATL,ANL --start 2026-01-30 --end 2026-02-20
+
+# Friction tier analysis
+python -m engine.cli friction-tier-analysis --cache Z:\AI_BOT_DATA\databento_cache --symbols CISS,BOXL,ELPW,BATL,ANL --start 2026-01-30 --end 2026-02-20
+
+# Strategy price matrix (NEW - run on live data Feb 24)
+python -m engine.cli strategy-price-matrix --cache Z:\AI_BOT_DATA\databento_cache --symbols CISS,BOXL,ELPW,BATL,ANL --start 2026-01-30 --end 2026-02-20 --allowed-regimes "LOW_VOL_CHOP"
+
+# Grid search
+python -m engine.cli grid-search --cache Z:\AI_BOT_DATA\databento_cache --strategy fr1
+
+# Walk-forward validation
+python -m engine.cli walk-forward --cache Z:\AI_BOT_DATA\databento_cache --strategy fr1
+```
+
+## FILE MANIFEST
+
+```
+Morpheus_Lab/
+  core/
+    dbn_loader.py          # Databento cache loader + index
+    market_replay.py       # Heap-merge replay engine
+    event_types.py         # TradeEvent dataclass
+    promotion_gate.py      # Formal promotion criteria
+  engine/
+    batch_backtest.py      # BatchBacktestEngine + results
+    grid_engine.py         # Parameter grid search
+    walk_forward.py        # Walk-forward validation
+    edge_metrics.py        # Comprehensive metric computation
+    regime_classifier.py   # 6-regime vectorized classifier
+    friction_model.py      # Execution cost model (Phase 7)
+    report_generator.py    # JSON/markdown reporting
+    cli.py                 # CLI entrypoint (1297 lines)
+  strategies/
+    batch_strategy.py      # BatchStrategy base class
+    momentum_breakout.py   # v1: vanilla breakout
+    momentum_continuation_v2.py  # v2: regime-gated + entry types
+    flush_reclaim_v1.py    # fr1: validated flush-reclaim
+  analysis/
+    __init__.py
+    friction_price_tier_analysis.py  # Phase 8: tier survivability (931 lines)
+    strategy_price_matrix.py         # Phase 8.5: multi-strategy matrix (706 lines)
+  shadow/
+    shadow_runner.py       # Shadow mode replay engine
+    shadow_logger.py       # JSONL trade logger
+    runtime_config.json    # Promoted fr1 parameters
+    __main__.py
+  reports/                 # Generated reports (JSON + MD)
+  logs/                    # Shadow JSONL trade logs
+```
+
+## NEXT STEPS (Priority Order)
+
+1. **Feb 24**: Run strategy-price-matrix on live Databento cache data
+   - Compare lab friction predictions vs actual IBKR/Morpheus_AI EOD reports
+   - Validate friction model accuracy against real execution
+2. **Expand Databento cache**: More $5-$20 low-float symbols via live bot trading
+3. **Re-run tier analysis**: Confirm $7+ edge holds with 80-100+ trades
+4. **Build reconciliation tool**: Lab predictions vs live bot P&L by price tier
+5. **If $7+ confirmed**: Add min-price filter to fr1 -> proceed to live deployment
+
+## PRINCIPLES
+
+- Validate and correlate data before implementing
+- No manual runtime edits -- all changes through lab validation
+- Hypothesis-driven: test -> validate -> promote -> deploy
+- Statistical significance required (N >= 50 for deployment decisions)
+- Friction-aware: no strategy deploys without execution cost testing
+- Research PC (analysis) strictly separated from Trading PC (execution)
