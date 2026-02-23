@@ -1,0 +1,48 @@
+{
+  "params": {
+    "lookback": 200,
+    "vol_surge": 2.0,
+    "breakout_pct": 0.5,
+    "target_pct": 2.0,
+    "stop_pct": 1.0,
+    "cooldown": 50,
+    "share_size": 100
+  },
+  "symbols": [
+    "CISS"
+  ],
+  "regimes": {
+    "LOW_VOL_CHOP": {
+      "trades": 145,
+      "winners": 63,
+      "losers": 82,
+      "win_rate": 43.4,
+      "total_pnl": 203.0,
+      "avg_pnl": 1.4,
+      "avg_winner": 9.26,
+      "avg_loser": -4.64,
+      "rr": 2.0,
+      "profit_factor": 1.53,
+      "max_drawdown": 46.5,
+      "avg_hold_seconds": 230.4,
+      "expectancy": 1.4,
+      "sharpe": 2.26
+    },
+    "TREND_DOWN": {
+      "trades": 5,
+      "winners": 1,
+      "losers": 4,
+      "win_rate": 20.0,
+      "total_pnl": -10.0,
+      "avg_pnl": -2.0,
+      "avg_winner": 11.0,
+      "avg_loser": -5.25,
+      "rr": 2.1,
+      "profit_factor": 0.52,
+      "max_drawdown": 15.0,
+      "avg_hold_seconds": 581.5,
+      "expectancy": -2.0,
+      "sharpe": -0.67
+    }
+  }
+}

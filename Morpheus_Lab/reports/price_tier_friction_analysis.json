@@ -1,0 +1,953 @@
+{
+  "analysis": "price_tier_friction_survivability",
+  "strategy": "flush_reclaim_v1",
+  "total": {
+    "total_trades": 494,
+    "symbols": [
+      "ANL",
+      "BOXL",
+      "CISS",
+      "BATL",
+      "ELPW"
+    ],
+    "price_range": {
+      "min": 1.05,
+      "max": 11.36,
+      "mean": 2.85
+    },
+    "tier_distribution": {
+      "$1-$3": 359,
+      "$3-$5": 103,
+      "$5-$7": 5,
+      "$7-$10": 21,
+      "$10-$20": 6,
+      "$20+": 0
+    }
+  },
+  "scenarios": {
+    "ideal": {
+      "scenario": {
+        "name": "Ideal (frictionless)",
+        "slippage_ticks": 0,
+        "latency_ticks": 0,
+        "spread_cost_per_side": 0.0,
+        "commission": 0.0,
+        "tick_size": 0.01,
+        "shares": 100
+      },
+      "friction_per_share": 0.0,
+      "friction_per_trade": 0.0,
+      "tiers": {
+        "$1-$3": {
+          "trades": 359,
+          "gross": {
+            "winners": 186,
+            "losers": 173,
+            "win_rate": 51.8,
+            "total_pnl": 284.0,
+            "avg_pnl": 0.79,
+            "avg_winner": 4.24,
+            "avg_loser": -2.92,
+            "avg_winner_per_share": 0.0424,
+            "avg_loser_per_share": -0.0292,
+            "avg_move_per_share": 0.036,
+            "pf": 1.56,
+            "rr": 1.45
+          },
+          "net": {
+            "winners": 186,
+            "losers": 173,
+            "win_rate": 51.8,
+            "total_pnl": 284.0,
+            "avg_pnl": 0.79,
+            "pf": 1.56,
+            "rr": 1.45
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": "inf"
+          },
+          "verdict": "ROBUST (frictionless)"
+        },
+        "$3-$5": {
+          "trades": 103,
+          "gross": {
+            "winners": 54,
+            "losers": 49,
+            "win_rate": 52.4,
+            "total_pnl": 183.5,
+            "avg_pnl": 1.78,
+            "avg_winner": 7.27,
+            "avg_loser": -4.27,
+            "avg_winner_per_share": 0.0727,
+            "avg_loser_per_share": -0.0427,
+            "avg_move_per_share": 0.0584,
+            "pf": 1.88,
+            "rr": 1.7
+          },
+          "net": {
+            "winners": 54,
+            "losers": 49,
+            "win_rate": 52.4,
+            "total_pnl": 183.5,
+            "avg_pnl": 1.78,
+            "pf": 1.88,
+            "rr": 1.7
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": "inf"
+          },
+          "verdict": "ROBUST (frictionless)"
+        },
+        "$5-$7": {
+          "trades": 5,
+          "gross": {
+            "winners": 2,
+            "losers": 3,
+            "win_rate": 40.0,
+            "total_pnl": -11.0,
+            "avg_pnl": -2.2,
+            "avg_winner": 11.0,
+            "avg_loser": -11.0,
+            "avg_winner_per_share": 0.11,
+            "avg_loser_per_share": -0.11,
+            "avg_move_per_share": 0.11,
+            "pf": 0.67,
+            "rr": 1.0
+          },
+          "net": {
+            "winners": 2,
+            "losers": 3,
+            "win_rate": 40.0,
+            "total_pnl": -11.0,
+            "avg_pnl": -2.2,
+            "pf": 0.67,
+            "rr": 1.0
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": "inf"
+          },
+          "verdict": "NO EDGE (even frictionless)"
+        },
+        "$7-$10": {
+          "trades": 21,
+          "gross": {
+            "winners": 11,
+            "losers": 10,
+            "win_rate": 52.4,
+            "total_pnl": 161.5,
+            "avg_pnl": 7.69,
+            "avg_winner": 27.68,
+            "avg_loser": -14.3,
+            "avg_winner_per_share": 0.2768,
+            "avg_loser_per_share": -0.143,
+            "avg_move_per_share": 0.2131,
+            "pf": 2.13,
+            "rr": 1.94
+          },
+          "net": {
+            "winners": 11,
+            "losers": 10,
+            "win_rate": 52.4,
+            "total_pnl": 161.5,
+            "avg_pnl": 7.69,
+            "pf": 2.13,
+            "rr": 1.94
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": "inf"
+          },
+          "verdict": "ROBUST (frictionless)"
+        },
+        "$10-$20": {
+          "trades": 6,
+          "gross": {
+            "winners": 2,
+            "losers": 4,
+            "win_rate": 33.3,
+            "total_pnl": -18.0,
+            "avg_pnl": -3.0,
+            "avg_winner": 17.5,
+            "avg_loser": -13.25,
+            "avg_winner_per_share": 0.175,
+            "avg_loser_per_share": -0.1325,
+            "avg_move_per_share": 0.1467,
+            "pf": 0.66,
+            "rr": 1.32
+          },
+          "net": {
+            "winners": 2,
+            "losers": 4,
+            "win_rate": 33.3,
+            "total_pnl": -18.0,
+            "avg_pnl": -3.0,
+            "pf": 0.66,
+            "rr": 1.32
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": "inf"
+          },
+          "verdict": "NO EDGE (even frictionless)"
+        },
+        "$20+": {
+          "trades": 0,
+          "gross": {
+            "winners": 0,
+            "losers": 0,
+            "win_rate": 0.0,
+            "total_pnl": 0.0,
+            "avg_pnl": 0.0,
+            "avg_winner": 0.0,
+            "avg_loser": 0.0,
+            "avg_winner_per_share": 0.0,
+            "avg_loser_per_share": 0.0,
+            "avg_move_per_share": 0.0,
+            "pf": 0.0,
+            "rr": 0.0
+          },
+          "net": {
+            "winners": 0,
+            "losers": 0,
+            "win_rate": 0.0,
+            "total_pnl": 0.0,
+            "avg_pnl": 0.0,
+            "pf": 0.0,
+            "rr": 0.0
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 0.0
+          },
+          "verdict": "NO DATA"
+        }
+      }
+    },
+    "realistic": {
+      "scenario": {
+        "name": "Realistic (commission-free broker)",
+        "slippage_ticks": 1,
+        "latency_ticks": 0,
+        "spread_cost_per_side": 0.005,
+        "commission": 0.0,
+        "tick_size": 0.01,
+        "shares": 100
+      },
+      "friction_per_share": 0.03,
+      "friction_per_trade": 3.0,
+      "tiers": {
+        "$1-$3": {
+          "trades": 359,
+          "gross": {
+            "winners": 186,
+            "losers": 173,
+            "win_rate": 51.8,
+            "total_pnl": 284.0,
+            "avg_pnl": 0.79,
+            "avg_winner": 4.24,
+            "avg_loser": -2.92,
+            "avg_winner_per_share": 0.0424,
+            "avg_loser_per_share": -0.0292,
+            "avg_move_per_share": 0.036,
+            "pf": 1.56,
+            "rr": 1.45
+          },
+          "net": {
+            "winners": 142,
+            "losers": 217,
+            "win_rate": 39.6,
+            "total_pnl": -793.0,
+            "avg_pnl": -2.21,
+            "pf": 0.25,
+            "rr": 0.38
+          },
+          "friction_impact": {
+            "flipped_to_loss": 44,
+            "flipped_pct": 23.7,
+            "edge_buffer_ratio": 1.41
+          },
+          "verdict": "FRAGILE"
+        },
+        "$3-$5": {
+          "trades": 103,
+          "gross": {
+            "winners": 54,
+            "losers": 49,
+            "win_rate": 52.4,
+            "total_pnl": 183.5,
+            "avg_pnl": 1.78,
+            "avg_winner": 7.27,
+            "avg_loser": -4.27,
+            "avg_winner_per_share": 0.0727,
+            "avg_loser_per_share": -0.0427,
+            "avg_move_per_share": 0.0584,
+            "pf": 1.88,
+            "rr": 1.7
+          },
+          "net": {
+            "winners": 54,
+            "losers": 49,
+            "win_rate": 52.4,
+            "total_pnl": -125.5,
+            "avg_pnl": -1.22,
+            "pf": 0.65,
+            "rr": 0.59
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 2.42
+          },
+          "verdict": "VIABLE"
+        },
+        "$5-$7": {
+          "trades": 5,
+          "gross": {
+            "winners": 2,
+            "losers": 3,
+            "win_rate": 40.0,
+            "total_pnl": -11.0,
+            "avg_pnl": -2.2,
+            "avg_winner": 11.0,
+            "avg_loser": -11.0,
+            "avg_winner_per_share": 0.11,
+            "avg_loser_per_share": -0.11,
+            "avg_move_per_share": 0.11,
+            "pf": 0.67,
+            "rr": 1.0
+          },
+          "net": {
+            "winners": 2,
+            "losers": 3,
+            "win_rate": 40.0,
+            "total_pnl": -26.0,
+            "avg_pnl": -5.2,
+            "pf": 0.38,
+            "rr": 0.57
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 3.67
+          },
+          "verdict": "ROBUST"
+        },
+        "$7-$10": {
+          "trades": 21,
+          "gross": {
+            "winners": 11,
+            "losers": 10,
+            "win_rate": 52.4,
+            "total_pnl": 161.5,
+            "avg_pnl": 7.69,
+            "avg_winner": 27.68,
+            "avg_loser": -14.3,
+            "avg_winner_per_share": 0.2768,
+            "avg_loser_per_share": -0.143,
+            "avg_move_per_share": 0.2131,
+            "pf": 2.13,
+            "rr": 1.94
+          },
+          "net": {
+            "winners": 11,
+            "losers": 10,
+            "win_rate": 52.4,
+            "total_pnl": 98.5,
+            "avg_pnl": 4.69,
+            "pf": 1.57,
+            "rr": 1.43
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 9.23
+          },
+          "verdict": "ROBUST"
+        },
+        "$10-$20": {
+          "trades": 6,
+          "gross": {
+            "winners": 2,
+            "losers": 4,
+            "win_rate": 33.3,
+            "total_pnl": -18.0,
+            "avg_pnl": -3.0,
+            "avg_winner": 17.5,
+            "avg_loser": -13.25,
+            "avg_winner_per_share": 0.175,
+            "avg_loser_per_share": -0.1325,
+            "avg_move_per_share": 0.1467,
+            "pf": 0.66,
+            "rr": 1.32
+          },
+          "net": {
+            "winners": 2,
+            "losers": 4,
+            "win_rate": 33.3,
+            "total_pnl": -36.0,
+            "avg_pnl": -6.0,
+            "pf": 0.45,
+            "rr": 0.89
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 5.83
+          },
+          "verdict": "ROBUST"
+        },
+        "$20+": {
+          "trades": 0,
+          "gross": {
+            "winners": 0,
+            "losers": 0,
+            "win_rate": 0.0,
+            "total_pnl": 0.0,
+            "avg_pnl": 0.0,
+            "avg_winner": 0.0,
+            "avg_loser": 0.0,
+            "avg_winner_per_share": 0.0,
+            "avg_loser_per_share": 0.0,
+            "avg_move_per_share": 0.0,
+            "pf": 0.0,
+            "rr": 0.0
+          },
+          "net": {
+            "winners": 0,
+            "losers": 0,
+            "win_rate": 0.0,
+            "total_pnl": 0.0,
+            "avg_pnl": 0.0,
+            "pf": 0.0,
+            "rr": 0.0
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 0.0
+          },
+          "verdict": "NO DATA"
+        }
+      }
+    },
+    "custom": {
+      "scenario": {
+        "name": "Custom (slip=1t, lat=0t, spread=$0.0050, comm=$0.00)",
+        "slippage_ticks": 1,
+        "latency_ticks": 0,
+        "spread_cost_per_side": 0.005,
+        "commission": 0.0,
+        "tick_size": 0.01,
+        "shares": 100
+      },
+      "friction_per_share": 0.03,
+      "friction_per_trade": 3.0,
+      "tiers": {
+        "$1-$3": {
+          "trades": 359,
+          "gross": {
+            "winners": 186,
+            "losers": 173,
+            "win_rate": 51.8,
+            "total_pnl": 284.0,
+            "avg_pnl": 0.79,
+            "avg_winner": 4.24,
+            "avg_loser": -2.92,
+            "avg_winner_per_share": 0.0424,
+            "avg_loser_per_share": -0.0292,
+            "avg_move_per_share": 0.036,
+            "pf": 1.56,
+            "rr": 1.45
+          },
+          "net": {
+            "winners": 142,
+            "losers": 217,
+            "win_rate": 39.6,
+            "total_pnl": -793.0,
+            "avg_pnl": -2.21,
+            "pf": 0.25,
+            "rr": 0.38
+          },
+          "friction_impact": {
+            "flipped_to_loss": 44,
+            "flipped_pct": 23.7,
+            "edge_buffer_ratio": 1.41
+          },
+          "verdict": "FRAGILE"
+        },
+        "$3-$5": {
+          "trades": 103,
+          "gross": {
+            "winners": 54,
+            "losers": 49,
+            "win_rate": 52.4,
+            "total_pnl": 183.5,
+            "avg_pnl": 1.78,
+            "avg_winner": 7.27,
+            "avg_loser": -4.27,
+            "avg_winner_per_share": 0.0727,
+            "avg_loser_per_share": -0.0427,
+            "avg_move_per_share": 0.0584,
+            "pf": 1.88,
+            "rr": 1.7
+          },
+          "net": {
+            "winners": 54,
+            "losers": 49,
+            "win_rate": 52.4,
+            "total_pnl": -125.5,
+            "avg_pnl": -1.22,
+            "pf": 0.65,
+            "rr": 0.59
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 2.42
+          },
+          "verdict": "VIABLE"
+        },
+        "$5-$7": {
+          "trades": 5,
+          "gross": {
+            "winners": 2,
+            "losers": 3,
+            "win_rate": 40.0,
+            "total_pnl": -11.0,
+            "avg_pnl": -2.2,
+            "avg_winner": 11.0,
+            "avg_loser": -11.0,
+            "avg_winner_per_share": 0.11,
+            "avg_loser_per_share": -0.11,
+            "avg_move_per_share": 0.11,
+            "pf": 0.67,
+            "rr": 1.0
+          },
+          "net": {
+            "winners": 2,
+            "losers": 3,
+            "win_rate": 40.0,
+            "total_pnl": -26.0,
+            "avg_pnl": -5.2,
+            "pf": 0.38,
+            "rr": 0.57
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 3.67
+          },
+          "verdict": "ROBUST"
+        },
+        "$7-$10": {
+          "trades": 21,
+          "gross": {
+            "winners": 11,
+            "losers": 10,
+            "win_rate": 52.4,
+            "total_pnl": 161.5,
+            "avg_pnl": 7.69,
+            "avg_winner": 27.68,
+            "avg_loser": -14.3,
+            "avg_winner_per_share": 0.2768,
+            "avg_loser_per_share": -0.143,
+            "avg_move_per_share": 0.2131,
+            "pf": 2.13,
+            "rr": 1.94
+          },
+          "net": {
+            "winners": 11,
+            "losers": 10,
+            "win_rate": 52.4,
+            "total_pnl": 98.5,
+            "avg_pnl": 4.69,
+            "pf": 1.57,
+            "rr": 1.43
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 9.23
+          },
+          "verdict": "ROBUST"
+        },
+        "$10-$20": {
+          "trades": 6,
+          "gross": {
+            "winners": 2,
+            "losers": 4,
+            "win_rate": 33.3,
+            "total_pnl": -18.0,
+            "avg_pnl": -3.0,
+            "avg_winner": 17.5,
+            "avg_loser": -13.25,
+            "avg_winner_per_share": 0.175,
+            "avg_loser_per_share": -0.1325,
+            "avg_move_per_share": 0.1467,
+            "pf": 0.66,
+            "rr": 1.32
+          },
+          "net": {
+            "winners": 2,
+            "losers": 4,
+            "win_rate": 33.3,
+            "total_pnl": -36.0,
+            "avg_pnl": -6.0,
+            "pf": 0.45,
+            "rr": 0.89
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 5.83
+          },
+          "verdict": "ROBUST"
+        },
+        "$20+": {
+          "trades": 0,
+          "gross": {
+            "winners": 0,
+            "losers": 0,
+            "win_rate": 0.0,
+            "total_pnl": 0.0,
+            "avg_pnl": 0.0,
+            "avg_winner": 0.0,
+            "avg_loser": 0.0,
+            "avg_winner_per_share": 0.0,
+            "avg_loser_per_share": 0.0,
+            "avg_move_per_share": 0.0,
+            "pf": 0.0,
+            "rr": 0.0
+          },
+          "net": {
+            "winners": 0,
+            "losers": 0,
+            "win_rate": 0.0,
+            "total_pnl": 0.0,
+            "avg_pnl": 0.0,
+            "pf": 0.0,
+            "rr": 0.0
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 0.0
+          },
+          "verdict": "NO DATA"
+        }
+      }
+    },
+    "conservative": {
+      "scenario": {
+        "name": "Conservative (worst-case retail)",
+        "slippage_ticks": 1,
+        "latency_ticks": 1,
+        "spread_cost_per_side": 0.01,
+        "commission": 0.5,
+        "tick_size": 0.01,
+        "shares": 100
+      },
+      "friction_per_share": 0.065,
+      "friction_per_trade": 6.5,
+      "tiers": {
+        "$1-$3": {
+          "trades": 359,
+          "gross": {
+            "winners": 186,
+            "losers": 173,
+            "win_rate": 51.8,
+            "total_pnl": 284.0,
+            "avg_pnl": 0.79,
+            "avg_winner": 4.24,
+            "avg_loser": -2.92,
+            "avg_winner_per_share": 0.0424,
+            "avg_loser_per_share": -0.0292,
+            "avg_move_per_share": 0.036,
+            "pf": 1.56,
+            "rr": 1.45
+          },
+          "net": {
+            "winners": 16,
+            "losers": 343,
+            "win_rate": 4.5,
+            "total_pnl": -2049.5,
+            "avg_pnl": -5.71,
+            "pf": 0.02,
+            "rr": 0.34
+          },
+          "friction_impact": {
+            "flipped_to_loss": 170,
+            "flipped_pct": 91.4,
+            "edge_buffer_ratio": 0.65
+          },
+          "verdict": "DEAD"
+        },
+        "$3-$5": {
+          "trades": 103,
+          "gross": {
+            "winners": 54,
+            "losers": 49,
+            "win_rate": 52.4,
+            "total_pnl": 183.5,
+            "avg_pnl": 1.78,
+            "avg_winner": 7.27,
+            "avg_loser": -4.27,
+            "avg_winner_per_share": 0.0727,
+            "avg_loser_per_share": -0.0427,
+            "avg_move_per_share": 0.0584,
+            "pf": 1.88,
+            "rr": 1.7
+          },
+          "net": {
+            "winners": 25,
+            "losers": 78,
+            "win_rate": 24.3,
+            "total_pnl": -486.0,
+            "avg_pnl": -4.72,
+            "pf": 0.15,
+            "rr": 0.46
+          },
+          "friction_impact": {
+            "flipped_to_loss": 29,
+            "flipped_pct": 53.7,
+            "edge_buffer_ratio": 1.12
+          },
+          "verdict": "FRAGILE"
+        },
+        "$5-$7": {
+          "trades": 5,
+          "gross": {
+            "winners": 2,
+            "losers": 3,
+            "win_rate": 40.0,
+            "total_pnl": -11.0,
+            "avg_pnl": -2.2,
+            "avg_winner": 11.0,
+            "avg_loser": -11.0,
+            "avg_winner_per_share": 0.11,
+            "avg_loser_per_share": -0.11,
+            "avg_move_per_share": 0.11,
+            "pf": 0.67,
+            "rr": 1.0
+          },
+          "net": {
+            "winners": 1,
+            "losers": 4,
+            "win_rate": 20.0,
+            "total_pnl": -43.5,
+            "avg_pnl": -8.7,
+            "pf": 0.19,
+            "rr": 0.78
+          },
+          "friction_impact": {
+            "flipped_to_loss": 1,
+            "flipped_pct": 50.0,
+            "edge_buffer_ratio": 1.69
+          },
+          "verdict": "FRAGILE"
+        },
+        "$7-$10": {
+          "trades": 21,
+          "gross": {
+            "winners": 11,
+            "losers": 10,
+            "win_rate": 52.4,
+            "total_pnl": 161.5,
+            "avg_pnl": 7.69,
+            "avg_winner": 27.68,
+            "avg_loser": -14.3,
+            "avg_winner_per_share": 0.2768,
+            "avg_loser_per_share": -0.143,
+            "avg_move_per_share": 0.2131,
+            "pf": 2.13,
+            "rr": 1.94
+          },
+          "net": {
+            "winners": 11,
+            "losers": 10,
+            "win_rate": 52.4,
+            "total_pnl": 25.0,
+            "avg_pnl": 1.19,
+            "pf": 1.12,
+            "rr": 1.02
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 4.26
+          },
+          "verdict": "ROBUST"
+        },
+        "$10-$20": {
+          "trades": 6,
+          "gross": {
+            "winners": 2,
+            "losers": 4,
+            "win_rate": 33.3,
+            "total_pnl": -18.0,
+            "avg_pnl": -3.0,
+            "avg_winner": 17.5,
+            "avg_loser": -13.25,
+            "avg_winner_per_share": 0.175,
+            "avg_loser_per_share": -0.1325,
+            "avg_move_per_share": 0.1467,
+            "pf": 0.66,
+            "rr": 1.32
+          },
+          "net": {
+            "winners": 2,
+            "losers": 4,
+            "win_rate": 33.3,
+            "total_pnl": -57.0,
+            "avg_pnl": -9.5,
+            "pf": 0.28,
+            "rr": 0.56
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 2.69
+          },
+          "verdict": "VIABLE"
+        },
+        "$20+": {
+          "trades": 0,
+          "gross": {
+            "winners": 0,
+            "losers": 0,
+            "win_rate": 0.0,
+            "total_pnl": 0.0,
+            "avg_pnl": 0.0,
+            "avg_winner": 0.0,
+            "avg_loser": 0.0,
+            "avg_winner_per_share": 0.0,
+            "avg_loser_per_share": 0.0,
+            "avg_move_per_share": 0.0,
+            "pf": 0.0,
+            "rr": 0.0
+          },
+          "net": {
+            "winners": 0,
+            "losers": 0,
+            "win_rate": 0.0,
+            "total_pnl": 0.0,
+            "avg_pnl": 0.0,
+            "pf": 0.0,
+            "rr": 0.0
+          },
+          "friction_impact": {
+            "flipped_to_loss": 0,
+            "flipped_pct": 0.0,
+            "edge_buffer_ratio": 0.0
+          },
+          "verdict": "NO DATA"
+        }
+      }
+    }
+  },
+  "recommendation": {
+    "scenario_used": "realistic",
+    "criteria": {
+      "net_pf_min": 1.2,
+      "net_avg_pnl_min": 0,
+      "edge_buffer_ratio_min": 2.0
+    },
+    "recommended_min_price": 7.0,
+    "recommended_tier": "$7-$10",
+    "confidence": "HIGH",
+    "qualifying_tiers": [
+      {
+        "tier": "$7-$10",
+        "min_price": 7.0,
+        "net_pf": 1.57,
+        "net_avg_pnl": 4.69,
+        "ebr": 9.23
+      }
+    ],
+    "all_tier_verdicts": [
+      {
+        "tier": "$1-$3",
+        "min_price": 1.0,
+        "verdict": "FRAGILE",
+        "net_pf": 0.25,
+        "net_avg_pnl": -2.21,
+        "ebr": 1.41
+      },
+      {
+        "tier": "$3-$5",
+        "min_price": 3.0,
+        "verdict": "VIABLE",
+        "net_pf": 0.65,
+        "net_avg_pnl": -1.22,
+        "ebr": 2.42
+      },
+      {
+        "tier": "$5-$7",
+        "min_price": 5.0,
+        "verdict": "ROBUST",
+        "net_pf": 0.38,
+        "net_avg_pnl": -5.2,
+        "ebr": 3.67
+      },
+      {
+        "tier": "$7-$10",
+        "min_price": 7.0,
+        "verdict": "ROBUST",
+        "net_pf": 1.57,
+        "net_avg_pnl": 4.69,
+        "ebr": 9.23
+      },
+      {
+        "tier": "$10-$20",
+        "min_price": 10.0,
+        "verdict": "ROBUST",
+        "net_pf": 0.45,
+        "net_avg_pnl": -6.0,
+        "ebr": 5.83
+      },
+      {
+        "tier": "$20+",
+        "min_price": 20.0,
+        "verdict": "NO DATA",
+        "net_pf": 0,
+        "net_avg_pnl": 0,
+        "ebr": 0
+      }
+    ],
+    "scenario_summaries": {
+      "ideal": {
+        "surviving_tiers": [
+          "$1-$3",
+          "$3-$5",
+          "$7-$10"
+        ],
+        "total_surviving_tiers": 3
+      },
+      "realistic": {
+        "surviving_tiers": [
+          "$7-$10"
+        ],
+        "total_surviving_tiers": 1
+      },
+      "custom": {
+        "surviving_tiers": [
+          "$7-$10"
+        ],
+        "total_surviving_tiers": 1
+      },
+      "conservative": {
+        "surviving_tiers": [],
+        "total_surviving_tiers": 0
+      }
+    }
+  }
+}

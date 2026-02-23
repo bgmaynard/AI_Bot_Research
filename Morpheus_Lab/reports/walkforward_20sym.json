@@ -1,0 +1,156 @@
+{
+  "train_period": "2026-01-30 to 2026-02-13",
+  "validation_period": "2026-02-14 to 2026-02-20",
+  "candidates": [
+    {
+      "rank": 1,
+      "params": {
+        "flush_pct": 0.3,
+        "lookback": 100,
+        "reclaim_window": 150,
+        "reward_multiple": 2.0,
+        "allowed_regimes": "LOW_VOL_CHOP"
+      },
+      "in_sample": {
+        "trades": 379,
+        "win_rate": 39.4,
+        "profit_factor": 1.46,
+        "total_pnl": 343.8,
+        "max_drawdown": 73.7,
+        "sharpe": 2.29,
+        "rr": 2.24
+      },
+      "out_of_sample": {
+        "trades": 91,
+        "win_rate": 40.0,
+        "profit_factor": 1.02,
+        "total_pnl": 7.0,
+        "max_drawdown": 142.5,
+        "sharpe": 0.06,
+        "rr": 1.53
+      },
+      "stability_ratio": 0.7,
+      "parameter_drift": "R:R degraded (2.2\u21921.5)"
+    },
+    {
+      "rank": 2,
+      "params": {
+        "flush_pct": 0.3,
+        "lookback": 100,
+        "reclaim_window": 100,
+        "reward_multiple": 2.0,
+        "allowed_regimes": "LOW_VOL_CHOP"
+      },
+      "in_sample": {
+        "trades": 381,
+        "win_rate": 38.9,
+        "profit_factor": 1.44,
+        "total_pnl": 333.8,
+        "max_drawdown": 77.7,
+        "sharpe": 2.22,
+        "rr": 2.25
+      },
+      "out_of_sample": {
+        "trades": 90,
+        "win_rate": 40.4,
+        "profit_factor": 1.08,
+        "total_pnl": 29.0,
+        "max_drawdown": 120.5,
+        "sharpe": 0.27,
+        "rr": 1.59
+      },
+      "stability_ratio": 0.752,
+      "parameter_drift": "R:R degraded (2.3\u21921.6)"
+    },
+    {
+      "rank": 3,
+      "params": {
+        "flush_pct": 0.3,
+        "lookback": 100,
+        "reclaim_window": 150,
+        "reward_multiple": 1.5,
+        "allowed_regimes": "LOW_VOL_CHOP"
+      },
+      "in_sample": {
+        "trades": 400,
+        "win_rate": 46.1,
+        "profit_factor": 1.44,
+        "total_pnl": 313.31,
+        "max_drawdown": 72.69,
+        "sharpe": 2.29,
+        "rr": 1.68
+      },
+      "out_of_sample": {
+        "trades": 93,
+        "win_rate": 43.5,
+        "profit_factor": 0.98,
+        "total_pnl": -8.5,
+        "max_drawdown": 111.5,
+        "sharpe": -0.08,
+        "rr": 1.27
+      },
+      "stability_ratio": 0.681,
+      "parameter_drift": "Stable"
+    },
+    {
+      "rank": 4,
+      "params": {
+        "flush_pct": 0.3,
+        "lookback": 100,
+        "reclaim_window": 100,
+        "reward_multiple": 1.5,
+        "allowed_regimes": "LOW_VOL_CHOP"
+      },
+      "in_sample": {
+        "trades": 402,
+        "win_rate": 45.6,
+        "profit_factor": 1.42,
+        "total_pnl": 304.31,
+        "max_drawdown": 76.69,
+        "sharpe": 2.23,
+        "rr": 1.69
+      },
+      "out_of_sample": {
+        "trades": 92,
+        "win_rate": 44.0,
+        "profit_factor": 1.04,
+        "total_pnl": 13.5,
+        "max_drawdown": 93.0,
+        "sharpe": 0.12,
+        "rr": 1.32
+      },
+      "stability_ratio": 0.732,
+      "parameter_drift": "Stable"
+    },
+    {
+      "rank": 5,
+      "params": {
+        "flush_pct": 0.5,
+        "lookback": 100,
+        "reclaim_window": 150,
+        "reward_multiple": 2.0,
+        "allowed_regimes": "LOW_VOL_CHOP"
+      },
+      "in_sample": {
+        "trades": 335,
+        "win_rate": 36.8,
+        "profit_factor": 1.41,
+        "total_pnl": 308.3,
+        "max_drawdown": 94.5,
+        "sharpe": 1.93,
+        "rr": 2.41
+      },
+      "out_of_sample": {
+        "trades": 79,
+        "win_rate": 32.1,
+        "profit_factor": 0.7,
+        "total_pnl": -126.5,
+        "max_drawdown": 240.0,
+        "sharpe": -1.14,
+        "rr": 1.49
+      },
+      "stability_ratio": 0.499,
+      "parameter_drift": "R:R degraded (2.4\u21921.5)"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+    "enable_shadow_flush_reclaim": true,
+    "strategy_mode": "SHADOW",
+
+    "promoted_params": {
+        "lookback": 100,
+        "flush_pct": 0.3,
+        "flush_window": 50,
+        "vol_surge": 2.0,
+        "reclaim_window": 100,
+        "reward_multiple": 1.5,
+        "min_risk_pct": 0.3,
+        "max_risk_pct": 3.0,
+        "cooldown": 50,
+        "share_size": 100,
+        "allowed_regimes": "LOW_VOL_CHOP",
+        "regime_window": 200
+    },
+
+    "promotion_source": {
+        "walk_forward_date": "2026-02-22",
+        "is_pf": 1.64,
+        "oos_pf": 1.63,
+        "stability": 0.996,
+        "train_period": "2026-01-30 to 2026-02-13",
+        "validation_period": "2026-02-14 to 2026-02-20",
+        "symbols_tested": ["CISS", "BOXL", "ELPW", "BATL", "ANL"],
+        "candidate_rank": 1,
+        "gate_result": "QUALIFIES"
+    },
+
+    "logging": {
+        "shadow_log_path": "logs/shadow_flush_reclaim.jsonl",
+        "daily_summary_path": "logs/shadow_daily_summary.jsonl",
+        "log_level": "INFO"
+    },
+
+    "comparison": {
+        "production_log_path": "logs/production_trades.jsonl",
+        "compare_on_daily_close": true
+    }
+}

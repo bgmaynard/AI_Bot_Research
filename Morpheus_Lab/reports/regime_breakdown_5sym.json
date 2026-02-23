@@ -1,0 +1,36 @@
+{
+  "params": {
+    "lookback": 100,
+    "vol_surge": 2.0,
+    "breakout_pct": 0.5,
+    "target_pct": 2.0,
+    "stop_pct": 1.0,
+    "cooldown": 50,
+    "share_size": 100
+  },
+  "symbols": [
+    "CISS",
+    "BOXL",
+    "ELPW",
+    "BATL",
+    "ANL"
+  ],
+  "regimes": {
+    "LOW_VOL_CHOP": {
+      "trades": 494,
+      "winners": 255,
+      "losers": 239,
+      "win_rate": 51.6,
+      "total_pnl": 600.0,
+      "avg_pnl": 1.21,
+      "avg_winner": 6.05,
+      "avg_loser": -3.94,
+      "rr": 1.53,
+      "profit_factor": 1.64,
+      "max_drawdown": 68.0,
+      "avg_hold_seconds": 109.9,
+      "expectancy": 1.2146,
+      "sharpe": 3.89
+    }
+  }
+}

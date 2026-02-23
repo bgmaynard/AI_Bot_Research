@@ -1,0 +1,48 @@
+{
+  "friction": {
+    "slippage_ticks": 1,
+    "latency_ticks": 1,
+    "spread_cost": 0.01,
+    "commission": 0.5,
+    "tick_size": 0.01,
+    "total_slippage_ticks": 2,
+    "cost_per_trade_100sh": 5.5
+  },
+  "baseline": {
+    "trades": 494,
+    "winners": 255,
+    "losers": 239,
+    "win_rate": 51.6,
+    "total_pnl": 600.0,
+    "avg_pnl": 1.21,
+    "avg_winner": 6.05,
+    "avg_loser": -3.94,
+    "rr": 1.53,
+    "profit_factor": 1.64,
+    "sharpe": 3.89,
+    "max_drawdown": 68.0
+  },
+  "friction_adjusted": {
+    "trades": 494,
+    "winners": 106,
+    "losers": 359,
+    "win_rate": 22.8,
+    "total_pnl": -2117.0,
+    "avg_pnl": -4.29,
+    "avg_winner": 4.72,
+    "avg_loser": -6.6,
+    "rr": 0.72,
+    "profit_factor": 0.11,
+    "sharpe": -12.12,
+    "max_drawdown": 1950.5,
+    "total_commission": 247.0
+  },
+  "delta": {
+    "win_rate": -28.8,
+    "total_pnl": -2717.0,
+    "profit_factor": -1.53,
+    "rr": -0.82,
+    "sharpe": -16.01
+  },
+  "verdict": "COLLAPSED \u2014 No edge under friction (PF < 1.0)"
+}
