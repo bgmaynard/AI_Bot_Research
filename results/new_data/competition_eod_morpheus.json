@@ -1,0 +1,92 @@
+{
+  "date": "2026-02-20",
+  "bot_id": "Morpheus",
+  "mode": "MICRO",
+  "generated_at": "2026-02-20T19:49:20.541831-05:00",
+  "summary": {
+    "trades_executed": 1,
+    "wins": 0,
+    "losses": 1,
+    "flats": 0,
+    "win_rate": 0.0,
+    "net_pnl": -0.68,
+    "profit_factor": 0.0,
+    "avg_win": 0.0,
+    "avg_loss": -0.68,
+    "max_drawdown": 0.68,
+    "largest_winner": -0.68,
+    "largest_loser": -0.68,
+    "first_trade_time": "",
+    "last_trade_time": ""
+  },
+  "funnel": {
+    "signals_scored": 23668,
+    "extension_passed": 23668,
+    "ignition_passed": 23668,
+    "meta_approved": 0,
+    "risk_approved": 0,
+    "executed": 1,
+    "ignition_pass_rate": 100.0,
+    "execution_rate": 0.0
+  },
+  "block_reasons": [
+    {
+      "reason": "DAILY_LOSS_LIMIT: -0.1311 < -0.02",
+      "count": 671,
+      "pct_of_total": 2.8
+    },
+    {
+      "reason": "LOW_SCORE: 37.50 < 60.0, LOW_NOFI: 0.0000 < 0.2428, NEGATIVE_L2_PRESSURE: -1.0000 (bid << ask, depth=1), LOW_CONFIDENCE: 0.030 < 0.557, DAILY_LOSS_LIMIT: -0.1311 < -0.02",
+      "count": 156,
+      "pct_of_total": 0.7
+    },
+    {
+      "reason": "LOW_SCORE: 38.43 < 60.0, LOW_NOFI: 0.0000 < 0.2428, NEGATIVE_L2_PRESSURE: -0.9259 (bid << ask, depth=1), LOW_CONFIDENCE: 0.054 < 0.557, DAILY_LOSS_LIMIT: -0.1311 < -0.02",
+      "count": 129,
+      "pct_of_total": 0.5
+    },
+    {
+      "reason": "LOW_CONFIDENCE: 0.400 < 0.557",
+      "count": 120,
+      "pct_of_total": 0.5
+    },
+    {
+      "reason": "LOW_CONFIDENCE: 0.135 < 0.557, DAILY_LOSS_LIMIT: -0.1311 < -0.02",
+      "count": 104,
+      "pct_of_total": 0.4
+    }
+  ],
+  "exit_reasons": [
+    {
+      "reason": "HARD_STOP",
+      "count": 1,
+      "pct_of_total": 100.0
+    }
+  ],
+  "infra_health": {
+    "reconnects": 0,
+    "queue_drops": 0,
+    "errors": 0,
+    "restart_events": 0,
+    "emergency_liquidations": 0,
+    "unmonitored_positions": 0,
+    "disable_count": 0
+  },
+  "top_symbols": [
+    {
+      "symbol": "OPEN",
+      "trades": 1,
+      "win_rate": 0.0,
+      "net_pnl": -0.68
+    }
+  ],
+  "cross_comparison": null,
+  "daily_score": {
+    "net_positive": 0,
+    "profit_factor_bonus": 0,
+    "win_rate_bonus": 0,
+    "no_emergency_liq": 1,
+    "no_restarts": 1,
+    "total": 2
+  }
+}

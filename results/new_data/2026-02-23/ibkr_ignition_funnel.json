@@ -1,0 +1,34 @@
+{
+  "date": "2026-02-23",
+  "bot_id": "IBKR_MORPHEUS",
+  "summary": {
+    "signals_detected": 5081,
+    "signals_approved": 0,
+    "signals_rejected": 5081,
+    "trades_executed": 0
+  },
+  "funnel": {
+    "stage_1_detected": 5081,
+    "stage_2_ignition_passed": 0,
+    "stage_3_extension_passed": 0,
+    "stage_4_risk_passed": 0,
+    "stage_5_orders_submitted": 0
+  },
+  "conversion_rates": {
+    "detection_to_ignition_pct": 0.0,
+    "ignition_to_extension_pct": 0.0,
+    "extension_to_risk_pct": 0.0,
+    "risk_to_order_pct": 0.0,
+    "end_to_end_pct": 0.0
+  },
+  "bottleneck": "PRE_GATE (100.0% drop)",
+  "gating_breakdown": {
+    "by_reason": {},
+    "by_stage": {
+      "pre_gate": 5081,
+      "extension": 0,
+      "central_gating": 0
+    }
+  },
+  "downstream_blocks": {}
+}

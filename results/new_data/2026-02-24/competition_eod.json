@@ -1,0 +1,83 @@
+{
+  "date": "2026-02-24",
+  "bot_id": "IBKR",
+  "mode": "PAPER",
+  "generated_at": "2026-02-24T16:12:39.346535-05:00",
+  "summary": {
+    "trades_executed": 2,
+    "wins": 1,
+    "losses": 0,
+    "flats": 1,
+    "win_rate": 50.0,
+    "net_pnl": 11.46,
+    "profit_factor": 0.0,
+    "avg_win": 11.46,
+    "avg_loss": 0.0,
+    "max_drawdown": 0.0,
+    "largest_winner": 11.46,
+    "largest_loser": 0.0,
+    "first_trade_time": "08:01",
+    "last_trade_time": "10:18"
+  },
+  "funnel": {
+    "signals_scored": 11306,
+    "extension_passed": 7,
+    "ignition_passed": 7,
+    "meta_approved": 7,
+    "risk_approved": 7,
+    "executed": 2,
+    "ignition_pass_rate": 0.1,
+    "execution_rate": 28.6
+  },
+  "block_reasons": [
+    {
+      "reason": "SIGNAL_NOT_CONFIRMED",
+      "count": 4011,
+      "pct_of_total": 92.5
+    },
+    {
+      "reason": "SPREAD_UNSTABLE",
+      "count": 326,
+      "pct_of_total": 7.5
+    }
+  ],
+  "exit_reasons": [
+    {
+      "reason": "EXIT_MOMENTUM_DECAY",
+      "count": 2,
+      "pct_of_total": 100.0
+    }
+  ],
+  "infra_health": {
+    "reconnects": 0,
+    "queue_drops": 0,
+    "errors": 0,
+    "restart_events": 0,
+    "emergency_liquidations": 0,
+    "unmonitored_positions": 0,
+    "disable_count": 1
+  },
+  "top_symbols": [
+    {
+      "symbol": "IOVA",
+      "trades": 1,
+      "win_rate": 100.0,
+      "net_pnl": 11.46
+    },
+    {
+      "symbol": "GNPX",
+      "trades": 1,
+      "win_rate": 0.0,
+      "net_pnl": 0.0
+    }
+  ],
+  "cross_comparison": null,
+  "daily_score": {
+    "net_positive": 2,
+    "profit_factor_bonus": 0,
+    "win_rate_bonus": 1,
+    "no_emergency_liq": 1,
+    "no_restarts": 1,
+    "total": 5
+  }
+}

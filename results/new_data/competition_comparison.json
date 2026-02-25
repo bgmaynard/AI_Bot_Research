@@ -1,0 +1,300 @@
+{
+  "date": "2026-02-20",
+  "generated_at": "2026-02-20T19:49:32.688047-05:00",
+  "ibkr": {
+    "date": "2026-02-20",
+    "bot_id": "IBKR",
+    "mode": "PAPER",
+    "generated_at": "2026-02-20T19:49:15.627974-05:00",
+    "summary": {
+      "trades_executed": 21,
+      "wins": 12,
+      "losses": 8,
+      "flats": 1,
+      "win_rate": 57.1,
+      "net_pnl": -28.48,
+      "profit_factor": 0.75,
+      "avg_win": 7.13,
+      "avg_loss": -14.25,
+      "max_drawdown": 66.53,
+      "largest_winner": 16.4,
+      "largest_loser": -41.24,
+      "first_trade_time": "07:06",
+      "last_trade_time": "15:30"
+    },
+    "funnel": {
+      "signals_scored": 0,
+      "extension_passed": 0,
+      "ignition_passed": 0,
+      "meta_approved": 0,
+      "risk_approved": 0,
+      "executed": 0,
+      "ignition_pass_rate": 0.0,
+      "execution_rate": 0.0
+    },
+    "block_reasons": [
+      {
+        "reason": "SIGNAL_NOT_CONFIRMED",
+        "count": 1999,
+        "pct_of_total": 60.1
+      },
+      {
+        "reason": "SPREAD_UNSTABLE",
+        "count": 1329,
+        "pct_of_total": 39.9
+      }
+    ],
+    "exit_reasons": [
+      {
+        "reason": "MANUAL",
+        "count": 21,
+        "pct_of_total": 100.0
+      }
+    ],
+    "infra_health": {
+      "reconnects": 0,
+      "queue_drops": 0,
+      "errors": 0,
+      "restart_events": 0,
+      "emergency_liquidations": 21,
+      "unmonitored_positions": 0,
+      "disable_count": 0
+    },
+    "top_symbols": [
+      {
+        "symbol": "RXT",
+        "trades": 3,
+        "win_rate": 100.0,
+        "net_pnl": 25.93
+      },
+      {
+        "symbol": "EVTV",
+        "trades": 2,
+        "win_rate": 50.0,
+        "net_pnl": 16.4
+      },
+      {
+        "symbol": "KOS",
+        "trades": 3,
+        "win_rate": 66.7,
+        "net_pnl": 6.79
+      },
+      {
+        "symbol": "ANPA",
+        "trades": 1,
+        "win_rate": 100.0,
+        "net_pnl": 3.76
+      },
+      {
+        "symbol": "CDIO",
+        "trades": 5,
+        "win_rate": 40.0,
+        "net_pnl": 1.78
+      },
+      {
+        "symbol": "CORD",
+        "trades": 2,
+        "win_rate": 50.0,
+        "net_pnl": -8.0
+      },
+      {
+        "symbol": "OPEN",
+        "trades": 3,
+        "win_rate": 33.3,
+        "net_pnl": -35.68
+      },
+      {
+        "symbol": "SATL",
+        "trades": 2,
+        "win_rate": 50.0,
+        "net_pnl": -39.47
+      }
+    ],
+    "cross_comparison": null,
+    "daily_score": {
+      "net_positive": 0,
+      "profit_factor_bonus": 0,
+      "win_rate_bonus": 1,
+      "no_emergency_liq": 0,
+      "no_restarts": 1,
+      "total": 2
+    }
+  },
+  "morpheus": {
+    "date": "2026-02-20",
+    "bot_id": "Morpheus",
+    "mode": "MICRO",
+    "generated_at": "2026-02-20T19:49:20.541831-05:00",
+    "summary": {
+      "trades_executed": 1,
+      "wins": 0,
+      "losses": 1,
+      "flats": 0,
+      "win_rate": 0.0,
+      "net_pnl": -0.68,
+      "profit_factor": 0.0,
+      "avg_win": 0.0,
+      "avg_loss": -0.68,
+      "max_drawdown": 0.68,
+      "largest_winner": -0.68,
+      "largest_loser": -0.68,
+      "first_trade_time": "",
+      "last_trade_time": ""
+    },
+    "funnel": {
+      "signals_scored": 23668,
+      "extension_passed": 23668,
+      "ignition_passed": 23668,
+      "meta_approved": 0,
+      "risk_approved": 0,
+      "executed": 1,
+      "ignition_pass_rate": 100.0,
+      "execution_rate": 0.0
+    },
+    "block_reasons": [
+      {
+        "reason": "DAILY_LOSS_LIMIT: -0.1311 < -0.02",
+        "count": 671,
+        "pct_of_total": 2.8
+      },
+      {
+        "reason": "LOW_SCORE: 37.50 < 60.0, LOW_NOFI: 0.0000 < 0.2428, NEGATIVE_L2_PRESSURE: -1.0000 (bid << ask, depth=1), LOW_CONFIDENCE: 0.030 < 0.557, DAILY_LOSS_LIMIT: -0.1311 < -0.02",
+        "count": 156,
+        "pct_of_total": 0.7
+      },
+      {
+        "reason": "LOW_SCORE: 38.43 < 60.0, LOW_NOFI: 0.0000 < 0.2428, NEGATIVE_L2_PRESSURE: -0.9259 (bid << ask, depth=1), LOW_CONFIDENCE: 0.054 < 0.557, DAILY_LOSS_LIMIT: -0.1311 < -0.02",
+        "count": 129,
+        "pct_of_total": 0.5
+      },
+      {
+        "reason": "LOW_CONFIDENCE: 0.400 < 0.557",
+        "count": 120,
+        "pct_of_total": 0.5
+      },
+      {
+        "reason": "LOW_CONFIDENCE: 0.135 < 0.557, DAILY_LOSS_LIMIT: -0.1311 < -0.02",
+        "count": 104,
+        "pct_of_total": 0.4
+      }
+    ],
+    "exit_reasons": [
+      {
+        "reason": "HARD_STOP",
+        "count": 1,
+        "pct_of_total": 100.0
+      }
+    ],
+    "infra_health": {
+      "reconnects": 0,
+      "queue_drops": 0,
+      "errors": 0,
+      "restart_events": 0,
+      "emergency_liquidations": 0,
+      "unmonitored_positions": 0,
+      "disable_count": 0
+    },
+    "top_symbols": [
+      {
+        "symbol": "OPEN",
+        "trades": 1,
+        "win_rate": 0.0,
+        "net_pnl": -0.68
+      }
+    ],
+    "cross_comparison": null,
+    "daily_score": {
+      "net_positive": 0,
+      "profit_factor_bonus": 0,
+      "win_rate_bonus": 0,
+      "no_emergency_liq": 1,
+      "no_restarts": 1,
+      "total": 2
+    }
+  },
+  "cross_comparison": {
+    "trades_executed": {
+      "ibkr": 21,
+      "morpheus": 1
+    },
+    "net_pnl": {
+      "ibkr": -28.48,
+      "morpheus": -0.68
+    },
+    "win_rate": {
+      "ibkr": 57.1,
+      "morpheus": 0.0
+    },
+    "profit_factor": {
+      "ibkr": 0.75,
+      "morpheus": 0.0
+    },
+    "avg_win": {
+      "ibkr": 7.13,
+      "morpheus": 0.0
+    },
+    "avg_loss": {
+      "ibkr": -14.25,
+      "morpheus": -0.68
+    },
+    "max_drawdown": {
+      "ibkr": 66.53,
+      "morpheus": 0.68
+    },
+    "largest_winner": {
+      "ibkr": 16.4,
+      "morpheus": -0.68
+    },
+    "largest_loser": {
+      "ibkr": -41.24,
+      "morpheus": -0.68
+    },
+    "signals_scored": {
+      "ibkr": 0,
+      "morpheus": 23668
+    },
+    "ignition_pass_rate": {
+      "ibkr": 0.0,
+      "morpheus": 100.0
+    },
+    "execution_rate": {
+      "ibkr": 0.0,
+      "morpheus": 0.0
+    },
+    "emergency_liquidations": {
+      "ibkr": 21,
+      "morpheus": 0
+    },
+    "restart_events": {
+      "ibkr": 0,
+      "morpheus": 0
+    },
+    "disable_count": {
+      "ibkr": 0,
+      "morpheus": 0
+    },
+    "daily_score": {
+      "ibkr": 2,
+      "morpheus": 2
+    }
+  },
+  "scores": {
+    "ibkr": {
+      "net_positive": 0,
+      "profit_factor_bonus": 0,
+      "win_rate_bonus": 1,
+      "no_emergency_liq": 0,
+      "no_restarts": 1,
+      "total": 2
+    },
+    "morpheus": {
+      "net_positive": 0,
+      "profit_factor_bonus": 0,
+      "win_rate_bonus": 0,
+      "no_emergency_liq": 1,
+      "no_restarts": 1,
+      "total": 2
+    }
+  },
+  "winner": "Morpheus"
+}

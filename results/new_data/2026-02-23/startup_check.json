@@ -1,0 +1,25 @@
+{
+  "date": "2026-02-23",
+  "checked_at_et": "04:42:31",
+  "ibkr": {
+    "server_boots_clean": false,
+    "heartbeat_fresh": false,
+    "queue_drops": 0,
+    "feed_connected": false,
+    "disable_count": 0,
+    "flip_flop_locked": false,
+    "daily_pnl_reset": true,
+    "session_equity": 0.0
+  },
+  "morpheus": {
+    "server_boots_clean": false,
+    "heartbeat_fresh": true,
+    "queue_drops": 0,
+    "feed_connected": true,
+    "disable_count": 0,
+    "flip_flop_locked": false,
+    "daily_pnl_reset": true,
+    "session_equity": 0.0
+  },
+  "all_pass": false
+}

@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-02-23T07:00:15.167634-05:00",
+  "check": "7AM_VERIFICATION",
+  "schwab_token": "ERROR: timed out",
+  "scalper_running": true,
+  "scalper_enabled": true,
+  "watchlist_count": 10,
+  "open_positions": 0,
+  "max_ai_reachable": true,
+  "issues": [
+    "Cannot reach IBKR server: timed out"
+  ],
+  "position_file_exists": true,
+  "verdict": "ISSUES_FOUND"
+}

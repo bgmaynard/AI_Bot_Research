@@ -1,0 +1,64 @@
+{
+  "date": "2026-02-23",
+  "bot_id": "IBKR",
+  "mode": "PAPER",
+  "generated_at": "2026-02-23T17:03:50.122718-05:00",
+  "summary": {
+    "trades_executed": 0,
+    "wins": 0,
+    "losses": 0,
+    "flats": 0,
+    "win_rate": 0.0,
+    "net_pnl": 0.0,
+    "profit_factor": 0.0,
+    "avg_win": 0.0,
+    "avg_loss": 0.0,
+    "max_drawdown": 0.0,
+    "largest_winner": 0.0,
+    "largest_loser": 0.0,
+    "first_trade_time": "",
+    "last_trade_time": ""
+  },
+  "funnel": {
+    "signals_scored": 4058,
+    "extension_passed": 108,
+    "ignition_passed": 108,
+    "meta_approved": 108,
+    "risk_approved": 108,
+    "executed": 1,
+    "ignition_pass_rate": 2.7,
+    "execution_rate": 0.9
+  },
+  "block_reasons": [
+    {
+      "reason": "SIGNAL_NOT_CONFIRMED",
+      "count": 1677,
+      "pct_of_total": 60.9
+    },
+    {
+      "reason": "SPREAD_UNSTABLE",
+      "count": 1078,
+      "pct_of_total": 39.1
+    }
+  ],
+  "exit_reasons": [],
+  "infra_health": {
+    "reconnects": 0,
+    "queue_drops": 0,
+    "errors": 0,
+    "restart_events": 0,
+    "emergency_liquidations": 0,
+    "unmonitored_positions": 0,
+    "disable_count": 0
+  },
+  "top_symbols": [],
+  "cross_comparison": null,
+  "daily_score": {
+    "net_positive": 0,
+    "profit_factor_bonus": 0,
+    "win_rate_bonus": 0,
+    "no_emergency_liq": 1,
+    "no_restarts": 1,
+    "total": 2
+  }
+}

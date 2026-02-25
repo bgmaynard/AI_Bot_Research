@@ -1,0 +1,110 @@
+{
+  "date": "2026-02-24",
+  "bot_id": "Morpheus",
+  "mode": "LIVE",
+  "generated_at": "2026-02-24T16:14:22.474277-05:00",
+  "summary": {
+    "trades_executed": 5,
+    "wins": 2,
+    "losses": 3,
+    "flats": 0,
+    "win_rate": 40.0,
+    "net_pnl": -0.38,
+    "profit_factor": 0.53,
+    "avg_win": 0.21,
+    "avg_loss": -0.27,
+    "max_drawdown": 0.74,
+    "largest_winner": 0.35,
+    "largest_loser": -0.34,
+    "first_trade_time": "",
+    "last_trade_time": ""
+  },
+  "funnel": {
+    "signals_scored": 1917,
+    "extension_passed": 3833,
+    "ignition_passed": 3833,
+    "meta_approved": 0,
+    "risk_approved": 0,
+    "executed": 5,
+    "ignition_pass_rate": 199.9,
+    "execution_rate": 0.1
+  },
+  "block_reasons": [
+    {
+      "reason": "regime_position_limit",
+      "count": 981,
+      "pct_of_total": 25.6
+    },
+    {
+      "reason": "LOW_SCORE: 31.74 < 60.0, LOW_NOFI: -0.4935 < 0.2428, NEGATIVE_L2_PRESSURE: -0.5907 (bid << ask, depth=1)",
+      "count": 366,
+      "pct_of_total": 9.5
+    },
+    {
+      "reason": "insufficient_room_to_profit",
+      "count": 358,
+      "pct_of_total": 9.3
+    },
+    {
+      "reason": "Signal direction misaligned with regime 'volatile_trending_down'",
+      "count": 191,
+      "pct_of_total": 5.0
+    },
+    {
+      "reason": "LOW_SCORE: 50.82 < 60.0",
+      "count": 187,
+      "pct_of_total": 4.9
+    }
+  ],
+  "exit_reasons": [
+    {
+      "reason": "TIME_STOP",
+      "count": 5,
+      "pct_of_total": 100.0
+    }
+  ],
+  "infra_health": {
+    "reconnects": 0,
+    "queue_drops": 0,
+    "errors": 0,
+    "restart_events": 0,
+    "emergency_liquidations": 0,
+    "unmonitored_positions": 0,
+    "disable_count": 0
+  },
+  "top_symbols": [
+    {
+      "symbol": "BITF",
+      "trades": 1,
+      "win_rate": 100.0,
+      "net_pnl": 0.07
+    },
+    {
+      "symbol": "CIFR",
+      "trades": 2,
+      "win_rate": 50.0,
+      "net_pnl": 0.01
+    },
+    {
+      "symbol": "SAVA",
+      "trades": 1,
+      "win_rate": 0.0,
+      "net_pnl": -0.21
+    },
+    {
+      "symbol": "KULR",
+      "trades": 1,
+      "win_rate": 0.0,
+      "net_pnl": -0.26
+    }
+  ],
+  "cross_comparison": null,
+  "daily_score": {
+    "net_positive": 0,
+    "profit_factor_bonus": 0,
+    "win_rate_bonus": 0,
+    "no_emergency_liq": 1,
+    "no_restarts": 1,
+    "total": 2
+  }
+}

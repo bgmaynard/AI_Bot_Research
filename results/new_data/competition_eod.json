@@ -1,0 +1,119 @@
+{
+  "date": "2026-02-20",
+  "bot_id": "IBKR",
+  "mode": "PAPER",
+  "generated_at": "2026-02-20T19:49:15.627974-05:00",
+  "summary": {
+    "trades_executed": 21,
+    "wins": 12,
+    "losses": 8,
+    "flats": 1,
+    "win_rate": 57.1,
+    "net_pnl": -28.48,
+    "profit_factor": 0.75,
+    "avg_win": 7.13,
+    "avg_loss": -14.25,
+    "max_drawdown": 66.53,
+    "largest_winner": 16.4,
+    "largest_loser": -41.24,
+    "first_trade_time": "07:06",
+    "last_trade_time": "15:30"
+  },
+  "funnel": {
+    "signals_scored": 0,
+    "extension_passed": 0,
+    "ignition_passed": 0,
+    "meta_approved": 0,
+    "risk_approved": 0,
+    "executed": 0,
+    "ignition_pass_rate": 0.0,
+    "execution_rate": 0.0
+  },
+  "block_reasons": [
+    {
+      "reason": "SIGNAL_NOT_CONFIRMED",
+      "count": 1999,
+      "pct_of_total": 60.1
+    },
+    {
+      "reason": "SPREAD_UNSTABLE",
+      "count": 1329,
+      "pct_of_total": 39.9
+    }
+  ],
+  "exit_reasons": [
+    {
+      "reason": "MANUAL",
+      "count": 21,
+      "pct_of_total": 100.0
+    }
+  ],
+  "infra_health": {
+    "reconnects": 0,
+    "queue_drops": 0,
+    "errors": 0,
+    "restart_events": 0,
+    "emergency_liquidations": 21,
+    "unmonitored_positions": 0,
+    "disable_count": 0
+  },
+  "top_symbols": [
+    {
+      "symbol": "RXT",
+      "trades": 3,
+      "win_rate": 100.0,
+      "net_pnl": 25.93
+    },
+    {
+      "symbol": "EVTV",
+      "trades": 2,
+      "win_rate": 50.0,
+      "net_pnl": 16.4
+    },
+    {
+      "symbol": "KOS",
+      "trades": 3,
+      "win_rate": 66.7,
+      "net_pnl": 6.79
+    },
+    {
+      "symbol": "ANPA",
+      "trades": 1,
+      "win_rate": 100.0,
+      "net_pnl": 3.76
+    },
+    {
+      "symbol": "CDIO",
+      "trades": 5,
+      "win_rate": 40.0,
+      "net_pnl": 1.78
+    },
+    {
+      "symbol": "CORD",
+      "trades": 2,
+      "win_rate": 50.0,
+      "net_pnl": -8.0
+    },
+    {
+      "symbol": "OPEN",
+      "trades": 3,
+      "win_rate": 33.3,
+      "net_pnl": -35.68
+    },
+    {
+      "symbol": "SATL",
+      "trades": 2,
+      "win_rate": 50.0,
+      "net_pnl": -39.47
+    }
+  ],
+  "cross_comparison": null,
+  "daily_score": {
+    "net_positive": 0,
+    "profit_factor_bonus": 0,
+    "win_rate_bonus": 1,
+    "no_emergency_liq": 0,
+    "no_restarts": 1,
+    "total": 2
+  }
+}
