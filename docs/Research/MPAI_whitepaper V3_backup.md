@@ -1,6 +1,6 @@
 # MORPHEUS AI
 # Microstructure Pressure & Arbitrage Index (MPAI)
-## Brainstorming & Research Whitepaper — Version 4.0
+## Brainstorming & Research Whitepaper
 
 Version: 3.1
 Last Updated: 2026-02-21
@@ -322,38 +322,13 @@ These are the building blocks we're brainstorming. Each one is a separate resear
 - FADE in HIGH vol at 30s: **56.1% hit rate at 60s, 2.22 R:R** (n=435)
 - MFE median $0.10 vs MAE median $0.045
 - Edge decays by 180s
-- **What this means for MPAI:** Pressure spikes in high-vol regimes ARE real, detectable events. This is a standalone reversion signal, NOT a Morpheus integration signal.
+- **What this means for MPAI:** Pressure spikes in high-vol regimes ARE real, detectable events. They tell us the market's plumbing is stressed. This is the kind of signal that could precede momentum ignition.
 
-### Phase 9 v2: Quality Filters — ALL FALSIFIED
-- **HYP-023 (pressure slope filter):** All thresholds ns. Best p=0.464. REJECT group had higher WR at lower thresholds.
-- **HYP-024 (volume acceleration filter):** Confirmed as ignition precursor (p=0.038 vs controls) but zero quality filtering power. All thresholds ns.
-- **HYP-025 (combined gate):** p=0.888. NEITHER group outperformed BOTH PASS.
-- **Key finding:** MFE/MAE analysis revealed Morpheus momentum scalping is extremely binary. Median MFE=0.000% — nearly half of active trades never went into profit. Only 10.8% had both MFE>0 AND MAE>0.
-
-### Phase 10B + 10B.1: Structural Zones — FALSIFIED
-- Phase 10B was invalid (81% NO_DATA — Databento only has data for dates Morpheus traded).
-- Phase 10B.1 fixed coverage to 100% using yfinance daily OHLC.
-- **Result:** WR ns at all 4 ATR thresholds (0.10, 0.25, 0.50, 1.0). Even at ATR 1.0 with n=230, TOP_ZONE indistinguishable from MID.
-- MAE was lower near PDH but MFE also lower = compressed moves, not edge.
-- BOTTOM_ZONE nearly empty — these stocks gap 5+ ATR from prior-day levels.
-
-### MPAI Microstructure Research: CONCLUDED — NO MORPHEUS INTEGRATION SIGNAL
-
-After 10 phases of testing across timing, direction, quality filtering, and structural conditioning, **Databento XNAS.ITCH trade-level microstructure data contains zero actionable signals for improving Morpheus momentum scalping entries on $1-$20 low-float stocks.**
-
-Why: These stocks live in permanently chaotic, HIGH volatility microstructure. They are retail-driven with erratic order flow. Pressure_z spikes are ubiquitous and cannot separate winners from losers. 78% of symbols are single-day runners. Standard microstructure assumptions (institutional flow detection, structural levels) do not apply.
-
-### What Survived
-- **HYP-003 only:** Inventory fade reversion in high-vol (56.1% WR, 2.22 R:R, n=435). Standalone signal for potential development on more liquid instruments.
-
-### What the Trade Ledger Revealed Instead
-Mining Morpheus's own trade data (1,944 trades, 18 days) found three statistically significant patterns that require no external data:
-
-1. **Price ≥ $5 filter:** 53.9% WR vs 45.7%. p=0.0000. Hard stop rate drops 16%→6%. Sub-$1.50 is toxic (41.6% WR, 37% hard stop rate, -$272 in 18 days).
-2. **Hold time 30-300s sweet spot:** 54.3% WR vs 43.4%. p=0.0000. Exit logic insight — 433 trades exit in <30s at 46.2% WR.
-3. **Hard stop + timeout = entire system deficit:** 148 hard stops (0% WR, -$1,911) + 134 timeouts (28.4% WR, -$685) = -$2,596 from 25% of active trades.
-
-**Note:** These findings were measured on pre-Feb-10 Morpheus (150-250 trades/day). Post-Feb-17 system changes (STABILITY LOCK, regime context, falling-knife gate) reduced trade volume to 2-21/day. Hard stop adaptive was already disabled. Out-of-sample validation pending data accumulation.
+### What We Still Need to Prove
+1. Does pressure buildup precede Morpheus ignition events? (timing)
+2. By how many seconds/milliseconds? (the actual edge)
+3. Do entries with pressure confirmation have better MFE/MAE? (the payoff)
+4. Does this survive out-of-sample testing? (is it real)
 
 ---
 
@@ -441,36 +416,32 @@ Beyond the MPAI components above, these are additional directions worth explorin
 | HYP-023 | Pressure slope ≥ 0 filter improves trade quality | **FALSIFIED** | Phase 9 v2. All thresholds ns. Best p=0.464. REJECT group had higher WR. |
 | HYP-024 | Volume acceleration threshold improves ignition readiness | **FALSIFIED as filter** | Confirmed precursor (p=0.038 vs controls) but zero quality filtering power. Phase 9 v2: all thresholds ns. |
 | HYP-025 | Combined gate: (vol_accel > X) AND (slope ≥ 0) | **FALSIFIED** | Phase 9 v2. p=0.888. NEITHER group was better. |
-| HYP-023A | Pressure behavior near PDH/PDL structural zones differs from mid-range | **FALSIFIED** | Phase 10B.1. yfinance fix gave 100% coverage. WR ns at all 4 ATR thresholds (0.1/0.25/0.5/1.0). MAE lower near PDH but MFE also lower = compressed moves, not edge. |
+| HYP-023A | Pressure behavior near PDH/PDL structural zones differs from mid-range | **UNTESTED — NEW TRACK** | Conditioning layer, not signal. Needs PDH/PDL + ATR data per trade. |
 
 ---
 
 ## 11. Priority Research Path
 
-### COMPLETED — Phases 1-10 (MPAI Microstructure Track CLOSED)
+### IMMEDIATE — Phase 9 (Current)
+1. **HYP-023:** Grid sweep pressure_slope thresholds on existing 18-day/1,944-trade dataset. Does slope ≥ 0 filter improve win rate, PnL, MFE/MAE?
+2. **HYP-024:** Grid sweep volume_acceleration quantile thresholds (60/70/80/90th pct). Find optimal threshold.
+3. **HYP-025:** Test combined gate (vol_accel > X AND slope ≥ 0). Measure interaction effect.
+4. **Stability checks:** Confirm findings hold per-ticker and across time-of-day buckets (open/mid/close).
 
-All testing of Databento XNAS.ITCH microstructure data for Morpheus integration is complete. 6 hypotheses falsified, 1 confirmed (standalone only), 1 not applicable. No further microstructure filter development for $1-$20 momentum scalping.
+### SHORT TERM — Validate and Harden
+5. **Per-symbol breakdown:** Ensure winner/loser divergence isn't driven by 1-2 dominant tickers (CISS = 413 trades).
+6. **HYP-016:** Test volume-clock bars vs time bars. Same data, different aggregation.
+7. **HYP-015:** Compute VPIN. Uses existing buy/sell classification. Strong academic backing.
+8. **Coverage improvement:** Investigate why only 420/1944 events (21.6%) computed valid profiles. Sparse tick data? Time alignment?
 
-### IMMEDIATE — Trade Ledger Optimization
+### MEDIUM TERM — If Phase 9 Confirms
+9. **Prototype Morpheus filter gate:** If HYP-023/024/025 confirm, build a filter that rejects entries with fading pressure + low volume acceleration.
+10. **Paper execution simulation:** Run filter retroactively on all 1,944 trades, compute hypothetical PnL improvement.
+11. **HYP-003 expansion:** Get n > 1000 for the fade finding. More tickers, more days.
 
-1. **Price floor implementation:** Validate price ≥ $5 finding on current Morpheus output (post-Feb-17 system). Minimum viable change: raise `min_price` from 1.0 to 3.0 or 5.0 in scalper_config.json.
-2. **Out-of-sample validation:** Accumulate 100+ trades on current system (est. 2-4 weeks at current rate) and re-test price filter.
-
-### SHORT TERM — Exit Logic Analysis
-
-3. **Early exit investigation:** Analyze the 10-30s exit pattern. Are decay velocity/volume detectors firing too aggressively on normal momentum noise?
-4. **Max hold timeout analysis:** Can momentum state at the 3-minute mark predict whether to keep holding or cut early?
-5. **Exit category profiling** on current system to confirm momentum decay exits remain the primary profit driver.
-
-### MEDIUM TERM — Potential New Directions
-
-6. **HYP-003 standalone development:** Inventory fade reversion (56.1% WR, 2.22 R:R) could be developed as its own strategy on more liquid instruments where microstructure signals are stronger.
-7. **Cross-bot analysis:** Compare IBKR_Morpheus vs Morpheus_AI trade quality by price tier, exit type, and hold time.
-8. **Morpheus configuration sensitivity study:** Systematic measurement of how each post-Feb-10 change (regime context, falling-knife gate, extension filter) affected trade quality.
-
-### LONGER TERM — If Trade Ledger Findings Validate
-9. Formal promotion proposal for price floor change via Research → Validate → Promote → Implement workflow
-10. Exit timing parameter tuning through controlled A/B testing
+### LONGER TERM — Production Path
+12. Shadow validation against live trades
+13. Production integration ONLY after all gates passed
 
 ---
 
@@ -553,12 +524,6 @@ The MPAI objective was never to predict price direction from raw pressure — Ph
 - Minimum n ≥ 50 in the filtered group
 
 **Deliverable:** `docs/Research/PHASE9_IgnitionPrecursors_Results.md`
-
-### Phase 9 Results (2026-02-22)
-
-**ALL THREE HYPOTHESES FALSIFIED.** See Section 8 for summary. Full results in `docs/Research/PHASE9_Results.md`.
-
-The pressure slope and volume acceleration findings from HYP-013 (descriptive: winners have slightly better pressure profiles) did not translate into usable trade quality filters (predictive: filtering by these metrics does not improve outcomes). Descriptive ≠ predictive.
 
 ---
 
@@ -726,41 +691,34 @@ Structural conditioning must pass:
 
 **If not → reject hypothesis. No exceptions.**
 
-### 16.7 Phase 10B Status (2026-02-25)
+### 16.7 Phase 10B Status (2026-02-22)
 
-**Phase 10B: INVALID** — PDH/PDL coverage failure. 81% NO_DATA. Databento only stores data for Morpheus trading days. 78% single-day runners.
+**Phase 10B: INVALID** — PDH/PDL coverage failure. 81% of events had NO_DATA because Databento only stores data for dates Morpheus traded each symbol. 78% of symbols are single-day runners with no previous day in cache. Zone counts: TOP=3, BOTTOM=1, MID=212 at ATR 0.25. Untestable.
 
-**Phase 10B.1: FIXED + RUN → FALSIFIED** — yfinance gave 100% coverage. Results: WR ns at all 4 ATR thresholds. TOP_ZONE had lower MAE but also lower MFE (compressed moves, not edge). BOTTOM_ZONE nearly empty — stocks gap too far from prior-day levels.
+**Root cause:** Daily OHLC was sourced from Databento tick data, which only exists for Morpheus trading days. Most low-float momentum stocks only appear once.
 
-**HYP-023A: FALSIFIED.** Structural liquidity zones do not alter trade quality for $1-$20 low-float momentum stocks. These stocks operate outside the price range where PDH/PDL levels are meaningful.
+**Phase 10B.1: FIX** — Replace Databento daily OHLC with yfinance API for universal coverage. Add 5-day backfill for symbols with sparse trading history. Add ATR 1.0 threshold to capture wider zone proximity. Coverage target: 90%+.
+
+**Status:** Only after zone sample sizes are sufficient (n ≥ 50 per zone minimum, n ≥ 500 for validation gate) do we interpret results. Until then, HYP-023A remains untested.
 
 ---
 
 ## 17. The Bottom Line
 
-We set out to answer one question:
+We trade momentum. Morpheus is good at detecting when momentum ignites. But by that point, some of the move is gone.
+
+The entire purpose of MPAI research is to answer one question:
 
 **Can we detect the pressure building BEFORE momentum ignites, and does that detection give us measurably better entries?**
 
-After 10 phases of rigorous testing across timing, direction, quality filtering, and structural conditioning, the answer is **no** — at least not for $1-$20 low-float momentum stocks using Databento XNAS.ITCH trade data.
+If yes — we incorporate it into Morpheus and capture more of each move.
+If no — we documented what doesn't work and move on.
 
-The microstructure of these stocks is too chaotic, too retail-driven, and too disconnected from institutional flow patterns for tick-level pressure analysis to separate winners from losers. Pressure spikes are ubiquitous. Every signal we tested was either non-significant or worked in the wrong direction.
+Everything in this document is an idea until the data says otherwise. The research server tests ideas invisibly, without touching the bots. Only validated, proven discoveries cross the line into production.
 
-**But the research was not wasted.** The disciplined process of testing and failing led us to mine the trade ledger itself, where we found statistically significant patterns (price filtering p=0.0000, hold time p=0.0000) that are directly actionable without any external data.
-
-**What survived:**
-- HYP-003 (inventory fade reversion): 56.1% WR, 2.22 R:R. Standalone signal for potential development on more liquid instruments.
-- Price ≥ $5 filter: +8.2pp WR improvement. Entry-time actionable.
-- Exit timing insights: Early exits too aggressive, 2-5min window most profitable, hard stops + timeouts = entire system deficit.
-
-**What's next:** Validate trade ledger findings on the current (post-Feb-17) Morpheus system. Implement price floor. Optimize exit logic. The path forward is internal optimization, not external microstructure signals.
-
-The MPAI microstructure track is formally closed. All ideas in this document remain documented for reference, but no further testing of Databento-derived signals for Morpheus integration is planned.
-
-Data first. Always.
+One validated component at a time. Data first. Always.
 
 ---
 
-*End of Document — Version 4.0*
-*Updated: 2026-02-25 — MPAI microstructure track closed. Pivoted to trade ledger optimization.*
+*End of Document — Version 3.1*
 *This is a living document. Add ideas freely. Test everything. Implement nothing until proven.*
