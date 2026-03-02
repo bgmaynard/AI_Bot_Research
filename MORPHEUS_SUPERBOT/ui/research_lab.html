@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morpheus Research Lab - Shadow Environment</title>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════════════
+           MORPHEUS RESEARCH LAB - CSS
+           Shadow Environment Visibility Panel
+           ═══════════════════════════════════════════════════════════════════ */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-panel: #12121a;
+            --bg-card: #1a1a25;
+            --bg-header: #1e1e2a;
+            --border: #2a2a3a;
+            --text: #c0c0c0;
+            --text-dim: #666680;
+            --accent: #6366f1;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+        }
+
+        body {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            background: var(--bg-dark);
+            color: var(--text);
+            font-size: 12px;
+            min-height: 100vh;
+        }
+
+        /* ─────────────────────────────────────────────────────────────────
+           HEADER
+           ───────────────────────────────────────────────────────────────── */
+
+        .header {
+            background: linear-gradient(180deg, var(--bg-header) 0%, var(--bg-panel) 100%);
+            border-bottom: 2px solid var(--accent);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+
+        .header-subtitle {
+            font-size: 11px;
+            color: var(--warning);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border: 1px solid var(--warning);
+            border-radius: 4px;
+        }
+
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--danger);
+        }
+
+        .status-dot.connected {
+            background: var(--success);
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        .btn-refresh {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 6px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            transition: all 0.2s;
+        }
+
+        .btn-refresh:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* ─────────────────────────────────────────────────────────────────
+           INTEGRITY WARNING BANNER
+           ───────────────────────────────────────────────────────────────── */
+
+        .warning-banner {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.1) 100%);
+            border: 2px solid var(--danger);
+            border-radius: 8px;
+            padding: 16px 24px;
+            margin: 16px 24px;
+            display: none;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .warning-banner.show {
+            display: flex;
+        }
+
+        .warning-icon {
+            font-size: 32px;
+        }
+
+        .warning-content h3 {
+            color: var(--danger);
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .warning-content p {
+            color: var(--text-dim);
+            font-size: 12px;
+        }
+
+        /* ─────────────────────────────────────────────────────────────────
+           MAIN LAYOUT
+           ───────────────────────────────────────────────────────────────── */
+
+        .main-container {
+            padding: 16px 24px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: var(--bg-header);
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-badge {
+            font-size: 10px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent);
+        }
+
+        .section-content {
+            padding: 20px;
+        }
+
+        /* ─────────────────────────────────────────────────────────────────
+           SECTION A: STATUS DASHBOARD
+           ───────────────────────────────────────────────────────────────── */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .stat-value.success { color: var(--success); }
+        .stat-value.warning { color: var(--warning); }
+        .stat-value.danger { color: var(--danger); }
+        .stat-value.positive { color: var(--success); }
+        .stat-value.negative { color: var(--danger); }
+
+        .stat-label {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ─────────────────────────────────────────────────────────────────
+           SECTION B: INTEGRITY PANEL
+           ───────────────────────────────────────────────────────────────── */
+
+        .integrity-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            align-items: center;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-badge.green {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .status-badge.yellow {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+            border: 1px solid var(--warning);
+        }
+
+        .status-badge.red {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+        }
+
+        /* ─────────────────────────────────────────────────────────────────
+           SECTION C: SHADOW RUNS TABLE
+           ───────────────────────────────────────────────────────────────── */
+
+        .table-container {
+            max-height: 350px;
+            overflow-y: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            background: var(--bg-header);
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(42, 42, 58, 0.5);
+            font-size: 11px;
+        }
+
+        .data-table tr.clickable-row {
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .data-table tr.clickable-row:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .mono {
+            font-family: 'Consolas', monospace;
+            font-size: 10px;
+        }
+
+        .positive { color: var(--success); }
+        .negative { color: var(--danger); }
+        .warning { color: var(--warning); }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge.success { background: rgba(34, 197, 94, 0.2); color: var(--success); }
+        .badge.warning { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+        .badge.danger { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
+        .badge.neutral { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+        .badge.info { background: rgba(59, 130, 246, 0.2); color: var(--info); }
+
+        .empty-cell {
+            text-align: center;
+            padding: 40px !important;
+            color: var(--text-dim);
+        }
+
+        /* ─────────────────────────────────────────────────────────────────
+           SECTION D: WALK-FORWARD
+           ───────────────────────────────────────────────────────────────── */
+
+        .wf-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .wf-stat {
+            background: var(--bg-card);
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .wf-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .wf-value.positive { color: var(--success); }
+        .wf-value.negative { color: var(--danger); }
+        .wf-value.danger { color: var(--danger); }
+        .wf-value.success { color: var(--success); }
+
+        .wf-label {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+
+        .wf-indicator {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            padding: 16px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+
+        .wf-indicator.pass {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--success);
+            border: 2px solid var(--success);
+        }
+
+        .wf-indicator.fail {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
+            border: 2px solid var(--danger);
+        }
+
+        .wf-warning {
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid var(--warning);
+            border-radius: 6px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+            font-size: 11px;
+            color: var(--warning);
+        }
+
+        .wf-warning.danger {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-dim);
+        }
+
+        /* ─────────────────────────────────────────────────────────────────
+           SECTION E: PROPOSAL QUEUE
+           ───────────────────────────────────────────────────────────────── */
+
+        .action-cell {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn-sm {
+            padding: 4px 10px;
+            font-size: 9px;
+        }
+
+        .btn-success {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .btn-success:hover { background: rgba(34, 197, 94, 0.3); }
+        .btn-success:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn-danger {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+        }
+
+        .btn-danger:hover { background: rgba(239, 68, 68, 0.3); }
+
+        .btn-info {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--info);
+            border: 1px solid var(--info);
+        }
+
+        .btn-info:hover { background: rgba(59, 130, 246, 0.3); }
+
+        /* ─────────────────────────────────────────────────────────────────
+           MODAL
+           ───────────────────────────────────────────────────────────────── */
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            background: var(--bg-header);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 14px;
+            color: var(--accent);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: var(--danger);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border-radius: 6px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .metric-label {
+            font-size: 9px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .chart-container {
+            background: var(--bg-card);
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .chart-container h3 {
+            font-size: 12px;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .chart-container canvas {
+            height: 200px !important;
+        }
+
+        .regime-breakdown {
+            margin-bottom: 20px;
+        }
+
+        .regime-breakdown h3 {
+            font-size: 12px;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .regime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .regime-card {
+            background: var(--bg-card);
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        .regime-name {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .regime-stats {
+            display: flex;
+            gap: 12px;
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+
+        .diff-section {
+            margin-bottom: 20px;
+        }
+
+        .diff-section h3 {
+            font-size: 12px;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .diff-item {
+            background: var(--bg-card);
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .diff-label {
+            color: var(--text-dim);
+        }
+
+        .diff-value {
+            font-weight: 600;
+        }
+
+        .evidence-section {
+            margin-bottom: 20px;
+        }
+
+        .evidence-section h3 {
+            font-size: 12px;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .evidence-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .code-block {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 12px;
+            font-family: 'Consolas', monospace;
+            font-size: 11px;
+            overflow-x: auto;
+            white-space: pre;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 40px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            text-align: center;
+            color: var(--danger);
+            padding: 40px;
+        }
+
+        /* ─────────────────────────────────────────────────────────────────
+           FOOTER
+           ───────────────────────────────────────────────────────────────── */
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-dim);
+            font-size: 10px;
+            border-top: 1px solid var(--border);
+            margin-top: 24px;
+        }
+
+        .footer-warning {
+            color: var(--danger);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        /* ─────────────────────────────────────────────────────────────────
+           SCROLLBARS
+           ───────────────────────────────────────────────────────────────── */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-card);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a3a4a;
+        }
+    </style>
+</head>
+<body>
+    <!-- ═══════════════════════════════════════════════════════════════════
+         HEADER
+         ═══════════════════════════════════════════════════════════════════ -->
+    <header class="header">
+        <div class="header-title">
+            <h1>MORPHEUS RESEARCH LAB</h1>
+            <span class="header-subtitle">SHADOW ENVIRONMENT ONLY</span>
+        </div>
+        <div class="header-status">
+            <div class="connection-status">
+                <span class="status-dot" id="connectionDot"></span>
+                <span id="connectionText">Connecting...</span>
+            </div>
+            <span id="lastUpdate" style="color: var(--text-dim); font-size: 10px;">--</span>
+            <button class="btn-refresh" onclick="refreshAll()">↻ Refresh</button>
+        </div>
+    </header>
+
+    <!-- Integrity Warning Banner -->
+    <div class="warning-banner" id="integrityWarning">
+        <span class="warning-icon">⚠️</span>
+        <div class="warning-content">
+            <h3>REPLAY INTEGRITY FAILURE — DO NOT TUNE</h3>
+            <p id="warningMessage">Replay accuracy below threshold. Results may be unreliable.</p>
+        </div>
+    </div>
+
+    <main class="main-container">
+        <!-- ═══════════════════════════════════════════════════════════════════
+             SECTION A: Research Status Dashboard
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-title">A. Research Status Dashboard</span>
+                <span class="section-badge">Core Metrics</span>
+            </div>
+            <div class="section-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="lastIngestion">--</div>
+                        <div class="stat-label">Last Ingestion</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="signalsIngested">--</div>
+                        <div class="stat-label">Signals Ingested</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="tradesIngested">--</div>
+                        <div class="stat-label">Trades Ingested</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="regimesIngested">--</div>
+                        <div class="stat-label">Regimes Ingested</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value mono" id="dataHash">--</div>
+                        <div class="stat-label">Data Hash</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value mono" id="gitSha">--</div>
+                        <div class="stat-label">Git SHA</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value mono" id="lastShadowRun">--</div>
+                        <div class="stat-label">Last Shadow Run</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="replayAccuracy">--</div>
+                        <div class="stat-label">Replay Accuracy</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             SECTION B: Replay Integrity Panel
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-title">B. Replay Integrity</span>
+                <span class="section-badge" id="integrityStatus">--</span>
+            </div>
+            <div class="section-content">
+                <div class="integrity-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="prodTradeCount">--</div>
+                        <div class="stat-label">Production Trades</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="replayTradeCount">--</div>
+                        <div class="stat-label">Replay Trades</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="matchedPct">--</div>
+                        <div class="stat-label">Matched %</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="entryVariance">--</div>
+                        <div class="stat-label">Entry Variance</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="exitVariance">--</div>
+                        <div class="stat-label">Exit Variance</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             SECTION C: Shadow Runs Table
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-title">C. Shadow Runs</span>
+                <span class="section-badge" id="runsCount">0 runs</span>
+            </div>
+            <div class="section-content">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Run ID</th>
+                                <th>Config Hash</th>
+                                <th>Date Range</th>
+                                <th>Expectancy</th>
+                                <th>Max DD</th>
+                                <th>Trades</th>
+                                <th>WF Pass</th>
+                                <th>Created</th>
+                            </tr>
+                        </thead>
+                        <tbody id="runsTableBody">
+                            <tr><td colspan="8" class="empty-cell">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             SECTION D: Walk-Forward Results
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-title">D. Walk-Forward Validation</span>
+                <span class="section-badge">Latest Result</span>
+            </div>
+            <div class="section-content" id="wfContent">
+                <div class="no-data">Loading walk-forward results...</div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             SECTION E: Proposal Review Queue
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-title">E. Proposal Review Queue</span>
+                <span class="section-badge" id="proposalCount">0 pending</span>
+            </div>
+            <div class="section-content">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Proposal ID</th>
+                                <th>Improvement %</th>
+                                <th>DD Delta</th>
+                                <th>WF Pass</th>
+                                <th>Sample Size</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="proposalTableBody">
+                            <tr><td colspan="7" class="empty-cell">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-warning">⛔ THIS UI DOES NOT CONNECT TO LIVE ORDER ENDPOINTS ⛔</div>
+        <div>Morpheus Research Lab v1.1 | Shadow Environment Only | No Production Access</div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         MODAL
+         ═══════════════════════════════════════════════════════════════════ -->
+    <div class="modal" id="runModal">
+        <div class="modal-content" id="modalContent">
+            <!-- Content loaded dynamically -->
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/research_lab.js"></script>
+</body>
+</html>

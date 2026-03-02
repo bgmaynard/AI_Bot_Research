@@ -1,0 +1,50 @@
+{
+    "research_lab": {
+        "name": "Morpheus SuperBot Research Lab",
+        "version": "1.0",
+        "port": 9200
+    },
+    "production_host": "bob1",
+    "data_sources": {
+        "morpheus_ai": {
+            "name": "Morpheus AI (Signal Generation)",
+            "path": "C:\\Morpheus\\Morpheus_AI",
+            "api_url": "http://bob1:8020",
+            "api_trades": ["/trades", "/api/trades", "/trade_history"],
+            "api_signals": ["/signals", "/api/signals"],
+            "read_only": true,
+            "never_modify": true
+        },
+        "max_ai": {
+            "name": "Max AI (Advisory Scanner)",
+            "path": "C:\\Max_AI",
+            "api_url": "http://bob1:8787",
+            "api_trades": ["/trades", "/api/trades"],
+            "api_signals": ["/advisories", "/signals", "/api/advisories"],
+            "read_only": true,
+            "never_modify": true
+        },
+        "ai_supervisor": {
+            "name": "AI Supervisor (Orchestration)",
+            "path": "C:\\AI_SUPERVISOR",
+            "api_url": "http://bob1:9001",
+            "api_trades": ["/trades", "/api/trades"],
+            "api_signals": ["/status", "/api/status"],
+            "read_only": true,
+            "never_modify": true
+        }
+    },
+    "safety": {
+        "read_only_mode": true,
+        "never_modify_sources": true,
+        "no_live_orders": true,
+        "no_execution": true,
+        "require_supervisor_approval": true
+    },
+    "research": {
+        "min_trade_count": 10,
+        "overfit_detection": true,
+        "walk_forward_windows": 5,
+        "is_ratio": 0.7
+    }
+}
