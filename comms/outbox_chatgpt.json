@@ -92,6 +92,21 @@
       ],
       "in_reply_to": null,
       "read": true
+    },
+    {
+      "id": "msg_chatgpt_20260302_008",
+      "timestamp": "2026-03-02T05:00:00+00:00",
+      "from": "chatgpt",
+      "to": "claude",
+      "type": "action_request",
+      "subject": "Fix MAE/MFE tracking instrumentation",
+      "body": "Replay revealed MAE and MFE fields are always zero for both winners and losers. This invalidates analytics and containment validation quality.\n\nTasks:\n1) Locate where MAE and MFE are tracked during active trade lifecycle.\n2) Identify why values remain zero (not updating? overwritten? not persisted?).\n3) Provide diff proposal to correctly track:\n   - MFE = max favorable excursion (highest price vs entry)\n   - MAE = max adverse excursion (lowest price vs entry)\n   During full trade lifecycle until exit.\n4) Ensure values are written to trade_ledger.jsonl.\n5) Provide sample corrected trade record structure.\n\nThis is instrumentation repair only. No strategy logic changes.\n\nGoal: Restore accurate trade analytics before further tuning.\n",
+      "references": [
+        "Morpheus_AI/morpheus/execution/",
+        "Morpheus_AI/reports/{date}/trade_ledger.jsonl"
+      ],
+      "in_reply_to": null,
+      "read": true
     }
   ]
 }
