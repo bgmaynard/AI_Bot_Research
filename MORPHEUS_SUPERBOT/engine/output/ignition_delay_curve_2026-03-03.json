@@ -1,0 +1,854 @@
+{
+  "date": "2026-03-03",
+  "generated_at": "2026-03-04T04:53:35.224022+00:00",
+  "type": "ignition_delay_curve",
+  "curve": [
+    {
+      "delay_seconds": 0,
+      "n": 1,
+      "avg_return": -1.0444,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 5,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 10,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 15,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 20,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 25,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 30,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 35,
+      "n": 1,
+      "avg_return": -1.0638,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 40,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 45,
+      "n": 1,
+      "avg_return": -1.9313,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 50,
+      "n": 1,
+      "avg_return": 0.4335,
+      "win_rate": 100.0,
+      "profit_factor": Infinity
+    },
+    {
+      "delay_seconds": 55,
+      "n": 1,
+      "avg_return": -0.4804,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 60,
+      "n": 1,
+      "avg_return": 0.5062,
+      "win_rate": 100.0,
+      "profit_factor": Infinity
+    },
+    {
+      "delay_seconds": 65,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 70,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 75,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 80,
+      "n": 2,
+      "avg_return": -0.6489,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 85,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 90,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 95,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 100,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 105,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 110,
+      "n": 1,
+      "avg_return": 1.6839,
+      "win_rate": 100.0,
+      "profit_factor": Infinity
+    },
+    {
+      "delay_seconds": 115,
+      "n": 1,
+      "avg_return": -1.0652,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 120,
+      "n": 1,
+      "avg_return": -1.826,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 125,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 130,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 135,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 140,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 145,
+      "n": 1,
+      "avg_return": -1.0087,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 150,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 155,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 160,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 165,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 170,
+      "n": 1,
+      "avg_return": 0.4529,
+      "win_rate": 100.0,
+      "profit_factor": Infinity
+    },
+    {
+      "delay_seconds": 175,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 180,
+      "n": 1,
+      "avg_return": 0.7856,
+      "win_rate": 100.0,
+      "profit_factor": Infinity
+    },
+    {
+      "delay_seconds": 185,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 190,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 195,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 200,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 205,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 210,
+      "n": 1,
+      "avg_return": -1.2959,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 215,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 220,
+      "n": 1,
+      "avg_return": 1.5109,
+      "win_rate": 100.0,
+      "profit_factor": Infinity
+    },
+    {
+      "delay_seconds": 225,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 230,
+      "n": 1,
+      "avg_return": 0.5295,
+      "win_rate": 100.0,
+      "profit_factor": Infinity
+    },
+    {
+      "delay_seconds": 235,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 240,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 245,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 250,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 255,
+      "n": 1,
+      "avg_return": 0.0,
+      "win_rate": 0.0,
+      "profit_factor": 0
+    },
+    {
+      "delay_seconds": 260,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 265,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 270,
+      "n": 1,
+      "avg_return": -1.0935,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 275,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 280,
+      "n": 1,
+      "avg_return": 0.8337,
+      "win_rate": 100.0,
+      "profit_factor": Infinity
+    },
+    {
+      "delay_seconds": 285,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 290,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 295,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 300,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 305,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 310,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 315,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 320,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 325,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 330,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 335,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 340,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 345,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 350,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 355,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 360,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 365,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 370,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 375,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 380,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 385,
+      "n": 1,
+      "avg_return": -1.2147,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 390,
+      "n": 1,
+      "avg_return": -1.1993,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 395,
+      "n": 1,
+      "avg_return": -0.1956,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 400,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 405,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 410,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 415,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 420,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 425,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 430,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 435,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 440,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 445,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 450,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 455,
+      "n": 1,
+      "avg_return": -1.2557,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 460,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 465,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 470,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 475,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 480,
+      "n": 1,
+      "avg_return": -0.0044,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 485,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 490,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 495,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 500,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 505,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 510,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 515,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 520,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 525,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 530,
+      "n": 1,
+      "avg_return": 0.4566,
+      "win_rate": 100.0,
+      "profit_factor": Infinity
+    },
+    {
+      "delay_seconds": 535,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 540,
+      "n": 1,
+      "avg_return": -1.0863,
+      "win_rate": 0.0,
+      "profit_factor": 0.0
+    },
+    {
+      "delay_seconds": 545,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 550,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 555,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 560,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 565,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 570,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 575,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 580,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 585,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 590,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 595,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    },
+    {
+      "delay_seconds": 600,
+      "n": 0,
+      "avg_return": null,
+      "win_rate": null,
+      "profit_factor": null
+    }
+  ]
+}

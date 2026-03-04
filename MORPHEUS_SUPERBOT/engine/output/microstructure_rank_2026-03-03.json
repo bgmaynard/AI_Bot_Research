@@ -1,0 +1,810 @@
+{
+  "date": "2026-03-03",
+  "generated_at": "2026-03-04T04:25:07.841120+00:00",
+  "type": "microstructure_rank",
+  "rankings": [
+    {
+      "symbol": "BATL",
+      "score": 16.244,
+      "classification": "PREFERRED",
+      "contributions": {
+        "spread_median": {
+          "raw": 0.5684,
+          "z_score": 0.988,
+          "weight": -2.0,
+          "contribution": -1.977
+        },
+        "spread_p90": {
+          "raw": 1.0817,
+          "z_score": 1.6,
+          "weight": -1.5,
+          "contribution": -2.399
+        },
+        "spread_stability": {
+          "raw": 0.6456,
+          "z_score": 0.62,
+          "weight": -1.0,
+          "contribution": -0.62
+        },
+        "tick_rate": {
+          "raw": 0.5915,
+          "z_score": 2.472,
+          "weight": 2.0,
+          "contribution": 4.944
+        },
+        "stale_burst_rate": {
+          "raw": 14.62,
+          "z_score": -2.515,
+          "weight": -2.5,
+          "contribution": 6.287
+        },
+        "gap_frequency": {
+          "raw": 100.0,
+          "z_score": 0.0,
+          "weight": -1.5,
+          "contribution": -0.0
+        },
+        "volatility_5s": {
+          "raw": 2.2065,
+          "z_score": 2.878,
+          "weight": 0.5,
+          "contribution": 1.439
+        },
+        "trend_persistence": {
+          "raw": 0.4663,
+          "z_score": 1.121,
+          "weight": 1.5,
+          "contribution": 1.682
+        },
+        "entry_lateness_mean": {
+          "raw": null,
+          "z_score": 0.0,
+          "weight": -2.0,
+          "contribution": -0.0
+        },
+        "profit_margin_ratio": {
+          "raw": 39.3631,
+          "z_score": 2.706,
+          "weight": 2.0,
+          "contribution": 5.412
+        },
+        "quote_gap_p90_ms": {
+          "raw": 2351.1,
+          "z_score": -1.475,
+          "weight": -1.0,
+          "contribution": 1.475
+        }
+      }
+    },
+    {
+      "symbol": "MSTZ",
+      "score": 6.071,
+      "classification": "PREFERRED",
+      "contributions": {
+        "spread_median": {
+          "raw": 0.0813,
+          "z_score": -1.345,
+          "weight": -2.0,
+          "contribution": 2.691
+        },
+        "spread_p90": {
+          "raw": 0.083,
+          "z_score": -1.42,
+          "weight": -1.5,
+          "contribution": 2.129
+        },
+        "spread_stability": {
+          "raw": 0.1976,
+          "z_score": -0.413,
+          "weight": -1.0,
+          "contribution": 0.413
+        },
+        "tick_rate": {
+          "raw": 0.2417,
+          "z_score": 0.213,
+          "weight": 2.0,
+          "contribution": 0.426
+        },
+        "stale_burst_rate": {
+          "raw": 69.39,
+          "z_score": 0.003,
+          "weight": -2.5,
+          "contribution": -0.009
+        },
+        "gap_frequency": {
+          "raw": 100.0,
+          "z_score": 0.0,
+          "weight": -1.5,
+          "contribution": -0.0
+        },
+        "volatility_5s": {
+          "raw": 0.1862,
+          "z_score": -0.57,
+          "weight": 0.5,
+          "contribution": -0.285
+        },
+        "trend_persistence": {
+          "raw": 0.4228,
+          "z_score": -0.031,
+          "weight": 1.5,
+          "contribution": -0.047
+        },
+        "entry_lateness_mean": {
+          "raw": 0.5842,
+          "z_score": -0.412,
+          "weight": -2.0,
+          "contribution": 0.824
+        },
+        "profit_margin_ratio": {
+          "raw": 7.5652,
+          "z_score": -0.395,
+          "weight": 2.0,
+          "contribution": -0.79
+        },
+        "quote_gap_p90_ms": {
+          "raw": 8617.6,
+          "z_score": -0.719,
+          "weight": -1.0,
+          "contribution": 0.719
+        }
+      }
+    },
+    {
+      "symbol": "TMDE",
+      "score": 4.355,
+      "classification": "PREFERRED",
+      "contributions": {
+        "spread_median": {
+          "raw": 0.2685,
+          "z_score": -0.448,
+          "weight": -2.0,
+          "contribution": 0.897
+        },
+        "spread_p90": {
+          "raw": 0.312,
+          "z_score": -0.727,
+          "weight": -1.5,
+          "contribution": 1.091
+        },
+        "spread_stability": {
+          "raw": 0.4037,
+          "z_score": 0.062,
+          "weight": -1.0,
+          "contribution": -0.062
+        },
+        "tick_rate": {
+          "raw": 0.3895,
+          "z_score": 1.168,
+          "weight": 2.0,
+          "contribution": 2.335
+        },
+        "stale_burst_rate": {
+          "raw": 44.26,
+          "z_score": -1.152,
+          "weight": -2.5,
+          "contribution": 2.88
+        },
+        "gap_frequency": {
+          "raw": 100.0,
+          "z_score": 0.0,
+          "weight": -1.5,
+          "contribution": -0.0
+        },
+        "volatility_5s": {
+          "raw": 0.7185,
+          "z_score": 0.338,
+          "weight": 0.5,
+          "contribution": 0.169
+        },
+        "trend_persistence": {
+          "raw": 0.4116,
+          "z_score": -0.328,
+          "weight": 1.5,
+          "contribution": -0.492
+        },
+        "entry_lateness_mean": {
+          "raw": 4.6748,
+          "z_score": 2.591,
+          "weight": -2.0,
+          "contribution": -5.182
+        },
+        "profit_margin_ratio": {
+          "raw": 19.5795,
+          "z_score": 0.777,
+          "weight": 2.0,
+          "contribution": 1.553
+        },
+        "quote_gap_p90_ms": {
+          "raw": 4921.2,
+          "z_score": -1.165,
+          "weight": -1.0,
+          "contribution": 1.165
+        }
+      }
+    },
+    {
+      "symbol": "UVIX",
+      "score": 3.321,
+      "classification": "PREFERRED",
+      "contributions": {
+        "spread_median": {
+          "raw": 0.1336,
+          "z_score": -1.095,
+          "weight": -2.0,
+          "contribution": 2.189
+        },
+        "spread_p90": {
+          "raw": 0.1369,
+          "z_score": -1.257,
+          "weight": -1.5,
+          "contribution": 1.885
+        },
+        "spread_stability": {
+          "raw": 0.0925,
+          "z_score": -0.655,
+          "weight": -1.0,
+          "contribution": 0.655
+        },
+        "tick_rate": {
+          "raw": 0.2246,
+          "z_score": 0.103,
+          "weight": 2.0,
+          "contribution": 0.205
+        },
+        "stale_burst_rate": {
+          "raw": 72.43,
+          "z_score": 0.143,
+          "weight": -2.5,
+          "contribution": -0.358
+        },
+        "gap_frequency": {
+          "raw": 100.0,
+          "z_score": 0.0,
+          "weight": -1.5,
+          "contribution": -0.0
+        },
+        "volatility_5s": {
+          "raw": 0.2041,
+          "z_score": -0.539,
+          "weight": 0.5,
+          "contribution": -0.27
+        },
+        "trend_persistence": {
+          "raw": 0.3974,
+          "z_score": -0.704,
+          "weight": 1.5,
+          "contribution": -1.056
+        },
+        "entry_lateness_mean": {
+          "raw": 0.9569,
+          "z_score": -0.138,
+          "weight": -2.0,
+          "contribution": 0.277
+        },
+        "profit_margin_ratio": {
+          "raw": 7.2922,
+          "z_score": -0.422,
+          "weight": 2.0,
+          "contribution": -0.844
+        },
+        "quote_gap_p90_ms": {
+          "raw": 9305.1,
+          "z_score": -0.636,
+          "weight": -1.0,
+          "contribution": 0.636
+        }
+      }
+    },
+    {
+      "symbol": "DUST",
+      "score": -0.733,
+      "classification": "AVOID",
+      "contributions": {
+        "spread_median": {
+          "raw": 0.2448,
+          "z_score": -0.562,
+          "weight": -2.0,
+          "contribution": 1.124
+        },
+        "spread_p90": {
+          "raw": 0.2528,
+          "z_score": -0.906,
+          "weight": -1.5,
+          "contribution": 1.359
+        },
+        "spread_stability": {
+          "raw": 0.1594,
+          "z_score": -0.501,
+          "weight": -1.0,
+          "contribution": 0.501
+        },
+        "tick_rate": {
+          "raw": 0.0859,
+          "z_score": -0.793,
+          "weight": 2.0,
+          "contribution": -1.586
+        },
+        "stale_burst_rate": {
+          "raw": 86.03,
+          "z_score": 0.769,
+          "weight": -2.5,
+          "contribution": -1.921
+        },
+        "gap_frequency": {
+          "raw": 100.0,
+          "z_score": 0.0,
+          "weight": -1.5,
+          "contribution": -0.0
+        },
+        "volatility_5s": {
+          "raw": 0.2312,
+          "z_score": -0.493,
+          "weight": 0.5,
+          "contribution": -0.247
+        },
+        "trend_persistence": {
+          "raw": 0.4554,
+          "z_score": 0.832,
+          "weight": 1.5,
+          "contribution": 1.249
+        },
+        "entry_lateness_mean": {
+          "raw": 0.1994,
+          "z_score": -0.695,
+          "weight": -2.0,
+          "contribution": 1.389
+        },
+        "profit_margin_ratio": {
+          "raw": 6.5744,
+          "z_score": -0.492,
+          "weight": 2.0,
+          "contribution": -0.984
+        },
+        "quote_gap_p90_ms": {
+          "raw": 27975.8,
+          "z_score": 1.618,
+          "weight": -1.0,
+          "contribution": -1.618
+        }
+      }
+    },
+    {
+      "symbol": "VG",
+      "score": -3.287,
+      "classification": "AVOID",
+      "contributions": {
+        "spread_median": {
+          "raw": 0.156,
+          "z_score": -0.987,
+          "weight": -2.0,
+          "contribution": 1.975
+        },
+        "spread_p90": {
+          "raw": 0.9252,
+          "z_score": 1.126,
+          "weight": -1.5,
+          "contribution": -1.69
+        },
+        "spread_stability": {
+          "raw": 1.5048,
+          "z_score": 2.6,
+          "weight": -1.0,
+          "contribution": -2.6
+        },
+        "tick_rate": {
+          "raw": 0.1197,
+          "z_score": -0.575,
+          "weight": 2.0,
+          "contribution": -1.15
+        },
+        "stale_burst_rate": {
+          "raw": 82.27,
+          "z_score": 0.596,
+          "weight": -2.5,
+          "contribution": -1.489
+        },
+        "gap_frequency": {
+          "raw": 100.0,
+          "z_score": 0.0,
+          "weight": -1.5,
+          "contribution": -0.0
+        },
+        "volatility_5s": {
+          "raw": 0.4504,
+          "z_score": -0.119,
+          "weight": 0.5,
+          "contribution": -0.06
+        },
+        "trend_persistence": {
+          "raw": 0.4611,
+          "z_score": 0.983,
+          "weight": 1.5,
+          "contribution": 1.475
+        },
+        "entry_lateness_mean": {
+          "raw": null,
+          "z_score": 0.0,
+          "weight": -2.0,
+          "contribution": -0.0
+        },
+        "profit_margin_ratio": {
+          "raw": 15.3017,
+          "z_score": 0.359,
+          "weight": 2.0,
+          "contribution": 0.719
+        },
+        "quote_gap_p90_ms": {
+          "raw": 18443.2,
+          "z_score": 0.467,
+          "weight": -1.0,
+          "contribution": -0.467
+        }
+      }
+    },
+    {
+      "symbol": "SOXS",
+      "score": -3.949,
+      "classification": "AVOID",
+      "contributions": {
+        "spread_median": {
+          "raw": 0.489,
+          "z_score": 0.608,
+          "weight": -2.0,
+          "contribution": -1.216
+        },
+        "spread_p90": {
+          "raw": 0.5013,
+          "z_score": -0.155,
+          "weight": -1.5,
+          "contribution": 0.233
+        },
+        "spread_stability": {
+          "raw": 0.0144,
+          "z_score": -0.835,
+          "weight": -1.0,
+          "contribution": 0.835
+        },
+        "tick_rate": {
+          "raw": 0.1698,
+          "z_score": -0.251,
+          "weight": 2.0,
+          "contribution": -0.503
+        },
+        "stale_burst_rate": {
+          "raw": 70.59,
+          "z_score": 0.059,
+          "weight": -2.5,
+          "contribution": -0.147
+        },
+        "gap_frequency": {
+          "raw": 100.0,
+          "z_score": 0.0,
+          "weight": -1.5,
+          "contribution": -0.0
+        },
+        "volatility_5s": {
+          "raw": 0.2777,
+          "z_score": -0.414,
+          "weight": 0.5,
+          "contribution": -0.207
+        },
+        "trend_persistence": {
+          "raw": 0.3521,
+          "z_score": -1.904,
+          "weight": 1.5,
+          "contribution": -2.856
+        },
+        "entry_lateness_mean": {
+          "raw": 0.6112,
+          "z_score": -0.392,
+          "weight": -2.0,
+          "contribution": 0.784
+        },
+        "profit_margin_ratio": {
+          "raw": 5.4526,
+          "z_score": -0.601,
+          "weight": 2.0,
+          "contribution": -1.203
+        },
+        "quote_gap_p90_ms": {
+          "raw": 11851.8,
+          "z_score": -0.328,
+          "weight": -1.0,
+          "contribution": 0.328
+        }
+      }
+    },
+    {
+      "symbol": "IONZ",
+      "score": -4.42,
+      "classification": "AVOID",
+      "contributions": {
+        "spread_median": {
+          "raw": 0.3522,
+          "z_score": -0.047,
+          "weight": -2.0,
+          "contribution": 0.095
+        },
+        "spread_p90": {
+          "raw": 0.7355,
+          "z_score": 0.553,
+          "weight": -1.5,
+          "contribution": -0.829
+        },
+        "spread_stability": {
+          "raw": 0.5525,
+          "z_score": 0.405,
+          "weight": -1.0,
+          "contribution": -0.405
+        },
+        "tick_rate": {
+          "raw": 0.0995,
+          "z_score": -0.705,
+          "weight": 2.0,
+          "contribution": -1.411
+        },
+        "stale_burst_rate": {
+          "raw": 86.9,
+          "z_score": 0.809,
+          "weight": -2.5,
+          "contribution": -2.021
+        },
+        "gap_frequency": {
+          "raw": 100.0,
+          "z_score": 0.0,
+          "weight": -1.5,
+          "contribution": -0.0
+        },
+        "volatility_5s": {
+          "raw": 0.2381,
+          "z_score": -0.481,
+          "weight": 0.5,
+          "contribution": -0.241
+        },
+        "trend_persistence": {
+          "raw": 0.4657,
+          "z_score": 1.105,
+          "weight": 1.5,
+          "contribution": 1.658
+        },
+        "entry_lateness_mean": {
+          "raw": 0.4619,
+          "z_score": -0.502,
+          "weight": -2.0,
+          "contribution": 1.004
+        },
+        "profit_margin_ratio": {
+          "raw": 5.6557,
+          "z_score": -0.581,
+          "weight": 2.0,
+          "contribution": -1.163
+        },
+        "quote_gap_p90_ms": {
+          "raw": 23738.2,
+          "z_score": 1.106,
+          "weight": -1.0,
+          "contribution": -1.106
+        }
+      }
+    },
+    {
+      "symbol": "PLUG",
+      "score": -4.523,
+      "classification": "AVOID",
+      "contributions": {
+        "spread_median": {
+          "raw": 0.489,
+          "z_score": 0.608,
+          "weight": -2.0,
+          "contribution": -1.216
+        },
+        "spread_p90": {
+          "raw": 0.5089,
+          "z_score": -0.132,
+          "weight": -1.5,
+          "contribution": 0.198
+        },
+        "spread_stability": {
+          "raw": 0.0305,
+          "z_score": -0.798,
+          "weight": -1.0,
+          "contribution": 0.798
+        },
+        "tick_rate": {
+          "raw": 0.1241,
+          "z_score": -0.546,
+          "weight": 2.0,
+          "contribution": -1.093
+        },
+        "stale_burst_rate": {
+          "raw": 75.46,
+          "z_score": 0.283,
+          "weight": -2.5,
+          "contribution": -0.706
+        },
+        "gap_frequency": {
+          "raw": 100.0,
+          "z_score": 0.0,
+          "weight": -1.5,
+          "contribution": -0.0
+        },
+        "volatility_5s": {
+          "raw": 0.2968,
+          "z_score": -0.381,
+          "weight": 0.5,
+          "contribution": -0.191
+        },
+        "trend_persistence": {
+          "raw": 0.4047,
+          "z_score": -0.51,
+          "weight": 1.5,
+          "contribution": -0.766
+        },
+        "entry_lateness_mean": {
+          "raw": 1.354,
+          "z_score": 0.153,
+          "weight": -2.0,
+          "contribution": -0.306
+        },
+        "profit_margin_ratio": {
+          "raw": 5.8276,
+          "z_score": -0.565,
+          "weight": 2.0,
+          "contribution": -1.129
+        },
+        "quote_gap_p90_ms": {
+          "raw": 15506.7,
+          "z_score": 0.113,
+          "weight": -1.0,
+          "contribution": -0.113
+        }
+      }
+    },
+    {
+      "symbol": "CRCD",
+      "score": -6.149,
+      "classification": "AVOID",
+      "contributions": {
+        "spread_median": {
+          "raw": 0.4398,
+          "z_score": 0.372,
+          "weight": -2.0,
+          "contribution": -0.745
+        },
+        "spread_p90": {
+          "raw": 0.7443,
+          "z_score": 0.58,
+          "weight": -1.5,
+          "contribution": -0.869
+        },
+        "spread_stability": {
+          "raw": 0.4618,
+          "z_score": 0.196,
+          "weight": -1.0,
+          "contribution": -0.196
+        },
+        "tick_rate": {
+          "raw": 0.0971,
+          "z_score": -0.721,
+          "weight": 2.0,
+          "contribution": -1.442
+        },
+        "stale_burst_rate": {
+          "raw": 85.99,
+          "z_score": 0.767,
+          "weight": -2.5,
+          "contribution": -1.917
+        },
+        "gap_frequency": {
+          "raw": 100.0,
+          "z_score": 0.0,
+          "weight": -1.5,
+          "contribution": -0.0
+        },
+        "volatility_5s": {
+          "raw": 0.2921,
+          "z_score": -0.389,
+          "weight": 0.5,
+          "contribution": -0.195
+        },
+        "trend_persistence": {
+          "raw": 0.4427,
+          "z_score": 0.496,
+          "weight": 1.5,
+          "contribution": 0.744
+        },
+        "entry_lateness_mean": {
+          "raw": 0.6671,
+          "z_score": -0.351,
+          "weight": -2.0,
+          "contribution": 0.702
+        },
+        "profit_margin_ratio": {
+          "raw": 6.1168,
+          "z_score": -0.536,
+          "weight": 2.0,
+          "contribution": -1.073
+        },
+        "quote_gap_p90_ms": {
+          "raw": 24182.0,
+          "z_score": 1.16,
+          "weight": -1.0,
+          "contribution": -1.16
+        }
+      }
+    },
+    {
+      "symbol": "USEG",
+      "score": -6.929,
+      "classification": "AVOID",
+      "contributions": {
+        "spread_median": {
+          "raw": 0.7605,
+          "z_score": 1.909,
+          "weight": -2.0,
+          "contribution": -3.817
+        },
+        "spread_p90": {
+          "raw": 0.7968,
+          "z_score": 0.738,
+          "weight": -1.5,
+          "contribution": -1.107
+        },
+        "spread_stability": {
+          "raw": 0.0822,
+          "z_score": -0.679,
+          "weight": -1.0,
+          "contribution": 0.679
+        },
+        "tick_rate": {
+          "raw": 0.1524,
+          "z_score": -0.364,
+          "weight": 2.0,
+          "contribution": -0.727
+        },
+        "stale_burst_rate": {
+          "raw": 74.53,
+          "z_score": 0.24,
+          "weight": -2.5,
+          "contribution": -0.599
+        },
+        "gap_frequency": {
+          "raw": 100.0,
+          "z_score": 0.0,
+          "weight": -1.5,
+          "contribution": -0.0
+        },
+        "volatility_5s": {
+          "raw": 0.6202,
+          "z_score": 0.171,
+          "weight": 0.5,
+          "contribution": 0.085
+        },
+        "trend_persistence": {
+          "raw": 0.3839,
+          "z_score": -1.061,
+          "weight": 1.5,
+          "contribution": -1.592
+        },
+        "entry_lateness_mean": {
+          "raw": 0.8,
+          "z_score": -0.254,
+          "weight": -2.0,
+          "contribution": 0.507
+        },
+        "profit_margin_ratio": {
+          "raw": 9.06,
+          "z_score": -0.249,
+          "weight": 2.0,
+          "contribution": -0.499
+        },
+        "quote_gap_p90_ms": {
+          "raw": 13401.5,
+          "z_score": -0.141,
+          "weight": -1.0,
+          "contribution": 0.141
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "date": "2026-03-03",
+  "generated_at": "2026-03-04T04:34:53.360351+00:00",
+  "type": "learned_microstructure_weights",
+  "description": "Feature weights calibrated from outcome data using RF+GB ensemble",
+  "weights": {
+    "volatility_expansion": {
+      "weight": -3.0,
+      "importance": 0.1911,
+      "direction": "negative",
+      "correlation": -0.2004
+    },
+    "local_trend_persistence": {
+      "weight": 1.8713,
+      "importance": 0.1192,
+      "direction": "positive",
+      "correlation": 0.2346
+    },
+    "local_volatility": {
+      "weight": -1.7991,
+      "importance": 0.1146,
+      "direction": "negative",
+      "correlation": -0.5305
+    },
+    "local_spread_std": {
+      "weight": 1.6028,
+      "importance": 0.1021,
+      "direction": "positive",
+      "correlation": 0.1101
+    },
+    "entry_lateness": {
+      "weight": -1.4301,
+      "importance": 0.0911,
+      "direction": "negative",
+      "correlation": -0.4049
+    },
+    "price_velocity_30s": {
+      "weight": 1.1648,
+      "importance": 0.0742,
+      "direction": "positive",
+      "correlation": 0.4954
+    },
+    "spread_pct": {
+      "weight": 0.8195,
+      "importance": 0.0522,
+      "direction": "positive",
+      "correlation": 0.107
+    },
+    "local_gap_p90_ms": {
+      "weight": -0.5573,
+      "importance": 0.0355,
+      "direction": "negative",
+      "correlation": -0.1454
+    },
+    "local_stale_count": {
+      "weight": 0.4364,
+      "importance": 0.0278,
+      "direction": "positive",
+      "correlation": 0.2823
+    },
+    "momentum_score": {
+      "weight": 0.3469,
+      "importance": 0.0221,
+      "direction": "positive",
+      "correlation": 0.1173
+    },
+    "sym_spread_stability": {
+      "weight": -0.3375,
+      "importance": 0.0215,
+      "direction": "negative",
+      "correlation": -0.0535
+    },
+    "local_tick_rate": {
+      "weight": 0.2967,
+      "importance": 0.0189,
+      "direction": "positive",
+      "correlation": 0.0947
+    },
+    "confidence": {
+      "weight": -0.2951,
+      "importance": 0.0188,
+      "direction": "negative",
+      "correlation": -0.1228
+    },
+    "sym_volatility_5s": {
+      "weight": 0.2622,
+      "importance": 0.0167,
+      "direction": "positive",
+      "correlation": 0.0498
+    },
+    "sym_profit_margin_ratio": {
+      "weight": 0.259,
+      "importance": 0.0165,
+      "direction": "positive",
+      "correlation": 0.0548
+    },
+    "sym_spread_p90": {
+      "weight": -0.2402,
+      "importance": 0.0153,
+      "direction": "negative",
+      "correlation": -0.0399
+    },
+    "sym_volatility_30s": {
+      "weight": 0.2386,
+      "importance": 0.0152,
+      "direction": "positive",
+      "correlation": 0.061
+    },
+    "sym_burstiness": {
+      "weight": 0.2214,
+      "importance": 0.0141,
+      "direction": "positive",
+      "correlation": 0.0848
+    },
+    "sym_tick_rate": {
+      "weight": 0.1381,
+      "importance": 0.0088,
+      "direction": "positive",
+      "correlation": 0.0625
+    },
+    "sym_volatility_1s": {
+      "weight": 0.113,
+      "importance": 0.0072,
+      "direction": "positive",
+      "correlation": 0.0592
+    },
+    "sym_stale_burst_rate": {
+      "weight": -0.1083,
+      "importance": 0.0069,
+      "direction": "negative",
+      "correlation": -0.0873
+    },
+    "sym_trend_persistence": {
+      "weight": -0.0738,
+      "importance": 0.0047,
+      "direction": "negative",
+      "correlation": -0.04
+    },
+    "local_spread_mean": {
+      "weight": 0.0706,
+      "importance": 0.0045,
+      "direction": "positive",
+      "correlation": 0.0072
+    },
+    "sym_spread_median": {
+      "weight": 0.0173,
+      "importance": 0.0011,
+      "direction": "positive",
+      "correlation": 0.0
+    },
+    "sym_gap_frequency": {
+      "weight": 0.0,
+      "importance": 0.0,
+      "direction": "positive",
+      "correlation": 0.0
+    }
+  },
+  "simple_weights": {
+    "volatility_expansion": -3.0,
+    "local_trend_persistence": 1.8713,
+    "local_volatility": -1.7991,
+    "local_spread_std": 1.6028,
+    "entry_lateness": -1.4301,
+    "price_velocity_30s": 1.1648,
+    "spread_pct": 0.8195,
+    "local_gap_p90_ms": -0.5573,
+    "local_stale_count": 0.4364,
+    "momentum_score": 0.3469,
+    "sym_spread_stability": -0.3375,
+    "local_tick_rate": 0.2967,
+    "confidence": -0.2951,
+    "sym_volatility_5s": 0.2622,
+    "sym_profit_margin_ratio": 0.259,
+    "sym_spread_p90": -0.2402,
+    "sym_volatility_30s": 0.2386,
+    "sym_burstiness": 0.2214,
+    "sym_tick_rate": 0.1381,
+    "sym_volatility_1s": 0.113,
+    "sym_stale_burst_rate": -0.1083,
+    "sym_trend_persistence": -0.0738,
+    "local_spread_mean": 0.0706,
+    "sym_spread_median": 0.0173,
+    "sym_gap_frequency": 0.0
+  }
+}

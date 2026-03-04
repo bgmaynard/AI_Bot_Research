@@ -1,0 +1,211 @@
+{
+  "date": "2026-03-03",
+  "generated_at": "2026-03-04T04:34:53.358468+00:00",
+  "type": "microstructure_feature_importance",
+  "target": "forward_return_1m",
+  "n_samples": 74,
+  "rf_r2": 0.3683,
+  "gb_r2": 0.9756,
+  "features": [
+    {
+      "feature": "volatility_expansion",
+      "rf_importance": 0.2959,
+      "gb_importance": 0.1528,
+      "correlation": 0.2004,
+      "ensemble_importance": 0.1911,
+      "correlation_sign": -0.2004
+    },
+    {
+      "feature": "local_trend_persistence",
+      "rf_importance": 0.1452,
+      "gb_importance": 0.1187,
+      "correlation": 0.2346,
+      "ensemble_importance": 0.1192,
+      "correlation_sign": 0.2346
+    },
+    {
+      "feature": "local_volatility",
+      "rf_importance": 0.0534,
+      "gb_importance": 0.156,
+      "correlation": 0.5305,
+      "ensemble_importance": 0.1146,
+      "correlation_sign": -0.5305
+    },
+    {
+      "feature": "local_spread_std",
+      "rf_importance": 0.1033,
+      "gb_importance": 0.1359,
+      "correlation": 0.1101,
+      "ensemble_importance": 0.1021,
+      "correlation_sign": 0.1101
+    },
+    {
+      "feature": "entry_lateness",
+      "rf_importance": 0.0885,
+      "gb_importance": 0.0804,
+      "correlation": 0.4049,
+      "ensemble_importance": 0.0911,
+      "correlation_sign": -0.4049
+    },
+    {
+      "feature": "price_velocity_30s",
+      "rf_importance": 0.0438,
+      "gb_importance": 0.0698,
+      "correlation": 0.4954,
+      "ensemble_importance": 0.0742,
+      "correlation_sign": 0.4954
+    },
+    {
+      "feature": "spread_pct",
+      "rf_importance": 0.0577,
+      "gb_importance": 0.0572,
+      "correlation": 0.107,
+      "ensemble_importance": 0.0522,
+      "correlation_sign": 0.107
+    },
+    {
+      "feature": "local_gap_p90_ms",
+      "rf_importance": 0.0231,
+      "gb_importance": 0.0447,
+      "correlation": 0.1454,
+      "ensemble_importance": 0.0355,
+      "correlation_sign": -0.1454
+    },
+    {
+      "feature": "local_stale_count",
+      "rf_importance": 0.016,
+      "gb_importance": 0.0126,
+      "correlation": 0.2823,
+      "ensemble_importance": 0.0278,
+      "correlation_sign": 0.2823
+    },
+    {
+      "feature": "momentum_score",
+      "rf_importance": 0.0189,
+      "gb_importance": 0.0192,
+      "correlation": 0.1173,
+      "ensemble_importance": 0.0221,
+      "correlation_sign": 0.1173
+    },
+    {
+      "feature": "sym_spread_stability",
+      "rf_importance": 0.0319,
+      "gb_importance": 0.014,
+      "correlation": 0.0535,
+      "ensemble_importance": 0.0215,
+      "correlation_sign": -0.0535
+    },
+    {
+      "feature": "local_tick_rate",
+      "rf_importance": 0.0067,
+      "gb_importance": 0.0267,
+      "correlation": 0.0947,
+      "ensemble_importance": 0.0189,
+      "correlation_sign": 0.0947
+    },
+    {
+      "feature": "confidence",
+      "rf_importance": 0.0057,
+      "gb_importance": 0.0235,
+      "correlation": 0.1228,
+      "ensemble_importance": 0.0188,
+      "correlation_sign": -0.1228
+    },
+    {
+      "feature": "sym_volatility_5s",
+      "rf_importance": 0.0046,
+      "gb_importance": 0.0299,
+      "correlation": 0.0498,
+      "ensemble_importance": 0.0167,
+      "correlation_sign": 0.0498
+    },
+    {
+      "feature": "sym_profit_margin_ratio",
+      "rf_importance": 0.0199,
+      "gb_importance": 0.0133,
+      "correlation": 0.0548,
+      "ensemble_importance": 0.0165,
+      "correlation_sign": 0.0548
+    },
+    {
+      "feature": "sym_spread_p90",
+      "rf_importance": 0.0245,
+      "gb_importance": 0.0081,
+      "correlation": 0.0399,
+      "ensemble_importance": 0.0153,
+      "correlation_sign": -0.0399
+    },
+    {
+      "feature": "sym_volatility_30s",
+      "rf_importance": 0.0109,
+      "gb_importance": 0.0184,
+      "correlation": 0.061,
+      "ensemble_importance": 0.0152,
+      "correlation_sign": 0.061
+    },
+    {
+      "feature": "sym_burstiness",
+      "rf_importance": 0.0201,
+      "gb_importance": 0.0027,
+      "correlation": 0.0848,
+      "ensemble_importance": 0.0141,
+      "correlation_sign": 0.0848
+    },
+    {
+      "feature": "sym_tick_rate",
+      "rf_importance": 0.0086,
+      "gb_importance": 0.0043,
+      "correlation": 0.0625,
+      "ensemble_importance": 0.0088,
+      "correlation_sign": 0.0625
+    },
+    {
+      "feature": "sym_volatility_1s",
+      "rf_importance": 0.003,
+      "gb_importance": 0.0065,
+      "correlation": 0.0592,
+      "ensemble_importance": 0.0072,
+      "correlation_sign": 0.0592
+    },
+    {
+      "feature": "sym_stale_burst_rate",
+      "rf_importance": 0.0041,
+      "gb_importance": 0.0005,
+      "correlation": 0.0873,
+      "ensemble_importance": 0.0069,
+      "correlation_sign": -0.0873
+    },
+    {
+      "feature": "sym_trend_persistence",
+      "rf_importance": 0.0059,
+      "gb_importance": 0.0,
+      "correlation": 0.04,
+      "ensemble_importance": 0.0047,
+      "correlation_sign": -0.04
+    },
+    {
+      "feature": "local_spread_mean",
+      "rf_importance": 0.008,
+      "gb_importance": 0.0023,
+      "correlation": 0.0072,
+      "ensemble_importance": 0.0045,
+      "correlation_sign": 0.0072
+    },
+    {
+      "feature": "sym_spread_median",
+      "rf_importance": 0.0002,
+      "gb_importance": 0.0025,
+      "correlation": 0.0,
+      "ensemble_importance": 0.0011,
+      "correlation_sign": 0.0
+    },
+    {
+      "feature": "sym_gap_frequency",
+      "rf_importance": 0.0,
+      "gb_importance": 0.0,
+      "correlation": 0.0,
+      "ensemble_importance": 0.0,
+      "correlation_sign": 0.0
+    }
+  ]
+}

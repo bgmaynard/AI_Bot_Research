@@ -1,0 +1,128 @@
+{
+  "date": "2026-03-03",
+  "generated_at": "2026-03-04T04:34:53.369150+00:00",
+  "type": "microstructure_rank_learned",
+  "rankings": [
+    {
+      "symbol": "BATL",
+      "learned_score": 11.092,
+      "top_contributions": {
+        "local_spread_std": 3.633,
+        "price_velocity_30s": 2.102,
+        "entry_lateness": -2.022,
+        "local_trend_persistence": 2.012,
+        "momentum_score": 0.785
+      }
+    },
+    {
+      "symbol": "UVIX",
+      "learned_score": 3.427,
+      "top_contributions": {
+        "volatility_expansion": 3.953,
+        "local_spread_std": -1.001,
+        "spread_pct": -0.983,
+        "local_volatility": 0.923,
+        "local_trend_persistence": -0.584
+      }
+    },
+    {
+      "symbol": "USEG",
+      "learned_score": 2.721,
+      "top_contributions": {
+        "volatility_expansion": 2.763,
+        "spread_pct": 1.913,
+        "local_trend_persistence": -1.756,
+        "local_spread_std": -1.007,
+        "local_stale_count": 0.701
+      }
+    },
+    {
+      "symbol": "PLUG",
+      "learned_score": 1.693,
+      "top_contributions": {
+        "volatility_expansion": 1.911,
+        "local_trend_persistence": -1.042,
+        "local_spread_std": -0.983,
+        "local_gap_p90_ms": 0.38,
+        "spread_pct": 0.364
+      }
+    },
+    {
+      "symbol": "IONZ",
+      "learned_score": 0.586,
+      "top_contributions": {
+        "volatility_expansion": 1.175,
+        "entry_lateness": 0.802,
+        "local_gap_p90_ms": -0.721,
+        "local_volatility": 0.693,
+        "local_trend_persistence": 0.425
+      }
+    },
+    {
+      "symbol": "SOXS",
+      "learned_score": 0.361,
+      "top_contributions": {
+        "local_spread_std": -0.997,
+        "local_trend_persistence": -0.914,
+        "entry_lateness": 0.533,
+        "spread_pct": 0.493,
+        "local_gap_p90_ms": 0.323
+      }
+    },
+    {
+      "symbol": "MSTZ",
+      "learned_score": -1.472,
+      "top_contributions": {
+        "spread_pct": -1.053,
+        "local_spread_std": -1.003,
+        "local_volatility": 0.927,
+        "entry_lateness": 0.606,
+        "sym_spread_p90": 0.341
+      }
+    },
+    {
+      "symbol": "DUST",
+      "learned_score": -1.787,
+      "top_contributions": {
+        "entry_lateness": 1.223,
+        "volatility_expansion": 1.192,
+        "local_spread_std": -1.002,
+        "local_gap_p90_ms": -0.995,
+        "local_trend_persistence": -0.97
+      }
+    },
+    {
+      "symbol": "VG",
+      "learned_score": -2.657,
+      "top_contributions": {
+        "volatility_expansion": -6.831,
+        "local_trend_persistence": 4.662,
+        "local_volatility": 1.281,
+        "local_spread_std": -1.005,
+        "entry_lateness": 0.954
+      }
+    },
+    {
+      "symbol": "CRCD",
+      "learned_score": -3.025,
+      "top_contributions": {
+        "local_trend_persistence": -1.629,
+        "local_spread_std": 0.874,
+        "volatility_expansion": -0.802,
+        "local_stale_count": -0.695,
+        "local_gap_p90_ms": -0.63
+      }
+    },
+    {
+      "symbol": "TMDE",
+      "learned_score": -10.939,
+      "top_contributions": {
+        "local_volatility": -5.227,
+        "volatility_expansion": -3.57,
+        "entry_lateness": -3.472,
+        "price_velocity_30s": -2.945,
+        "local_spread_std": 2.148
+      }
+    }
+  ]
+}

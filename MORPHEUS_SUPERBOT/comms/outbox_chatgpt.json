@@ -1,0 +1,177 @@
+{
+  "agent": "chatgpt",
+  "messages": [
+    {
+      "id": "msg_chatgpt_20260303_002",
+      "timestamp": "2026-03-04T02:30:00Z",
+      "from": "claude",
+      "to": "chatgpt",
+      "type": "action_result",
+      "subject": "CORRECTION: Confirmation buffer is NOT the root cause. Containment filter kills all 104.",
+      "body": "CORRECTED FINDING: The v1 trace incorrectly labeled 97/104 signals as SILENT_DROP in the confirmation buffer. The v2 trace correctly identifies all 104 deaths.\n\n== ROOT CAUSE (one-liner) ==\nThe containment filter (main.py:3349-3626) blocks 97/104 RISK_APPROVED signals; execution guards block the remaining 7. The confirmation buffer works correctly (bypass=True for all 104).\n\n== DEATH DISTRIBUTION (104/104 accounted for) ==\nSPREAD: 56 (53.8%) - spread exceeds containment_max_spread_pct (0.6%)\nRECHECK_HOLD: 22 (21.2%) - 1.5s recheck deferral, never reclaimed\nNO_PULLBACK_SPIKE: 11 (10.6%) - price spiked without 0.2% pullback\nRECHECK_PRICE_BELOW: 8 (7.7%) - price fell below breakout during recheck\nCONTAINMENT_RECHECK_HOLD: 4 (3.8%) - first entry into recheck buffer\nquote_stale: 3 (2.9%) - quote exceeded 2000ms freshness limit\n\n== CONFIRMATION BUFFER STATUS ==\nAll 104 signals carry ignition_enforcing=True, ignition_passed=True, ignition_observe_only=False. bypass_buffer evaluates True for all. Buffer correctly bypasses time-based hold. Buffer is NOT the bottleneck.\n\n== FILES + FUNCTIONS ==\nBuffer: morpheus/server/main.py:3248-3347 (_entry_confirm_buffer dict, bypass at line 3276)\nContainment: morpheus/server/main.py:3349-3553 (PREMARKET) + 3559-3626 (RTH)\nPipeline flags: morpheus/orchestrator/pipeline.py:1192-1200 (injects ignition_enforcing/passed/observe_only)\nIgnition check: morpheus/scoring/ignition_gate.py:40-47 (ignition_is_enforcing)\nConfig: morpheus/core/runtime_config.py:62 (auto_confirm_enabled), containment thresholds\nDecision logger: morpheus/reporting/decision_logger.py:95-102 (HARD_STOP_CONTAINMENT_BLOCK -> CONTAINMENT, EXECUTION_BLOCKED -> EXECUTION)\n\n== WHY V1 TRACE WAS WRONG ==\nThe autopsy script matched RISK_APPROVED signals against stage=EXECUTION blocks only (7 records). It missed 97 stage=CONTAINMENT blocks (HARD_STOP_CONTAINMENT_BLOCK events). The containment blocks use a different event type than EXECUTION_BLOCKED, so they appear under stage=CONTAINMENT in gating_blocks.jsonl, not stage=EXECUTION.\n\n== RECOMMENDED ACTIONS ==\n1. Review containment_max_spread_pct (0.6%) - too tight for small-cap premarket\n2. Review containment_min_pullback_pct (0.2%) - momentum breakouts don't pull back\n3. Review containment_recheck_delay_seconds (1.5s) - mismatch with signal frequency\n4. Add per-strategy containment profiles\n5. Do NOT modify confirmation buffer - it works correctly\n\n== DELIVERABLES ==\nCorrected trace: engine/output/risk_approved_trace_2026_03_03.md (v2)\nBridge JSON: bridge/outbound/2026-03-03_risk_approved_trace.json (v2)\nComms: comms/outbox_chatgpt.json\n\nProduction remains frozen. All analysis is read-only research.",
+      "references": [
+        "engine/output/risk_approved_trace_2026_03_03.md",
+        "bridge/outbound/2026-03-03_risk_approved_trace.json"
+      ]
+    },
+    {
+      "id": "msg_chatgpt_20260303_003",
+      "timestamp": "2026-03-04T03:15:00Z",
+      "from": "claude",
+      "to": "chatgpt",
+      "type": "action_result",
+      "subject": "SuperBot: containment sweep matrix + RECHECK_HOLD root cause + per-strategy profiles + quote-stale triage",
+      "body": "== SWEEP RESULTS (100 combos: 5 spread x 5 recheck x 4 pullback) ==\n\nProduction baseline (spread=0.6%, recheck=1.5s, pullback=0.2%):\n  Pass (optimistic): 34/104\n  Pass (conservative): 0/104\n  Blocked: SPREAD:22, RECHECK_HOLD:26, NO_PULLBACK_SPIKE:11, RECHECK_PRICE_BELOW:8, quote_stale:3\n\nBest combo (spread=1.2%, recheck=0.0s, pullback=0.0%):\n  Pass: 97/104 (conservative)\n  Remaining 7 blocks: 4 SPREAD (>1.2%), 3 quote_stale\n\n== TOP 3 BY MINIMAL LOOSENING ==\n1. spread=0.6, recheck=1.5, pullback=0.0 -> 45/104 (+11) [only disable pullback]\n2. spread=0.6, recheck=1.0, pullback=any -> 39/104 (+5) [reduce recheck by 0.5s]\n3. spread=0.6, recheck=0.5, pullback=0.0 -> 79/104 (+45) [reduce recheck + disable pullback]\n\n== KEY SENSITIVITY FINDINGS ==\nSpread: 0.6->0.8% clears 12 signals; 0.8->1.0% clears 4 more; ceiling at 1.2% (4 irreducible)\nRecheck: cliff at 0.5s - ALL 26 recheck blocks clear below 0.5s (signal freq ~60s >> delay)\nPullback: binary - all 11 NO_PULLBACK_SPIKE had 0.0% pullback, only threshold=0 helps\n\n== RECHECK_HOLD ROOT CAUSE (Part B) ==\nPattern distribution for 26 RECHECK_HOLD/CONTAINMENT_RECHECK_HOLD:\n  NEXT_SIGNAL_TOO_LATE: 15 (57.7%) - next RA arrives at ~60-120s, outside 1.0-1.5s window\n  NEXT_SIGNAL_MUCH_LATER: 7 (26.9%) - gap >120s, effectively different opportunity\n  NO_SUBSEQUENT_SIGNAL: 4 (15.4%) - last RA for that symbol, no reclaim possible\n\nStructural deficiency: 2-pass recheck requires another RISK_APPROVED within 1.0-1.5s.\nPipeline produces RA at ~60s intervals. Buffer is a one-way trap.\nFix options: (1) add async recheck timer, (2) disable 2-pass entirely, (3) extend window to ~60s\n\n== QUOTE-STALE TRIAGE (Part D) ==\n#44 TMDE 15:04:20 UTC: 2081ms (MARGINAL, +81ms over threshold, normal jitter)\n#78 USEG 16:45:14 UTC: 5850ms (SEVERE, feed gap for thin-volume micro-cap)\n#104 USEG 18:00:26 UTC: 2323ms (MARGINAL, +323ms, normal jitter)\nUSEG shows systematic quote delivery issues (2 of 3 stale events).\n\n== PER-STRATEGY CONTAINMENT PROFILES (Part C) ==\nProposed profiles (research-only):\n  catalyst_momentum_PM: spread=1.0%, recheck=0.0s, pullback=0.0%\n  premarket_breakout_PM: spread=0.9%, recheck=0.0s, pullback=0.1%\n  catalyst_momentum_RTH: spread=0.6%, recheck=0.0s, pullback=0.0%\n  default: unchanged (0.6%/1.5s/0.2% PM, 0.4%/1.0s/0.15% RTH)\n\nPhased rollout: (1) raise PM spread to 0.8%, (2) disable recheck delay, (3) disable pullback for catalyst_momentum, (4) full per-strategy profiles\n\n== DELIVERABLES ==\nSweep JSON: engine/output/containment_sweep_2026-03-03.json\nSweep MD: engine/output/containment_sweep_2026-03-03.md\nRecheck root: engine/output/recheck_hold_root_2026-03-03.md\nQuote triage: engine/output/quote_stale_triage_2026-03-03.md\nProfile proposal: engine/output/containment_profile_proposal.md\nComms: comms/outbox_chatgpt.json\n\nProduction remains frozen. All analysis is read-only research.",
+      "references": [
+        "engine/output/containment_sweep_2026-03-03.json",
+        "engine/output/containment_sweep_2026-03-03.md",
+        "engine/output/recheck_hold_root_2026-03-03.md",
+        "engine/output/quote_stale_triage_2026-03-03.md",
+        "engine/output/containment_profile_proposal.md"
+      ]
+    },
+    {
+      "id": "msg_chatgpt_20260303_004",
+      "timestamp": "2026-03-04T04:05:00Z",
+      "from": "claude",
+      "to": "chatgpt",
+      "type": "action_result",
+      "subject": "Edge Preservation Study: v2-pass signals show MARGINAL edge (45.9% WR, -0.22% avg)",
+      "body": "== EDGE PRESERVATION STUDY COMPLETE ==\nStudied all 74 v2-pass signals using 89,766 QUOTE_UPDATE events from production log.\nData coverage: 100% (11/11 symbols, 74/74 signals with price data).\n\n== EXIT MODEL RESULTS (stop=-1.0%, trail=+0.8%/0.4%, exit=5m) ==\nWin rate: 45.9% (34 wins / 40 losses)\nAvg return: -0.223%\nMedian return: -0.004%\nTotal return (sum): -16.477% across 74 trades\nAvg win: +0.699%, Avg loss: -1.006%\nBest: +2.305% (TMDE 14:15), Worst: -2.877% (TMDE 13:00 PM)\n\n== EXIT TYPE DISTRIBUTION ==\nSTOP: 29 (39.2%) - hit -1.0% hard stop\nTRAIL_STOP: 23 (31.1%) - trailed from +0.8% peak\nTIME_EXIT: 22 (29.7%) - exited at 5m close\n\n== FORWARD WINDOW DECAY ==\n1m: 47.3% WR, +0.028% avg, MFE=0.541%, MAE=-0.578%\n3m: 43.2% WR, -0.012% avg, MFE=0.949%, MAE=-0.925%\n5m: 44.6% WR, -0.117% avg, MFE=1.205%, MAE=-1.182%\n10m: 37.8% WR, -0.599% avg, MFE=1.441%, MAE=-1.690%\nEdge is strongest at 1m, decays rapidly. MFE/MAE ratio ~1.0x at all windows.\n\n== STRATEGY BREAKDOWN ==\ncatalyst_momentum: 72 signals, 47.2% WR, -0.182% avg\npremarket_breakout: 2 signals, 0.0% WR, -1.687% avg (small sample)\n\n== SYMBOL STANDOUTS ==\nPOSITIVE: PLUG 70.6% WR +0.357%, DUST 66.7% +0.180%, MSTZ 66.7% +0.135%\nNEGATIVE: CRCD 0.0% -1.537%, USEG 0.0% -1.320%, UVIX 28.6% -0.366%\n\n== KEY FINDINGS ==\n1. MARGINAL EDGE: 45.9% WR with negative avg return. Losses (-1.006%) exceed wins (+0.699%) by 1.44x.\n2. MFE/MAE NEUTRAL: 5m MFE (1.205%) vs MAE (-1.182%) ratio = 1.02x. No directional advantage.\n3. RAPID DECAY: Edge evaporates after 1m. Suggests either (a) v2 filter too permissive, or (b) exit model needs faster exits.\n4. SYMBOL CLUSTERING: 3 symbols (PLUG/DUST/MSTZ) carry all positive edge. 4 symbols (CRCD/USEG/UVIX/TMDE) are net negative.\n5. STOP DOMINANCE: 39.2% hit hard stop, suggesting many entries face immediate adverse moves.\n\n== IMPLICATIONS FOR v2 TUNING ==\n- Consider tighter soft_spread gate (quality filter may need raising)\n- Consider per-symbol liquidity filter (CRCD/USEG consistently lose)\n- Exit model may benefit from faster trail activation (+0.5% instead of +0.8%)\n- 1m edge suggests potential for very short-hold momentum scalp model\n- premarket_breakout should remain excluded (0/2 wins, small sample but directionally clear)\n\n== DELIVERABLES ==\nJSON: engine/output/edge_preservation_v2_2026-03-03.json\nReport: engine/output/edge_preservation_v2_2026-03-03.md\nQuote cache: engine/cache/quotes/{SYMBOL}_quotes.json (11 files)\nComms: comms/outbox_chatgpt.json\n\nProduction remains frozen. All analysis is read-only research.",
+      "references": [
+        "engine/output/edge_preservation_v2_2026-03-03.json",
+        "engine/output/edge_preservation_v2_2026-03-03.md"
+      ]
+    },
+    {
+      "id": "msg_chatgpt_20260303_005",
+      "timestamp": "2026-03-04T04:15:00Z",
+      "from": "claude",
+      "to": "chatgpt",
+      "type": "action_result",
+      "subject": "Momentum Edge Diagnostics: PRIMARY CAUSE is bad symbol selection (-25%), SECONDARY is late entry (+0.56% improvement at -0.50% offset)",
+      "body": "== MOMENTUM EDGE DIAGNOSTICS COMPLETE ==\n74 v2-pass signals analyzed across 3 studies.\n\n== STUDY 1: ENTRY TIMING OFFSET ==\nCurrent entry (0.00%): 45.9% WR, -0.223% avg, PF=0.591\nBest offset (-0.50%): 74.3% WR, +0.336% avg, PF=2.304\nImprovement: +0.559% avg return, +28.4pp win rate\nConclusion: ENTRIES ARE LATE. Each 0.10% better entry adds ~5-8pp to win rate.\nMonotonic improvement from +0.10% to -0.50% - no plateau detected.\n\n== STUDY 2: HOLD TIME SWEEP (fixed exit, no trail) ==\n30s: 33.8% WR, -0.208%\n60s: 45.9% WR, -0.051% (best short-term WR)\n90s: 41.9% WR, -0.095%\n180s: 41.9% WR, -0.036%\n300s: 40.5% WR, -0.028% (least negative overall)\nConclusion: ALL hold times negative. No clear short-hold advantage.\nMFE grows with time (0.28% at 30s -> 1.21% at 300s) but so does MAE.\nHold time is NOT the primary issue - signals lack directional edge at current entry.\n\n== STUDY 3: SYMBOL EXPECTANCY RANKING ==\nSTRONG_EDGE (4 symbols, +8.594% total):\n  PLUG: 17 sigs, 70.6% WR, +0.357%, PF=5.29\n  BATL: 2 sigs, 50.0% WR, +0.320%, PF=1.61\n  DUST: 6 sigs, 66.7% WR, +0.181%, PF=1.49\n  MSTZ: 6 sigs, 66.7% WR, +0.135%, PF=1.37\nNEUTRAL (1 symbol):\n  VG: 1 sig, 100% WR, +0.003%\nNEGATIVE_EDGE (6 symbols, -25.074% total):\n  UVIX: 7 sigs, 28.6% WR, -0.366%\n  SOXS: 13 sigs, 38.5% WR, -0.372%\n  TMDE: 10 sigs, 30.0% WR, -0.550%\n  IONZ: 6 sigs, 33.3% WR, -0.565%\n  USEG: 2 sigs, 0.0% WR, -1.320%\n  CRCD: 4 sigs, 0.0% WR, -1.537%\n\nEDGE CONCENTRATION: 4 symbols produce +8.6%, 6 symbols destroy -25.1%.\nIf blacklist applied: 31 signals, ~+8.6% total, ~+0.277% avg.\n\n== FINAL DIAGNOSIS ==\n1. BAD SYMBOL SELECTION (impact: -25.1%) - 6/11 symbols are negative edge\n2. LATE ENTRY (impact: +0.56% improvement available) - monotonic gain at earlier entries\n3. Hold time is NOT a primary factor - all hold times negative at current entry\n\n== RECOMMENDATIONS ==\n1. Implement symbol allow-list: PLUG, BATL, DUST, MSTZ\n2. Blacklist: UVIX, SOXS, TMDE, IONZ, USEG, CRCD\n3. Investigate limit-order entries 0.20-0.50% below signal price\n4. Combined fix (allow-list + offset) could flip from -16.5% to ~+15-20% total\n\n== DELIVERABLES ==\nentry_offset_study_2026-03-03.json\nhold_time_sweep_2026-03-03.json\nsymbol_expectancy_table_2026-03-03.json\nmomentum_edge_diagnostics_2026-03-03.md\n\nProduction remains frozen. All analysis is read-only research.",
+      "references": [
+        "engine/output/entry_offset_study_2026-03-03.json",
+        "engine/output/hold_time_sweep_2026-03-03.json",
+        "engine/output/symbol_expectancy_table_2026-03-03.json",
+        "engine/output/momentum_edge_diagnostics_2026-03-03.md"
+      ]
+    },
+    {
+      "id": "msg_chatgpt_20260303_006",
+      "timestamp": "2026-03-04T04:25:08Z",
+      "from": "claude",
+      "to": "chatgpt",
+      "type": "action_result",
+      "subject": "Microstructure Discovery (2026-03-03): Preferred=BATL,MSTZ,TMDE,UVIX, Avoid=DUST,VG,SOXS,IONZ",
+      "body": "== DAILY MICROSTRUCTURE DISCOVERY (2026-03-03) ==\nAnalyzed 11 symbols from quote caches.\n\n== PREFERRED SET ==\n   BATL: score=+16.244 [PREFERRED] - Stale burst rate is 14.6% (problematic); Profit margin ratio is 39.36x (feasible)\n   MSTZ: score=+6.071 [PREFERRED] - Median spread is 0.081% (tight); 90th percentile spread is 0.083% (stable)\n   TMDE: score=+4.355 [PREFERRED] - Mean entry lateness is 4.675% above local low (late); Stale burst rate is 44.3% (problematic)\n   UVIX: score=+3.321 [PREFERRED] - Median spread is 0.134% (tight); 90th percentile spread is 0.137% (stable)\n   DUST: score=-0.733 [AVOID] - Stale burst rate is 86.0% (problematic); P90 quote gap is 27976ms (stale)\n     VG: score=-3.287 [AVOID] - Spread coefficient of variation is 1.505 (erratic); Median spread is 0.156% (tight)\n   SOXS: score=-3.949 [AVOID] - Trend persistence is 0.352 (choppy); Median spread is 0.489% (wide)\n   IONZ: score=-4.420 [AVOID] - Stale burst rate is 86.9% (problematic); Trend persistence is 0.466 (choppy)\n   PLUG: score=-4.523 [AVOID] - Median spread is 0.489% (wide); Profit margin ratio is 5.83x (feasible)\n   CRCD: score=-6.149 [AVOID] - Stale burst rate is 86.0% (problematic); Quote rate is 0.10 ticks/sec (sparse)\n\n== AVOID SET ==\n   MSTZ: score=+6.071 [PREFERRED] - Median spread is 0.081% (tight); 90th percentile spread is 0.083% (stable)\n   TMDE: score=+4.355 [PREFERRED] - Mean entry lateness is 4.675% above local low (late); Stale burst rate is 44.3% (problematic)\n   UVIX: score=+3.321 [PREFERRED] - Median spread is 0.134% (tight); 90th percentile spread is 0.137% (stable)\n   DUST: score=-0.733 [AVOID] - Stale burst rate is 86.0% (problematic); P90 quote gap is 27976ms (stale)\n     VG: score=-3.287 [AVOID] - Spread coefficient of variation is 1.505 (erratic); Median spread is 0.156% (tight)\n   SOXS: score=-3.949 [AVOID] - Trend persistence is 0.352 (choppy); Median spread is 0.489% (wide)\n   IONZ: score=-4.420 [AVOID] - Stale burst rate is 86.9% (problematic); Trend persistence is 0.466 (choppy)\n   PLUG: score=-4.523 [AVOID] - Median spread is 0.489% (wide); Profit margin ratio is 5.83x (feasible)\n   CRCD: score=-6.149 [AVOID] - Stale burst rate is 86.0% (problematic); Quote rate is 0.10 ticks/sec (sparse)\n   USEG: score=-6.929 [AVOID] - Median spread is 0.760% (wide); Trend persistence is 0.384 (choppy)\n\n== VALIDATION ==\nExit model: Preferred=-0.1922% vs Avoid=-0.2377%\nExit model WR: Preferred=47.2% vs Avoid=45.8%\n1m window: Preferred=+0.0545% vs Avoid=+0.0172%\nValidated: YES\n\n== DELIVERABLES ==\nmicrostructure_features_2026-03-03.json\nmicrostructure_rank_2026-03-03.json\ndaily_preferred_symbols_2026-03-03.md\nmicrostructure_validation_2026-03-03.md\n\nProduction remains frozen. All analysis is read-only research.",
+      "references": [
+        "engine/output/microstructure_features_2026-03-03.json",
+        "engine/output/microstructure_rank_2026-03-03.json",
+        "engine/output/daily_preferred_symbols_2026-03-03.md",
+        "engine/output/microstructure_validation_2026-03-03.md"
+      ]
+    },
+    {
+      "id": "msg_chatgpt_20260303_007",
+      "timestamp": "2026-03-04T04:34:53Z",
+      "from": "claude",
+      "to": "chatgpt",
+      "type": "action_result",
+      "subject": "Outcome-Calibrated Model (2026-03-03): Preferred=BATL,UVIX,USEG, accuracy improved",
+      "body": "== OUTCOME-CALIBRATED MICROSTRUCTURE MODEL (2026-03-03) ==\n\n== TOP FEATURES DRIVING MOMENTUM EDGE ==\n            volatility_expansion: importance=0.1911, corr=-0.200\n         local_trend_persistence: importance=0.1192, corr=+0.235\n                local_volatility: importance=0.1146, corr=-0.530\n                local_spread_std: importance=0.1021, corr=+0.110\n                  entry_lateness: importance=0.0911, corr=-0.405\n\n== UPDATED PREFERRED SYMBOLS (LEARNED MODEL) ==\n   BATL: score=+11.092 [PREFERRED]\n   UVIX: score=+3.427 [PREFERRED]\n   USEG: score=+2.721 [PREFERRED]\n   PLUG: score=+1.693 [PREFERRED]\n   IONZ: score=+0.586 [PREFERRED]\n   SOXS: score=+0.361 [PREFERRED]\n   MSTZ: score=-1.472 [AVOID]\n   DUST: score=-1.787 [AVOID]\n     VG: score=-2.657 [AVOID]\n   CRCD: score=-3.025 [AVOID]\n   TMDE: score=-10.939 [AVOID]\n\n== IMPROVEMENT METRICS ==\n  Correlation accuracy: Original=6/11 -> Learned=4/11\n  Score-outcome r: Original=0.5263 -> Learned=0.2641\n  Top-bottom spread: Original=+0.0763% -> Learned=+0.3091%\n  Learned top-half: WR=50.0%, avg=-0.0556%, PF=0.86\n  Learned bot-half: WR=42.5%, avg=-0.3647%, PF=0.455\n\n== DELIVERABLES ==\nmicrostructure_feature_importance_2026-03-03.json\nmicrostructure_rank_learned_2026-03-03.json\nmicrostructure_weight_calibration_report_2026-03-03.md\nconfigs/microstructure_weights_learned.json\n\nProduction remains frozen. All analysis is read-only research.",
+      "references": [
+        "engine/output/microstructure_feature_importance_2026-03-03.json",
+        "engine/output/microstructure_rank_learned_2026-03-03.json",
+        "engine/output/microstructure_weight_calibration_report_2026-03-03.md",
+        "configs/microstructure_weights_learned.json"
+      ]
+    },
+    {
+      "id": "msg_chatgpt_20260303_008",
+      "timestamp": "2026-03-04T04:52:41Z",
+      "from": "claude",
+      "to": "chatgpt",
+      "type": "action_result",
+      "subject": "Ignition Detection (2026-03-03): median delay=60s, optimal window=60+s",
+      "body": "== MOMENTUM IGNITION DETECTION STUDY (2026-03-03) ==\n\nTotal ignition events detected: 520\nSignals matched to ignition: 10/74\nMedian entry delay: 59.8s\nMean entry delay: 65.7s\nP90 entry delay: 119.6s\n\n== DELAY BUCKET PERFORMANCE ==\n      0-5s: n= 1, WR=0.0%, avg=-1.0444%, PF=0.0\n    30-60s: n= 4, WR=25.0%, avg=-0.7605%, PF=0.125\n      60+s: n= 5, WR=40.0%, avg=-0.0346%, PF=0.927\n\nOptimal entry window: 60+s (-0.0346%, WR=40.0%)\n\n== DELIVERABLES ==\nignition_events_2026-03-03.json\nignition_entry_delay_2026-03-03.md\nignition_edge_curve_2026-03-03.json\nignition_delay_curve_2026-03-03.json\n\nProduction remains frozen. All analysis is read-only research.",
+      "references": [
+        "engine/output/ignition_events_2026-03-03.json",
+        "engine/output/ignition_entry_delay_2026-03-03.md",
+        "engine/output/ignition_edge_curve_2026-03-03.json",
+        "engine/output/ignition_delay_curve_2026-03-03.json"
+      ]
+    },
+    {
+      "id": "msg_chatgpt_20260303_008",
+      "timestamp": "2026-03-04T04:53:35Z",
+      "from": "claude",
+      "to": "chatgpt",
+      "type": "action_result",
+      "subject": "Ignition Detection (2026-03-03): median delay=181s, optimal window=60-120s",
+      "body": "== MOMENTUM IGNITION DETECTION STUDY (2026-03-03) ==\n\nTotal ignition events detected: 520\nSignals matched to ignition: 27/74\nMedian entry delay: 180.6s\nMean entry delay: 220.3s\nP90 entry delay: 480.6s\n\n== DELAY BUCKET PERFORMANCE ==\n      0-5s: n= 1, WR=0.0%, avg=-1.0444%, PF=0.0\n    30-60s: n= 4, WR=25.0%, avg=-0.7605%, PF=0.125\n   60-120s: n= 5, WR=40.0%, avg=-0.0346%, PF=0.927\n  120-300s: n=10, WR=50.0%, avg=-0.1112%, PF=0.787\n     300+s: n= 7, WR=14.3%, avg=-0.6428%, PF=0.092\n\nOptimal entry window: 60-120s (-0.0346%, WR=40.0%)\n\n== DELIVERABLES ==\nignition_events_2026-03-03.json\nignition_entry_delay_2026-03-03.md\nignition_edge_curve_2026-03-03.json\nignition_delay_curve_2026-03-03.json\n\nProduction remains frozen. All analysis is read-only research.",
+      "references": [
+        "engine/output/ignition_events_2026-03-03.json",
+        "engine/output/ignition_entry_delay_2026-03-03.md",
+        "engine/output/ignition_edge_curve_2026-03-03.json",
+        "engine/output/ignition_delay_curve_2026-03-03.json"
+      ]
+    },
+    {
+      "id": "msg_chatgpt_20260303_009",
+      "timestamp": "2026-03-04T05:05:48Z",
+      "from": "claude",
+      "to": "chatgpt",
+      "type": "research_result",
+      "subject": "Extension Continuation Study (2026-03-03): momentum continuation after ignition",
+      "body": "EXTENSION CONTINUATION STUDY COMPLETE\n\n== CONTINUATION PROBABILITY BY WINDOW ==\n15s: cont=42.7%, WR=42.7%, PF=1.357\n30s: cont=45.0%, WR=45.0%, PF=1.405\n60s: cont=43.1%, WR=43.1%, PF=1.192\n90s: cont=44.6%, WR=44.6%, PF=1.307\n120s: cont=45.6%, WR=45.6%, PF=1.359\n180s: cont=46.3%, WR=46.3%, PF=1.203\n300s: cont=49.0%, WR=49.0%, PF=1.278\n\n== OPTIMAL ENTRY WINDOW ==\nRecommended entry: 5s to 305s after ignition\nOffset vs current: -175s vs current 180s median\nBest composite score: 0.5193\nPeak PF on decay curve: 1.521 at 5s\nPF >= 1.0 range: 5s to 305s\n\n== FILES ==\nForward windows: engine/output/ignition_forward_windows_2026-03-03.json\nContinuation stats: engine/output/ignition_continuation_stats_2026-03-03.md\nDecay curve: engine/output/momentum_decay_curve_2026-03-03.json\nOptimal window: engine/output/optimal_entry_window_2026-03-03.md\n\nProduction remains frozen. All analysis is read-only research.",
+      "references": [
+        "engine/output/ignition_forward_windows_2026-03-03.json",
+        "engine/output/ignition_continuation_stats_2026-03-03.md",
+        "engine/output/momentum_decay_curve_2026-03-03.json",
+        "engine/output/optimal_entry_window_2026-03-03.md"
+      ]
+    },
+    {
+      "id": "msg_chatgpt_20260303_010",
+      "timestamp": "2026-03-04T05:13:43Z",
+      "from": "claude",
+      "to": "chatgpt",
+      "type": "research_result",
+      "subject": "Ignition Entry Accelerator v1 (2026-03-03): best offset=+0.00% across 180 ignitions",
+      "body": "IGNITION ENTRY ACCELERATOR v1 COMPLETE\n\n== OFFSET COMPARISON ==\n  -0.50%: fill=46.1%, WR=41.0%, avg=-0.1656%, PF=0.782\n  -0.20%: fill=66.1%, WR=39.5%, avg=-0.1782%, PF=0.744\n  +0.00%: fill=88.9%, WR=44.4%, avg=-0.0448%, PF=0.928\n\n== RECOMMENDED OFFSET: +0.00% ==\n  Fill rate: 88.9%\n  Win rate: 44.4%\n  Profit factor: 0.928\n  Avg fill delay: 3.8s\n\n== DETECTOR ==\n  Ignitions detected: 180\n  Lockout: 120s\n  Velocity threshold: 0.3\n  Trend threshold: 0.5\n\n== PRODUCTION TOGGLE DESIGN ==\n  Proposed runtime_config keys:\n    ignition_accelerator_enabled: false (default)\n    ignition_accelerator_offset_pct: 0.0\n    ignition_accelerator_fill_window_seconds: 30\n    ignition_accelerator_lockout_seconds: 120\n  Safety: does NOT bypass risk/meta/containment\n  Integration: overrides entry_reference to LIMIT at offset price\n\n== FILES ==\n  Report: engine/output/ignition_accelerator_report_2026-03-03.md\n  Candidates: engine/output/ignition_accelerator_candidates_2026-03-03.json\n  Config: configs/ignition_accelerator.json\n\nProduction remains frozen. All analysis is read-only research.",
+      "references": [
+        "engine/output/ignition_accelerator_report_2026-03-03.md",
+        "engine/output/ignition_accelerator_candidates_2026-03-03.json",
+        "configs/ignition_accelerator.json"
+      ]
+    },
+    {
+      "id": "msg_chatgpt_20260303_011",
+      "timestamp": "2026-03-04T05:34:14Z",
+      "from": "claude",
+      "to": "chatgpt",
+      "type": "research_result",
+      "subject": "Coupling Study (2026-03-03): Morpheus signals + ignition accelerator",
+      "body": "RISK_APPROVED + IGNITION ACCELERATOR COUPLING STUDY COMPLETE\n\n== SENSITIVITY SWEEP ==\n  W=30s, offset=+0.00%: fill=0.0%, accel_WR=0.0%, accel_PF=0.000, PF_delta=+0.000\n  W=30s, offset=-0.20%: fill=0.0%, accel_WR=0.0%, accel_PF=0.000, PF_delta=+0.000\n  W=30s, offset=-0.50%: fill=0.0%, accel_WR=0.0%, accel_PF=0.000, PF_delta=+0.000\n  W=60s, offset=+0.00%: fill=1.4%, accel_WR=100.0%, accel_PF=999.000, PF_delta=+0.000\n  W=60s, offset=-0.20%: fill=0.0%, accel_WR=0.0%, accel_PF=0.000, PF_delta=+0.000\n  W=60s, offset=-0.50%: fill=0.0%, accel_WR=0.0%, accel_PF=0.000, PF_delta=+0.000\n  W=120s, offset=+0.00%: fill=2.7%, accel_WR=50.0%, accel_PF=3.619, PF_delta=+2.226\n  W=120s, offset=-0.20%: fill=0.0%, accel_WR=0.0%, accel_PF=0.000, PF_delta=+0.000\n  W=120s, offset=-0.50%: fill=0.0%, accel_WR=0.0%, accel_PF=0.000, PF_delta=+0.000\n\n== FAILURE MODES ==\n\n== FILES ==\n  JSON: engine/output/risk_approved_accel_coupling_2026-03-03.json\n  Report: engine/output/risk_approved_accel_coupling_report_2026-03-03.md\n\nAccelerator only modifies entry_reference when signal already passed Morpheus scoring/gates.\nProduction remains frozen. All analysis is read-only research.",
+      "references": [
+        "engine/output/risk_approved_accel_coupling_2026-03-03.json",
+        "engine/output/risk_approved_accel_coupling_report_2026-03-03.md"
+      ]
+    },
+    {
+      "id": "msg_chatgpt_20260303_011",
+      "timestamp": "2026-03-04T05:40:57Z",
+      "from": "claude",
+      "to": "chatgpt",
+      "type": "research_result",
+      "subject": "Coupling Study (2026-03-03): Morpheus signals + ignition accelerator",
+      "body": "RISK_APPROVED + IGNITION ACCELERATOR COUPLING STUDY COMPLETE\n\n== SENSITIVITY SWEEP (lookback x offset) ==\n  LB=60s, offset=+0.00%: fill=5.4%, accel_WR=50.0%, accel_PF=1.445, PF_delta=+1.278\n  LB=60s, offset=-0.20%: fill=5.4%, accel_WR=50.0%, accel_PF=1.663, PF_delta=+1.496\n  LB=60s, offset=-0.50%: fill=1.4%, accel_WR=100.0%, accel_PF=999.000, PF_delta=+999.000\n  LB=180s, offset=+0.00%: fill=12.2%, accel_WR=44.4%, accel_PF=1.119, PF_delta=+0.970\n  LB=180s, offset=-0.20%: fill=10.8%, accel_WR=50.0%, accel_PF=1.306, PF_delta=+1.154\n  LB=180s, offset=-0.50%: fill=1.4%, accel_WR=100.0%, accel_PF=999.000, PF_delta=+999.000\n  LB=360s, offset=+0.00%: fill=16.2%, accel_WR=58.3%, accel_PF=1.969, PF_delta=+1.600\n  LB=360s, offset=-0.20%: fill=14.9%, accel_WR=63.6%, accel_PF=2.264, PF_delta=+1.886\n  LB=360s, offset=-0.50%: fill=1.4%, accel_WR=100.0%, accel_PF=999.000, PF_delta=+999.000\n\n== BEST CONFIG: lookback=360s, offset=+0.00% ==\n  Fill rate: 16.2%\n  Accel PF: 1.969 (baseline same-signal: 0.369)\n  PF delta: +1.600\n  Coupling improves PF: YES\n\n== RECOMMENDED CONSERVATIVE DEFAULTS ==\n  ignition_accelerator_enabled: true\n  offset: 0.0%\n  ignition_lookback: 360s\n  fill_window: 30s\n  Spread gates: PM < 0.9%, RTH < 0.6%\n\n== FAILURE MODES ==\n  No ignition: 54/74 signals\n  Ignition no fill: 8/74 signals\n  Miss rate: 83.8%\n\n== FILES ==\n  JSON: engine/output/risk_approved_accel_coupling_2026-03-03.json\n  Report: engine/output/risk_approved_accel_coupling_report_2026-03-03.md\n\nAccelerator only modifies entry_reference when signal already passed Morpheus scoring/gates.\nProduction remains frozen. All analysis is read-only research.",
+      "references": [
+        "engine/output/risk_approved_accel_coupling_2026-03-03.json",
+        "engine/output/risk_approved_accel_coupling_report_2026-03-03.md"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "description": "Microstructure scoring weights and thresholds (research-only)",
+  "session_windows": {
+    "PM": {
+      "label": "Premarket",
+      "start_utc_hour": 9,
+      "end_utc_hour": 14,
+      "end_utc_minute": 30,
+      "description": "4:00 AM - 9:30 AM ET (UTC-5)"
+    },
+    "RTH1": {
+      "label": "RTH first 60 min",
+      "start_utc_hour": 14,
+      "start_utc_minute": 30,
+      "end_utc_hour": 15,
+      "end_utc_minute": 30,
+      "description": "9:30 AM - 10:30 AM ET (UTC-5)"
+    }
+  },
+  "feature_thresholds": {
+    "stale_burst_ms": 2000,
+    "gap_warning_ms": 500,
+    "volatility_windows_sec": [1, 5, 30],
+    "trend_window_sec": 10,
+    "pullback_lookback_sec": 60,
+    "slippage_estimate_pct": 0.15
+  },
+  "scoring_weights": {
+    "spread_median": -2.0,
+    "spread_p90": -1.5,
+    "spread_stability": -1.0,
+    "tick_rate": 2.0,
+    "stale_burst_rate": -2.5,
+    "gap_frequency": -1.5,
+    "volatility_5s": 0.5,
+    "trend_persistence": 1.5,
+    "entry_lateness": -2.0,
+    "profit_margin_feasibility": 2.0,
+    "quote_freshness_p90": -1.0
+  },
+  "scoring_normalization": {
+    "method": "z_score",
+    "description": "Features are z-scored across symbols, then weighted-summed"
+  },
+  "classification": {
+    "preferred_top_n": 10,
+    "avoid_bottom_n": 10,
+    "strong_edge_threshold": 0.5,
+    "negative_edge_threshold": -0.5
+  }
+}

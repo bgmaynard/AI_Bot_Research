@@ -1,0 +1,43 @@
+{
+  "version": "1.0",
+  "description": "Ignition Entry Accelerator v1 configuration",
+
+  "detector": {
+    "velocity_30s_threshold": 0.30,
+    "trend_persistence_threshold": 0.50,
+    "quote_freshness_max_ms": 1200,
+    "lockout_seconds": 120,
+    "min_criteria": 3,
+    "comment": "Trigger when velocity, trend, and freshness all pass simultaneously"
+  },
+
+  "accelerator_policy": {
+    "target_window_start_s": 5,
+    "target_window_end_s": 30,
+    "offsets_pct": [0.0, -0.20, -0.50],
+    "fill_window_seconds": 30,
+    "entry_type": "LIMIT",
+    "comment": "Propose limit entries at ignition_price * (1 + offset_pct)"
+  },
+
+  "exit_model": {
+    "hard_stop_pct": -1.0,
+    "trail_activate_pct": 0.8,
+    "trail_distance_pct": 0.4,
+    "time_exit_seconds": 300,
+    "comment": "Identical to prior edge preservation exit model"
+  },
+
+  "spread_constraints": {
+    "pm_max_spread_pct": 0.9,
+    "rth_max_spread_pct": 0.6,
+    "comment": "Only apply accelerator if spread is below these thresholds"
+  },
+
+  "session_boundaries": {
+    "pm_start_utc": "09:00",
+    "pm_end_utc": "14:30",
+    "rth_start_utc": "14:30",
+    "rth_end_utc": "21:00"
+  }
+}
