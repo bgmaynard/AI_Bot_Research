@@ -384,6 +384,57 @@ class ResearchDataStore:
 
 DATA_STORE = ResearchDataStore()
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# WATCHLIST MODULES
+# ═══════════════════════════════════════════════════════════════════════════════
+from watchlist import StockClassifierManager, DailyTracker, VettedListManager
+
+CLASSIFIER = StockClassifierManager()
+TRACKER = DailyTracker()
+VETTED = VettedListManager(CLASSIFIER, TRACKER)
+
+
+def _ingest_watchlist_signals():
+    """Load signal_ledger into classifier, register in tracker, auto-qualify."""
+    from datetime import timezone as _tz
+    date_str = datetime.now(_tz.utc).strftime("%Y-%m-%d")
+    reports_dir = BASE_DIR / "engine" / "cache" / "morpheus_reports"
+
+    # Try today first, fall back to most recent date folder
+    ledger_path = reports_dir / date_str / "signal_ledger.jsonl"
+    if not ledger_path.exists():
+        if reports_dir.exists():
+            date_dirs = sorted(reports_dir.iterdir(), reverse=True)
+            for d in date_dirs:
+                if (d / "signal_ledger.jsonl").exists():
+                    date_str = d.name
+                    break
+
+    print(f"[WATCHLIST] Loading signals for {date_str}...")
+    CLASSIFIER.load_signals(date_str)
+    print(f"[WATCHLIST]   Classified {len(CLASSIFIER.classifications)} symbols")
+
+    # Register each in tracker and auto-qualify in vetted list
+    for sym, cls in CLASSIFIER.classifications.items():
+        if cls.entry_price and cls.first_seen:
+            TRACKER.register(sym, cls.entry_price, cls.first_seen,
+                             source="scanner", tier=cls.tier)
+            VETTED.auto_qualify(cls)
+
+    TRACKER.refresh_from_cache()
+    tier_counts = {"A": 0, "B": 0, "C": 0}
+    for cls in CLASSIFIER.classifications.values():
+        tier_counts[cls.tier] = tier_counts.get(cls.tier, 0) + 1
+    print(f"[WATCHLIST]   Tiers: A={tier_counts['A']} B={tier_counts['B']} C={tier_counts['C']}")
+    print(f"[WATCHLIST]   Vetted: {len(VETTED.vetted)} symbols")
+    print(f"[WATCHLIST]   Tracking: {len(TRACKER.tracked)} symbols")
+
+
+try:
+    _ingest_watchlist_signals()
+except Exception as e:
+    print(f"[WATCHLIST] Signal ingestion failed (non-fatal): {e}")
+
 
 def get_git_sha():
     try:
@@ -438,6 +489,14 @@ class ResearchLabHandler(http.server.SimpleHTTPRequestHandler):
         elif path == "/research_lab.html" or path == "/research_lab" or path == "/":
             self.path = "/ui/research_lab.html"
             super().do_GET()
+        elif path == "/api/watchlist/classified":
+            self.send_json(CLASSIFIER.get_all_classified())
+        elif path == "/api/watchlist/vetted":
+            self.send_json(VETTED.get_vetted_list())
+        elif path == "/api/watchlist/tracker":
+            self.send_json(TRACKER.get_state())
+        elif path == "/api/watchlist/report":
+            self.send_json(TRACKER.generate_eod_report())
         elif path.startswith("/js/"):
             self.path = "/ui" + path
             super().do_GET()
@@ -464,6 +523,16 @@ class ResearchLabHandler(http.server.SimpleHTTPRequestHandler):
                     break
             DATA_STORE.save_proposals()
             self.send_json({"success": True, "proposal_id": proposal_id, "status": "REJECTED"})
+        elif path == "/api/watchlist/add":
+            content_length = int(self.headers.get("Content-Length", 0))
+            body = json.loads(self.rfile.read(content_length)) if content_length > 0 else {}
+            symbol = body.get("symbol", "").upper()
+            source = body.get("source", "manual")
+            if not symbol:
+                self.send_json({"success": False, "reason": "missing symbol"})
+            else:
+                result = VETTED.manual_add(symbol, source=source)
+                self.send_json(result)
         else:
             self.send_error(404, "Not Found")
 
