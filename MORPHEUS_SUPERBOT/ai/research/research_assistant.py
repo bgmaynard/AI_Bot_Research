@@ -321,6 +321,57 @@ def generate_briefing():
 
     lines.append("")
 
+    # ── Section 2.5: Sector Performance ───────────────────────────────
+    sector_cls = pipeline.get("sector_classification")
+    sector_heat = pipeline.get("sector_heat")
+    if sector_cls or sector_heat:
+        lines.append("-" * 70)
+        lines.append("  2.5  SECTOR PERFORMANCE")
+        lines.append("-" * 70)
+        lines.append("")
+
+        if sector_cls:
+            by_type = sector_cls.get("by_asset_type", {})
+            if by_type:
+                lines.append("  SYMBOL CLASSIFICATION:")
+                for atype, syms in sorted(by_type.items()):
+                    lines.append("    %-20s: %s" % (atype, ", ".join(sorted(syms))))
+                lines.append("")
+
+        if sector_heat:
+            lines.append("  SECTOR HEAT SCORES:")
+            for sec, heat in sorted(sector_heat.items(),
+                                     key=lambda x: -x[1].get("heat_score", 0)):
+                zone = heat.get("heat_zone", "?")
+                score = heat.get("heat_score", 0)
+                zone_label = zone.upper()
+                if zone == "hot":
+                    lines.append("    %-20s: %3.0f  [%s] — trade aggressively" % (sec, score, zone_label))
+                elif zone == "cold":
+                    lines.append("    %-20s: %3.0f  [%s] — pull back" % (sec, score, zone_label))
+                elif zone == "frozen":
+                    lines.append("    %-20s: %3.0f  [%s] — skip entirely" % (sec, score, zone_label))
+                else:
+                    lines.append("    %-20s: %3.0f  [%s]" % (sec, score, zone_label))
+            lines.append("")
+
+        # Check for sector mismatches — profitable symbols being filtered
+        if regime.get("status") == "OK" and sector_cls:
+            classifications = sector_cls.get("classifications", {})
+            regime_data = pipeline.get("regime", {})
+            blocked_data = regime_data.get("blocked", {})
+            # Look for inverse ETFs that might be incorrectly filtered
+            inverse_syms = [s for s, c in classifications.items()
+                           if c.get("asset_type") in ("inverse_etf", "leveraged_etf")]
+            if inverse_syms:
+                lines.append("  SECTOR INSIGHTS:")
+                lines.append("    Leveraged/inverse ETFs in universe: %s" % ", ".join(sorted(inverse_syms)))
+                lines.append("    These symbols need WIDER spread gates and may NOT need")
+                lines.append("    regime suppression — verify they aren't being over-filtered.")
+                lines.append("")
+
+        lines.append("")
+
     # ── Section 3: Alpha Heatmap Insights ───────────────────────────────
     lines.append("-" * 70)
     lines.append("  3. WHEN THE SYSTEM WORKS BEST")
@@ -893,6 +944,15 @@ def get_briefing_json():
             "days_of_data": len(scorecard.get("days", [])) if scorecard else 0,
         }
         result["actions"] = _generate_actions(pipeline, scorecard, info)
+
+    # Sector data
+    if pipeline:
+        sector_cls = pipeline.get("sector_classification")
+        sector_heat = pipeline.get("sector_heat")
+        if sector_cls:
+            result["sector_classification"] = sector_cls
+        if sector_heat:
+            result["sector_heat"] = sector_heat
 
     return result
 

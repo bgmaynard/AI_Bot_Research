@@ -96,6 +96,10 @@ class StockClassification:
     first_seen: Optional[str]
     classified_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     history: List[dict] = field(default_factory=list)
+    asset_type: str = "unknown"
+    sector: str = "unknown"
+    cap_bucket: str = "unknown"
+    sector_confidence: float = 0.0
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -106,11 +110,12 @@ class StockClassification:
 # ═══════════════════════════════════════════════════════════════════════════════
 
 class StockClassifierManager:
-    def __init__(self, weights=None, thresholds=None):
+    def __init__(self, weights=None, thresholds=None, sector_classifier=None):
         self.weights = weights or ScoringWeights()
         self.thresholds = thresholds or ClassificationThresholds()
         self.classifications: Dict[str, StockClassification] = {}
         self._gating_data: Dict[str, dict] = {}
+        self._sector_classifier = sector_classifier
 
     # -------------------------------------------------------------------
     # Data loading
@@ -411,6 +416,20 @@ class StockClassifierManager:
         elif prev:
             classification.history = prev.history
 
+        # Enrich with sector classification if available
+        if self._sector_classifier:
+            signal_data = {
+                "entry_price": entry_prices[0] if entry_prices else None,
+                "spread_pct": gating.get("spread_pct"),
+                "gap_pcts": gap_pcts,
+                "tags": tags,
+            }
+            sec_info = self._sector_classifier.classify(symbol, signal_data)
+            classification.asset_type = sec_info.asset_type
+            classification.sector = sec_info.sector
+            classification.cap_bucket = sec_info.cap_bucket
+            classification.sector_confidence = sec_info.confidence
+
         self.classifications[symbol] = classification
         return classification
 
@@ -426,13 +445,19 @@ class StockClassifierManager:
         return cls.tier if cls else None
 
     def get_all_classified(self) -> dict:
-        """Return all classifications grouped by tier."""
+        """Return all classifications grouped by tier, sector, and asset type."""
         result = {"A": [], "B": [], "C": []}
+        by_sector = defaultdict(list)
+        by_asset_type = defaultdict(list)
         for sym, cls in sorted(self.classifications.items(),
                                 key=lambda x: -x[1].final_score):
             result[cls.tier].append(cls.to_dict())
+            by_sector[cls.sector].append(sym)
+            by_asset_type[cls.asset_type].append(sym)
         return {
             "total": len(self.classifications),
             "counts": {t: len(v) for t, v in result.items()},
             "tiers": result,
+            "by_sector": dict(by_sector),
+            "by_asset_type": dict(by_asset_type),
         }

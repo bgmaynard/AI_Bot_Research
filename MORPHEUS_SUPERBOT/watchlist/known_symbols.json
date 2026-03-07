@@ -1,0 +1,257 @@
+{
+  "_comment": "Static symbol classification map — ~200 well-known ETFs and common tickers",
+
+  "TQQQ": {"asset_type": "leveraged_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 3.0},
+  "SQQQ": {"asset_type": "inverse_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": -3.0},
+  "QQQ":  {"asset_type": "sector_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 1.0},
+  "QLD":  {"asset_type": "leveraged_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 2.0},
+  "QID":  {"asset_type": "inverse_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": -2.0},
+
+  "SPXL": {"asset_type": "leveraged_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 3.0},
+  "SPXS": {"asset_type": "inverse_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": -3.0},
+  "UPRO": {"asset_type": "leveraged_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 3.0},
+  "SPXU": {"asset_type": "inverse_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": -3.0},
+  "SSO":  {"asset_type": "leveraged_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 2.0},
+  "SDS":  {"asset_type": "inverse_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": -2.0},
+  "SH":   {"asset_type": "inverse_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": -1.0},
+  "SPY":  {"asset_type": "sector_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 1.0},
+  "VOO":  {"asset_type": "sector_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 1.0},
+  "IVV":  {"asset_type": "sector_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 1.0},
+
+  "IWM":  {"asset_type": "sector_etf", "sector": "small_cap", "cap_bucket": "etf", "leverage": 1.0},
+  "TNA":  {"asset_type": "leveraged_etf", "sector": "small_cap", "cap_bucket": "etf", "leverage": 3.0},
+  "TZA":  {"asset_type": "inverse_etf", "sector": "small_cap", "cap_bucket": "etf", "leverage": -3.0},
+  "UWM":  {"asset_type": "leveraged_etf", "sector": "small_cap", "cap_bucket": "etf", "leverage": 2.0},
+  "TWM":  {"asset_type": "inverse_etf", "sector": "small_cap", "cap_bucket": "etf", "leverage": -2.0},
+  "URTY": {"asset_type": "leveraged_etf", "sector": "small_cap", "cap_bucket": "etf", "leverage": 3.0},
+  "SRTY": {"asset_type": "inverse_etf", "sector": "small_cap", "cap_bucket": "etf", "leverage": -3.0},
+
+  "SOXL": {"asset_type": "leveraged_etf", "sector": "semiconductors", "cap_bucket": "etf", "leverage": 3.0},
+  "SOXS": {"asset_type": "inverse_etf", "sector": "semiconductors", "cap_bucket": "etf", "leverage": -3.0},
+  "SOXX": {"asset_type": "sector_etf", "sector": "semiconductors", "cap_bucket": "etf", "leverage": 1.0},
+  "SMH":  {"asset_type": "sector_etf", "sector": "semiconductors", "cap_bucket": "etf", "leverage": 1.0},
+  "USD":  {"asset_type": "leveraged_etf", "sector": "semiconductors", "cap_bucket": "etf", "leverage": 2.0},
+  "SSG":  {"asset_type": "inverse_etf", "sector": "semiconductors", "cap_bucket": "etf", "leverage": -2.0},
+
+  "TECL": {"asset_type": "leveraged_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 3.0},
+  "TECS": {"asset_type": "inverse_etf", "sector": "technology", "cap_bucket": "etf", "leverage": -3.0},
+  "XLK":  {"asset_type": "sector_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 1.0},
+  "MSTZ": {"asset_type": "inverse_etf", "sector": "technology", "cap_bucket": "etf", "leverage": -2.0},
+  "MSTU": {"asset_type": "leveraged_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 2.0},
+  "FNGU": {"asset_type": "leveraged_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 3.0},
+  "FNGD": {"asset_type": "inverse_etf", "sector": "technology", "cap_bucket": "etf", "leverage": -3.0},
+  "WEBL": {"asset_type": "leveraged_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 3.0},
+  "WEBS": {"asset_type": "inverse_etf", "sector": "technology", "cap_bucket": "etf", "leverage": -3.0},
+  "ARKK": {"asset_type": "sector_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 1.0},
+  "ARKW": {"asset_type": "sector_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 1.0},
+
+  "UVIX": {"asset_type": "volatility_etf", "sector": "volatility", "cap_bucket": "etf", "leverage": 2.0},
+  "SVIX": {"asset_type": "volatility_etf", "sector": "volatility", "cap_bucket": "etf", "leverage": -1.0},
+  "VXX":  {"asset_type": "volatility_etf", "sector": "volatility", "cap_bucket": "etf", "leverage": 1.0},
+  "UVXY": {"asset_type": "volatility_etf", "sector": "volatility", "cap_bucket": "etf", "leverage": 1.5},
+  "SVXY": {"asset_type": "volatility_etf", "sector": "volatility", "cap_bucket": "etf", "leverage": -0.5},
+  "VIXY": {"asset_type": "volatility_etf", "sector": "volatility", "cap_bucket": "etf", "leverage": 1.0},
+  "VIXM": {"asset_type": "volatility_etf", "sector": "volatility", "cap_bucket": "etf", "leverage": 1.0},
+
+  "NUGT": {"asset_type": "leveraged_etf", "sector": "materials", "cap_bucket": "etf", "leverage": 2.0},
+  "DUST": {"asset_type": "inverse_etf", "sector": "materials", "cap_bucket": "etf", "leverage": -2.0},
+  "JNUG": {"asset_type": "leveraged_etf", "sector": "materials", "cap_bucket": "etf", "leverage": 2.0},
+  "JDST": {"asset_type": "inverse_etf", "sector": "materials", "cap_bucket": "etf", "leverage": -2.0},
+  "GDX":  {"asset_type": "sector_etf", "sector": "materials", "cap_bucket": "etf", "leverage": 1.0},
+  "GDXJ": {"asset_type": "sector_etf", "sector": "materials", "cap_bucket": "etf", "leverage": 1.0},
+  "GLD":  {"asset_type": "sector_etf", "sector": "materials", "cap_bucket": "etf", "leverage": 1.0},
+  "SLV":  {"asset_type": "sector_etf", "sector": "materials", "cap_bucket": "etf", "leverage": 1.0},
+  "AGQ":  {"asset_type": "leveraged_etf", "sector": "materials", "cap_bucket": "etf", "leverage": 2.0},
+  "ZSL":  {"asset_type": "inverse_etf", "sector": "materials", "cap_bucket": "etf", "leverage": -2.0},
+  "UGL":  {"asset_type": "leveraged_etf", "sector": "materials", "cap_bucket": "etf", "leverage": 2.0},
+  "GLL":  {"asset_type": "inverse_etf", "sector": "materials", "cap_bucket": "etf", "leverage": -2.0},
+
+  "ERX":  {"asset_type": "leveraged_etf", "sector": "energy", "cap_bucket": "etf", "leverage": 2.0},
+  "ERY":  {"asset_type": "inverse_etf", "sector": "energy", "cap_bucket": "etf", "leverage": -2.0},
+  "GUSH": {"asset_type": "leveraged_etf", "sector": "energy", "cap_bucket": "etf", "leverage": 2.0},
+  "DRIP": {"asset_type": "inverse_etf", "sector": "energy", "cap_bucket": "etf", "leverage": -2.0},
+  "UCO":  {"asset_type": "leveraged_etf", "sector": "energy", "cap_bucket": "etf", "leverage": 2.0},
+  "SCO":  {"asset_type": "inverse_etf", "sector": "energy", "cap_bucket": "etf", "leverage": -2.0},
+  "BOIL": {"asset_type": "leveraged_etf", "sector": "energy", "cap_bucket": "etf", "leverage": 2.0},
+  "KOLD": {"asset_type": "inverse_etf", "sector": "energy", "cap_bucket": "etf", "leverage": -2.0},
+  "XLE":  {"asset_type": "sector_etf", "sector": "energy", "cap_bucket": "etf", "leverage": 1.0},
+  "XOP":  {"asset_type": "sector_etf", "sector": "energy", "cap_bucket": "etf", "leverage": 1.0},
+  "USO":  {"asset_type": "sector_etf", "sector": "energy", "cap_bucket": "etf", "leverage": 1.0},
+  "UNG":  {"asset_type": "sector_etf", "sector": "energy", "cap_bucket": "etf", "leverage": 1.0},
+
+  "FAS":  {"asset_type": "leveraged_etf", "sector": "financials", "cap_bucket": "etf", "leverage": 3.0},
+  "FAZ":  {"asset_type": "inverse_etf", "sector": "financials", "cap_bucket": "etf", "leverage": -3.0},
+  "XLF":  {"asset_type": "sector_etf", "sector": "financials", "cap_bucket": "etf", "leverage": 1.0},
+  "KRE":  {"asset_type": "sector_etf", "sector": "financials", "cap_bucket": "etf", "leverage": 1.0},
+  "DPST": {"asset_type": "leveraged_etf", "sector": "financials", "cap_bucket": "etf", "leverage": 3.0},
+
+  "LABU": {"asset_type": "leveraged_etf", "sector": "biotech", "cap_bucket": "etf", "leverage": 3.0},
+  "LABD": {"asset_type": "inverse_etf", "sector": "biotech", "cap_bucket": "etf", "leverage": -3.0},
+  "XBI":  {"asset_type": "sector_etf", "sector": "biotech", "cap_bucket": "etf", "leverage": 1.0},
+  "IBB":  {"asset_type": "sector_etf", "sector": "biotech", "cap_bucket": "etf", "leverage": 1.0},
+  "ARKG": {"asset_type": "sector_etf", "sector": "biotech", "cap_bucket": "etf", "leverage": 1.0},
+
+  "CURE": {"asset_type": "leveraged_etf", "sector": "healthcare", "cap_bucket": "etf", "leverage": 3.0},
+  "XLV":  {"asset_type": "sector_etf", "sector": "healthcare", "cap_bucket": "etf", "leverage": 1.0},
+
+  "NAIL": {"asset_type": "leveraged_etf", "sector": "real_estate", "cap_bucket": "etf", "leverage": 3.0},
+  "DRV":  {"asset_type": "inverse_etf", "sector": "real_estate", "cap_bucket": "etf", "leverage": -3.0},
+  "XLRE": {"asset_type": "sector_etf", "sector": "real_estate", "cap_bucket": "etf", "leverage": 1.0},
+
+  "SOXQ": {"asset_type": "sector_etf", "sector": "semiconductors", "cap_bucket": "etf", "leverage": 1.0},
+  "NVDL": {"asset_type": "leveraged_etf", "sector": "semiconductors", "cap_bucket": "etf", "leverage": 2.0},
+  "NVDS": {"asset_type": "inverse_etf", "sector": "semiconductors", "cap_bucket": "etf", "leverage": -1.0},
+  "NVDX": {"asset_type": "leveraged_etf", "sector": "semiconductors", "cap_bucket": "etf", "leverage": 2.0},
+
+  "TSLL": {"asset_type": "leveraged_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 2.0},
+  "TSLS": {"asset_type": "inverse_etf", "sector": "technology", "cap_bucket": "etf", "leverage": -1.0},
+
+  "BITU": {"asset_type": "leveraged_etf", "sector": "crypto_proxy", "cap_bucket": "etf", "leverage": 2.0},
+  "BITD": {"asset_type": "inverse_etf", "sector": "crypto_proxy", "cap_bucket": "etf", "leverage": -2.0},
+  "BITO": {"asset_type": "sector_etf", "sector": "crypto_proxy", "cap_bucket": "etf", "leverage": 1.0},
+  "GBTC": {"asset_type": "sector_etf", "sector": "crypto_proxy", "cap_bucket": "etf", "leverage": 1.0},
+  "ETHE": {"asset_type": "sector_etf", "sector": "crypto_proxy", "cap_bucket": "etf", "leverage": 1.0},
+  "MARA": {"asset_type": "common_stock", "sector": "crypto_proxy", "cap_bucket": "mid", "leverage": 1.0},
+  "RIOT": {"asset_type": "common_stock", "sector": "crypto_proxy", "cap_bucket": "mid", "leverage": 1.0},
+  "COIN": {"asset_type": "common_stock", "sector": "crypto_proxy", "cap_bucket": "large", "leverage": 1.0},
+  "CLSK": {"asset_type": "common_stock", "sector": "crypto_proxy", "cap_bucket": "small", "leverage": 1.0},
+  "WULF": {"asset_type": "common_stock", "sector": "crypto_proxy", "cap_bucket": "small", "leverage": 1.0},
+  "BITF": {"asset_type": "common_stock", "sector": "crypto_proxy", "cap_bucket": "small", "leverage": 1.0},
+
+  "TMF":  {"asset_type": "leveraged_etf", "sector": "bonds", "cap_bucket": "etf", "leverage": 3.0},
+  "TMV":  {"asset_type": "inverse_etf", "sector": "bonds", "cap_bucket": "etf", "leverage": -3.0},
+  "TLT":  {"asset_type": "sector_etf", "sector": "bonds", "cap_bucket": "etf", "leverage": 1.0},
+  "TBT":  {"asset_type": "inverse_etf", "sector": "bonds", "cap_bucket": "etf", "leverage": -2.0},
+  "TBF":  {"asset_type": "inverse_etf", "sector": "bonds", "cap_bucket": "etf", "leverage": -1.0},
+
+  "YANG": {"asset_type": "inverse_etf", "sector": "china", "cap_bucket": "etf", "leverage": -3.0},
+  "YINN": {"asset_type": "leveraged_etf", "sector": "china", "cap_bucket": "etf", "leverage": 3.0},
+  "FXI":  {"asset_type": "sector_etf", "sector": "china", "cap_bucket": "etf", "leverage": 1.0},
+  "KWEB": {"asset_type": "sector_etf", "sector": "china", "cap_bucket": "etf", "leverage": 1.0},
+  "CWEB": {"asset_type": "leveraged_etf", "sector": "china", "cap_bucket": "etf", "leverage": 2.0},
+
+  "UDOW": {"asset_type": "leveraged_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 3.0},
+  "SDOW": {"asset_type": "inverse_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": -3.0},
+  "DIA":  {"asset_type": "sector_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 1.0},
+  "DDM":  {"asset_type": "leveraged_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 2.0},
+  "DXD":  {"asset_type": "inverse_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": -2.0},
+  "DOG":  {"asset_type": "inverse_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": -1.0},
+
+  "MIDU": {"asset_type": "leveraged_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 3.0},
+  "MIDZ": {"asset_type": "inverse_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": -3.0},
+  "MDY":  {"asset_type": "sector_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 1.0},
+
+  "DFEN": {"asset_type": "leveraged_etf", "sector": "defense", "cap_bucket": "etf", "leverage": 3.0},
+  "XAR":  {"asset_type": "sector_etf", "sector": "defense", "cap_bucket": "etf", "leverage": 1.0},
+  "ITA":  {"asset_type": "sector_etf", "sector": "defense", "cap_bucket": "etf", "leverage": 1.0},
+
+  "TPOR": {"asset_type": "leveraged_etf", "sector": "transportation", "cap_bucket": "etf", "leverage": 3.0},
+  "IYT":  {"asset_type": "sector_etf", "sector": "transportation", "cap_bucket": "etf", "leverage": 1.0},
+
+  "RETL": {"asset_type": "leveraged_etf", "sector": "retail", "cap_bucket": "etf", "leverage": 3.0},
+  "XRT":  {"asset_type": "sector_etf", "sector": "retail", "cap_bucket": "etf", "leverage": 1.0},
+  "XLY":  {"asset_type": "sector_etf", "sector": "retail", "cap_bucket": "etf", "leverage": 1.0},
+
+  "UTSL": {"asset_type": "leveraged_etf", "sector": "utilities", "cap_bucket": "etf", "leverage": 3.0},
+  "XLU":  {"asset_type": "sector_etf", "sector": "utilities", "cap_bucket": "etf", "leverage": 1.0},
+
+  "PILL": {"asset_type": "leveraged_etf", "sector": "healthcare", "cap_bucket": "etf", "leverage": 2.0},
+
+  "BULZ": {"asset_type": "leveraged_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 3.0},
+  "BERZ": {"asset_type": "inverse_etf", "sector": "technology", "cap_bucket": "etf", "leverage": -3.0},
+
+  "CONL": {"asset_type": "leveraged_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 2.0},
+
+  "EEM":  {"asset_type": "sector_etf", "sector": "emerging_markets", "cap_bucket": "etf", "leverage": 1.0},
+  "EDC":  {"asset_type": "leveraged_etf", "sector": "emerging_markets", "cap_bucket": "etf", "leverage": 3.0},
+  "EDZ":  {"asset_type": "inverse_etf", "sector": "emerging_markets", "cap_bucket": "etf", "leverage": -3.0},
+
+  "BNKU": {"asset_type": "leveraged_etf", "sector": "financials", "cap_bucket": "etf", "leverage": 3.0},
+
+  "WANT": {"asset_type": "leveraged_etf", "sector": "retail", "cap_bucket": "etf", "leverage": 3.0},
+
+  "DRN":  {"asset_type": "leveraged_etf", "sector": "real_estate", "cap_bucket": "etf", "leverage": 3.0},
+
+  "HIBL": {"asset_type": "leveraged_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": 3.0},
+  "HIBS": {"asset_type": "inverse_etf", "sector": "broad_market", "cap_bucket": "etf", "leverage": -3.0},
+
+  "FNGO": {"asset_type": "leveraged_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 2.0},
+
+  "AAPL": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "large", "leverage": 1.0},
+  "NVDA": {"asset_type": "common_stock", "sector": "semiconductors", "cap_bucket": "large", "leverage": 1.0},
+  "TSLA": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "large", "leverage": 1.0},
+  "AMD":  {"asset_type": "common_stock", "sector": "semiconductors", "cap_bucket": "large", "leverage": 1.0},
+  "AMZN": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "large", "leverage": 1.0},
+  "MSFT": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "large", "leverage": 1.0},
+  "META": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "large", "leverage": 1.0},
+  "GOOGL": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "large", "leverage": 1.0},
+  "NFLX": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "large", "leverage": 1.0},
+  "PLTR": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "large", "leverage": 1.0},
+
+  "BATL": {"asset_type": "common_stock", "sector": "energy", "cap_bucket": "micro", "leverage": 1.0},
+  "USEG": {"asset_type": "common_stock", "sector": "energy", "cap_bucket": "micro", "leverage": 1.0},
+  "PLUG": {"asset_type": "common_stock", "sector": "energy", "cap_bucket": "mid", "leverage": 1.0},
+  "VG":   {"asset_type": "common_stock", "sector": "energy", "cap_bucket": "large", "leverage": 1.0},
+
+  "CRCD": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "micro", "leverage": 1.0},
+  "IONZ": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "micro", "leverage": 1.0},
+  "TMDE": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "micro", "leverage": 1.0},
+
+  "MULN": {"asset_type": "common_stock", "sector": "automotive", "cap_bucket": "micro", "leverage": 1.0},
+  "FFIE": {"asset_type": "common_stock", "sector": "automotive", "cap_bucket": "micro", "leverage": 1.0},
+  "GOEV": {"asset_type": "common_stock", "sector": "automotive", "cap_bucket": "micro", "leverage": 1.0},
+  "WKHS": {"asset_type": "common_stock", "sector": "automotive", "cap_bucket": "micro", "leverage": 1.0},
+  "LCID": {"asset_type": "common_stock", "sector": "automotive", "cap_bucket": "small", "leverage": 1.0},
+  "RIVN": {"asset_type": "common_stock", "sector": "automotive", "cap_bucket": "mid", "leverage": 1.0},
+  "NIO":  {"asset_type": "common_stock", "sector": "automotive", "cap_bucket": "mid", "leverage": 1.0},
+
+  "ASTS": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "small", "leverage": 1.0},
+  "RKLB": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "small", "leverage": 1.0},
+  "LUNR": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "micro", "leverage": 1.0},
+
+  "GME":  {"asset_type": "common_stock", "sector": "retail", "cap_bucket": "mid", "leverage": 1.0},
+  "AMC":  {"asset_type": "common_stock", "sector": "entertainment", "cap_bucket": "small", "leverage": 1.0},
+  "BBBY": {"asset_type": "common_stock", "sector": "retail", "cap_bucket": "micro", "leverage": 1.0},
+
+  "SMCI": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "mid", "leverage": 1.0},
+  "MSTR": {"asset_type": "common_stock", "sector": "crypto_proxy", "cap_bucket": "large", "leverage": 1.0},
+  "HOOD": {"asset_type": "common_stock", "sector": "financials", "cap_bucket": "mid", "leverage": 1.0},
+  "SOFI": {"asset_type": "common_stock", "sector": "financials", "cap_bucket": "mid", "leverage": 1.0},
+
+  "SPCE": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "micro", "leverage": 1.0},
+  "JOBY": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "small", "leverage": 1.0},
+
+  "SOUN": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "small", "leverage": 1.0},
+  "AI":   {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "mid", "leverage": 1.0},
+  "BBAI": {"asset_type": "common_stock", "sector": "technology", "cap_bucket": "small", "leverage": 1.0},
+
+  "DWAC": {"asset_type": "spac", "sector": "technology", "cap_bucket": "small", "leverage": 1.0},
+  "DNA":  {"asset_type": "common_stock", "sector": "biotech", "cap_bucket": "small", "leverage": 1.0},
+
+  "XLB":  {"asset_type": "sector_etf", "sector": "materials", "cap_bucket": "etf", "leverage": 1.0},
+  "XLI":  {"asset_type": "sector_etf", "sector": "industrials", "cap_bucket": "etf", "leverage": 1.0},
+  "XLC":  {"asset_type": "sector_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 1.0},
+  "XLP":  {"asset_type": "sector_etf", "sector": "consumer_staples", "cap_bucket": "etf", "leverage": 1.0},
+
+  "AAPD": {"asset_type": "inverse_etf", "sector": "technology", "cap_bucket": "etf", "leverage": -1.0},
+  "AAPU": {"asset_type": "leveraged_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 2.0},
+  "AMZU": {"asset_type": "leveraged_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 2.0},
+  "AMZD": {"asset_type": "inverse_etf", "sector": "technology", "cap_bucket": "etf", "leverage": -1.0},
+  "MSFU": {"asset_type": "leveraged_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 2.0},
+  "MSFD": {"asset_type": "inverse_etf", "sector": "technology", "cap_bucket": "etf", "leverage": -1.0},
+  "GOOU": {"asset_type": "leveraged_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 2.0},
+  "GOOD": {"asset_type": "inverse_etf", "sector": "technology", "cap_bucket": "etf", "leverage": -1.0},
+  "METV": {"asset_type": "sector_etf", "sector": "technology", "cap_bucket": "etf", "leverage": 1.0},
+
+  "NRGU": {"asset_type": "leveraged_etf", "sector": "energy", "cap_bucket": "etf", "leverage": 3.0},
+  "NRGD": {"asset_type": "inverse_etf", "sector": "energy", "cap_bucket": "etf", "leverage": -3.0},
+
+  "MEXX": {"asset_type": "leveraged_etf", "sector": "emerging_markets", "cap_bucket": "etf", "leverage": 2.0},
+  "EWZ":  {"asset_type": "sector_etf", "sector": "emerging_markets", "cap_bucket": "etf", "leverage": 1.0},
+
+  "EURL": {"asset_type": "leveraged_etf", "sector": "europe", "cap_bucket": "etf", "leverage": 2.0},
+  "EZU":  {"asset_type": "sector_etf", "sector": "europe", "cap_bucket": "etf", "leverage": 1.0},
+
+  "JPNL": {"asset_type": "leveraged_etf", "sector": "japan", "cap_bucket": "etf", "leverage": 2.0},
+  "EWJ":  {"asset_type": "sector_etf", "sector": "japan", "cap_bucket": "etf", "leverage": 1.0}
+}

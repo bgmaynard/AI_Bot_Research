@@ -823,7 +823,8 @@ SUPPRESS_SESSIONS = {"power_hour"}
 POSITION_SIZE = 5000
 
 
-def run_regime_validation(date_str, symbols, qcaches, out_dir, scorecard_path):
+def run_regime_validation(date_str, symbols, qcaches, out_dir, scorecard_path,
+                          sector_tracker=None):
     """Run baseline vs filtered regime validation."""
     print("\n" + "=" * 70)
     print("MODULE 3: REGIME FILTER VALIDATION")
@@ -871,18 +872,31 @@ def run_regime_validation(date_str, symbols, qcaches, out_dir, scorecard_path):
 
         all_baseline.append(trade)
 
+        # Per-symbol filter thresholds (falls back to globals when no sector_tracker)
+        if sector_tracker:
+            _ft = sector_tracker.get_adjusted_filter_thresholds(sym)
+            _vol_thr = _ft["vol_threshold"]
+            _sp_thr = _ft["spread_threshold"]
+            _ofi_thr = _ft["ofi_threshold"]
+            _suppress = _ft["suppress_regimes"]
+        else:
+            _vol_thr = VOL_THRESHOLD
+            _sp_thr = SPREAD_THRESHOLD
+            _ofi_thr = OFI_THRESHOLD
+            _suppress = SUPPRESS_REGIMES
+
         passes = True
         reasons = []
-        if v is not None and v < VOL_THRESHOLD:
+        if v is not None and v < _vol_thr:
             passes = False
             reasons.append("LOW_VOL")
-        if sp is not None and sp > SPREAD_THRESHOLD:
+        if sp is not None and sp > _sp_thr:
             passes = False
             reasons.append("HIGH_SPREAD")
-        if ofi is not None and ofi < OFI_THRESHOLD:
+        if ofi is not None and ofi < _ofi_thr:
             passes = False
             reasons.append("WEAK_OFI")
-        if regime in SUPPRESS_REGIMES:
+        if regime in _suppress:
             passes = False
             reasons.append("SUPPRESS_REGIME")
         if tod in SUPPRESS_SESSIONS:
@@ -1013,6 +1027,41 @@ def run_regime_validation(date_str, symbols, qcaches, out_dir, scorecard_path):
         lines.append("| %s | %d | %s | %d | %s | %s |" % (
             sess, bm["n"], bm["pf"], fm["n"], fm["pf"], edge))
 
+    # Per-sector table (when sector data available)
+    if sector_tracker and sector_tracker._sector_classifier:
+        sc = sector_tracker._sector_classifier
+        sector_base = defaultdict(list)
+        sector_filt = defaultdict(list)
+        sector_blocked = defaultdict(list)
+        for t in all_baseline:
+            cls = sc.get_classification(t["symbol"])
+            sec = cls.sector if cls else "unknown"
+            sector_base[sec].append(t)
+        for t in all_filtered:
+            cls = sc.get_classification(t["symbol"])
+            sec = cls.sector if cls else "unknown"
+            sector_filt[sec].append(t)
+        for t in all_blocked:
+            cls = sc.get_classification(t["symbol"])
+            sec = cls.sector if cls else "unknown"
+            sector_blocked[sec].append(t)
+
+        lines += ["", "---", "",
+                  "## PER-SECTOR PERFORMANCE", "",
+                  "| Sector | Base n | Base PF | Filt n | Filt PF | Blocked n | Edge |",
+                  "|--------|--------|---------|--------|---------|-----------|------|"]
+        all_sectors = sorted(set(list(sector_base.keys()) + list(sector_filt.keys())))
+        for sec in all_sectors:
+            bm = calc_metrics(sector_base.get(sec, []))
+            fm = calc_metrics(sector_filt.get(sec, []))
+            blm = calc_metrics(sector_blocked.get(sec, []))
+            edge = "YES" if (isinstance(fm["pf"], (int, float)) and isinstance(bm["pf"], (int, float))
+                             and fm["pf"] > bm["pf"] and fm["n"] >= 3) else "NO"
+            if fm["n"] == 0:
+                edge = "N/A"
+            lines.append("| %s | %d | %s | %d | %s | %d | %s |" % (
+                sec, bm["n"], bm["pf"], fm["n"], fm["pf"], blm["n"], edge))
+
     lines += ["", "---",
               "*All data READ-ONLY. NO production changes.*"]
 
@@ -1057,13 +1106,22 @@ def run_regime_validation(date_str, symbols, qcaches, out_dir, scorecard_path):
 
     print("  Reports written to: %s" % day_dir)
 
-    return {
+    result = {
         "status": "OK",
         "baseline": m_base,
         "filtered": m_filt,
         "blocked": m_blocked,
         "net_filter_value": avoided_losses - missed_profit,
     }
+
+    # Add sector classification summary if available
+    if sector_tracker and sector_tracker._sector_classifier:
+        result["sector_classification"] = sector_tracker._sector_classifier.to_dict()
+        result["sector_heat"] = {
+            s: h.to_dict() for s, h in sector_tracker._heat_scores.items()
+        }
+
+    return result
 
 
 def _update_scorecard(date_str, m_base, m_filt, m_blocked, reason_counts,
@@ -1334,6 +1392,21 @@ def run_pipeline(date_str=None):
         print("\nERROR: No quote data loaded — cannot proceed")
         return {"status": "NO_QUOTES", "date": date_str}
 
+    # Sector classification
+    sector_classifier = None
+    sector_tracker = None
+    try:
+        from watchlist.sector_classifier import SectorClassifierEngine
+        from watchlist.sector_tracker import SectorPerformanceTracker
+        sector_classifier = SectorClassifierEngine()
+        sector_classifier.classify_universe(list(qcaches.keys()))
+        sector_tracker = SectorPerformanceTracker(sector_classifier)
+        sector_tracker.compute_all_heat_scores()
+        print("\n  Sector classification: %d symbols classified" % len(
+            sector_classifier._classifications))
+    except Exception as e:
+        print("\n  Sector classification unavailable: %s" % e)
+
     # Output directories
     replay_dir = REPORT_ROOT / "replay" / date_str
     heatmap_dir = REPORT_ROOT / "alpha_heatmap" / date_str
@@ -1362,7 +1435,8 @@ def run_pipeline(date_str=None):
     # Module 3: Regime Filter
     try:
         results["regime"] = run_regime_validation(
-            date_str, symbols, qcaches, regime_dir, scorecard_path)
+            date_str, symbols, qcaches, regime_dir, scorecard_path,
+            sector_tracker=sector_tracker)
     except Exception as e:
         print("  ERROR in regime validation: %s" % e)
         traceback.print_exc()
@@ -1399,6 +1473,14 @@ def run_pipeline(date_str=None):
 
     results["elapsed_s"] = round(elapsed, 1)
     results["status"] = "OK"
+
+    # Add sector data to results if available
+    if sector_classifier:
+        results["sector_classification"] = sector_classifier.to_dict()
+    if sector_tracker:
+        results["sector_heat"] = {
+            s: h.to_dict() for s, h in sector_tracker._heat_scores.items()
+        }
 
     # Save results JSON
     results_file = REPORT_ROOT / "pipeline_results.json"

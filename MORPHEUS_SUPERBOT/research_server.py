@@ -387,11 +387,16 @@ DATA_STORE = ResearchDataStore()
 # ═══════════════════════════════════════════════════════════════════════════════
 # WATCHLIST MODULES
 # ═══════════════════════════════════════════════════════════════════════════════
-from watchlist import StockClassifierManager, DailyTracker, VettedListManager
+from watchlist import (
+    StockClassifierManager, DailyTracker, VettedListManager,
+    SectorClassifierEngine, SectorPerformanceTracker,
+)
 
-CLASSIFIER = StockClassifierManager()
+SECTOR_CLASSIFIER = SectorClassifierEngine()
+CLASSIFIER = StockClassifierManager(sector_classifier=SECTOR_CLASSIFIER)
 TRACKER = DailyTracker()
 VETTED = VettedListManager(CLASSIFIER, TRACKER)
+SECTOR_TRACKER = SectorPerformanceTracker(SECTOR_CLASSIFIER, TRACKER)
 
 
 def _ingest_watchlist_signals():
@@ -428,6 +433,13 @@ def _ingest_watchlist_signals():
     print(f"[WATCHLIST]   Tiers: A={tier_counts['A']} B={tier_counts['B']} C={tier_counts['C']}")
     print(f"[WATCHLIST]   Vetted: {len(VETTED.vetted)} symbols")
     print(f"[WATCHLIST]   Tracking: {len(TRACKER.tracked)} symbols")
+
+    # Sector enrichment
+    all_syms = list(CLASSIFIER.classifications.keys())
+    SECTOR_CLASSIFIER.classify_universe(all_syms)
+    SECTOR_TRACKER.compute_all_heat_scores()
+    print(f"[SECTOR]   Classified {len(SECTOR_CLASSIFIER._classifications)} symbols")
+    print(f"[SECTOR]   Heat scores for {len(SECTOR_TRACKER._heat_scores)} sectors")
 
 
 try:
@@ -522,6 +534,43 @@ class ResearchLabHandler(http.server.SimpleHTTPRequestHandler):
         elif path == "/api/research/explain":
             from ai.research.research_assistant import generate_glossary
             self.send_json({"content": generate_glossary()})
+        elif path == "/api/sector/heatmap":
+            self.send_json(SECTOR_TRACKER.get_state())
+        elif path == "/api/sector/weights":
+            weights = {}
+            for sec in SECTOR_TRACKER._heat_scores:
+                weights[sec] = SECTOR_TRACKER.get_sector_weight(sec).to_dict()
+            self.send_json(weights)
+        elif path == "/api/sector/classifications":
+            self.send_json(SECTOR_CLASSIFIER.to_dict())
+        elif path == "/api/sector/profiles":
+            from watchlist.sector_tracker import _DEFAULT_PROFILES
+            self.send_json({k: v.to_dict() for k, v in _DEFAULT_PROFILES.items()})
+        elif path.startswith("/api/sector/symbol/"):
+            sym = path.split("/")[-1].upper()
+            cls = SECTOR_CLASSIFIER.get_classification(sym)
+            if cls:
+                profile = SECTOR_TRACKER.get_parameter_profile(sym)
+                thresholds = SECTOR_TRACKER.get_adjusted_filter_thresholds(sym)
+                thresholds["suppress_regimes"] = list(thresholds["suppress_regimes"])
+                self.send_json({
+                    "symbol": sym,
+                    "classification": cls.to_dict(),
+                    "profile": profile.to_dict(),
+                    "filter_thresholds": thresholds,
+                })
+            else:
+                # Classify on the fly
+                new_cls = SECTOR_CLASSIFIER.classify(sym)
+                profile = SECTOR_TRACKER.get_parameter_profile(sym)
+                thresholds = SECTOR_TRACKER.get_adjusted_filter_thresholds(sym)
+                thresholds["suppress_regimes"] = list(thresholds["suppress_regimes"])
+                self.send_json({
+                    "symbol": sym,
+                    "classification": new_cls.to_dict(),
+                    "profile": profile.to_dict(),
+                    "filter_thresholds": thresholds,
+                })
         elif path.startswith("/js/"):
             self.path = "/ui" + path
             super().do_GET()
@@ -558,6 +607,20 @@ class ResearchLabHandler(http.server.SimpleHTTPRequestHandler):
             else:
                 result = VETTED.manual_add(symbol, source=source)
                 self.send_json(result)
+        elif path == "/api/sector/override":
+            content_length = int(self.headers.get("Content-Length", 0))
+            body = json.loads(self.rfile.read(content_length)) if content_length > 0 else {}
+            sector = body.get("sector", "")
+            weight = body.get("weight")
+            reason = body.get("reason", "manual override")
+            if not sector or weight is None:
+                self.send_json({"success": False, "reason": "missing sector or weight"})
+            else:
+                SECTOR_TRACKER.set_override(sector, float(weight), reason)
+                self.send_json({
+                    "success": True, "sector": sector,
+                    "weight": float(weight), "reason": reason,
+                })
         elif path == "/api/research/nightly":
             content_length = int(self.headers.get("Content-Length", 0))
             body = json.loads(self.rfile.read(content_length)) if content_length > 0 else {}
@@ -566,7 +629,10 @@ class ResearchLabHandler(http.server.SimpleHTTPRequestHandler):
             def _run_pipeline():
                 try:
                     from ai.research.nightly_pipeline import run_pipeline
-                    run_pipeline(date_str)
+                    result = run_pipeline(date_str)
+                    # Refresh sector data after pipeline
+                    if result and result.get("status") == "OK":
+                        SECTOR_TRACKER.compute_all_heat_scores()
                 except Exception as e:
                     print("[PIPELINE] Error: %s" % e)
             t = threading.Thread(target=_run_pipeline, daemon=True)
