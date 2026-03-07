@@ -497,6 +497,31 @@ class ResearchLabHandler(http.server.SimpleHTTPRequestHandler):
             self.send_json(TRACKER.get_state())
         elif path == "/api/watchlist/report":
             self.send_json(TRACKER.generate_eod_report())
+        elif path == "/api/research/dashboard":
+            dashboard_file = BASE_DIR.parent / "reports" / "research" / "daily_summary.md"
+            if dashboard_file.exists():
+                self.send_json({"exists": True, "content": dashboard_file.read_text(encoding="utf-8")})
+            else:
+                self.send_json({"exists": False, "content": None})
+        elif path == "/api/research/pipeline/status":
+            results_file = BASE_DIR.parent / "reports" / "research" / "pipeline_results.json"
+            if results_file.exists():
+                with open(results_file, encoding="utf-8") as f:
+                    self.send_json(json.load(f))
+            else:
+                self.send_json({"status": "NO_RUNS"})
+        elif path == "/api/research/scorecard":
+            scorecard = BASE_DIR.parent / "reports" / "research" / "regime_paper_validation" / "regime_filter_daily_scorecard.md"
+            if scorecard.exists():
+                self.send_json({"exists": True, "content": scorecard.read_text(encoding="utf-8")})
+            else:
+                self.send_json({"exists": False, "content": None})
+        elif path == "/api/research/briefing":
+            from ai.research.research_assistant import get_briefing_json
+            self.send_json(get_briefing_json())
+        elif path == "/api/research/explain":
+            from ai.research.research_assistant import generate_glossary
+            self.send_json({"content": generate_glossary()})
         elif path.startswith("/js/"):
             self.path = "/ui" + path
             super().do_GET()
@@ -533,6 +558,21 @@ class ResearchLabHandler(http.server.SimpleHTTPRequestHandler):
             else:
                 result = VETTED.manual_add(symbol, source=source)
                 self.send_json(result)
+        elif path == "/api/research/nightly":
+            content_length = int(self.headers.get("Content-Length", 0))
+            body = json.loads(self.rfile.read(content_length)) if content_length > 0 else {}
+            date_str = body.get("date", None)  # None = auto-detect
+            import threading
+            def _run_pipeline():
+                try:
+                    from ai.research.nightly_pipeline import run_pipeline
+                    run_pipeline(date_str)
+                except Exception as e:
+                    print("[PIPELINE] Error: %s" % e)
+            t = threading.Thread(target=_run_pipeline, daemon=True)
+            t.start()
+            self.send_json({"success": True, "message": "Pipeline started",
+                            "date": date_str or "auto-detect"})
         else:
             self.send_error(404, "Not Found")
 

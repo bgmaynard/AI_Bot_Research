@@ -1,0 +1,129 @@
+{
+  "date": "2026-03-03",
+  "symbols": [
+    "BATL",
+    "CRCD",
+    "DUST",
+    "IONZ",
+    "MSTZ",
+    "PLUG",
+    "SOXS",
+    "TMDE",
+    "USEG",
+    "UVIX",
+    "VG"
+  ],
+  "replay": {
+    "status": "OK",
+    "configs": 3840,
+    "best": {
+      "hold": 120,
+      "trail_start": 0.1,
+      "trail_offset": 0.05,
+      "spread_thresh": 1.0,
+      "pullback": 0.15,
+      "cap": 40,
+      "n": 40,
+      "wins": 32,
+      "losses": 8,
+      "wr": 80.0,
+      "pf": 99.0,
+      "total_pnl": 10513.12,
+      "avg_pnl": 262.83
+    },
+    "signals": 2323
+  },
+  "heatmap": {
+    "status": "OK",
+    "trades": 2321,
+    "symbols": 11,
+    "all": {
+      "n": 2321,
+      "wr": 33.7,
+      "pf": 0.73,
+      "avg_pnl": -212.44,
+      "total_pnl": -493065.0,
+      "avg_winner": 1665.21,
+      "avg_loser": -1166.51,
+      "max_dd": 808814.5,
+      "avg_mfe": 1.164,
+      "avg_mae": 0.821,
+      "avg_hold": 90.5
+    },
+    "filter_pass": {
+      "n": 522,
+      "wr": 40.4,
+      "pf": 1.22,
+      "avg_pnl": 117.19,
+      "total_pnl": 61175.5,
+      "avg_winner": 1610.77,
+      "avg_loser": -896.13,
+      "max_dd": 68425.0,
+      "avg_mfe": 1.335,
+      "avg_mae": 0.689,
+      "avg_hold": 82.1
+    },
+    "filter_fail": {
+      "n": 1799,
+      "wr": 31.7,
+      "pf": 0.63,
+      "avg_pnl": -308.08,
+      "total_pnl": -554240.5,
+      "avg_winner": 1685.32,
+      "avg_loser": -1234.98,
+      "max_dd": 828790.0,
+      "avg_mfe": 1.114,
+      "avg_mae": 0.859,
+      "avg_hold": 92.9
+    }
+  },
+  "regime": {
+    "status": "OK",
+    "baseline": {
+      "n": 2321,
+      "wr": 33.7,
+      "pf": 0.73,
+      "avg_pnl": -212.44,
+      "total_pnl": -493065.0,
+      "avg_winner": 1665.21,
+      "avg_loser": -1166.51,
+      "max_dd": 808814.5,
+      "avg_mfe": 1.164,
+      "avg_mae": 0.821,
+      "avg_hold": 90.5
+    },
+    "filtered": {
+      "n": 322,
+      "wr": 42.5,
+      "pf": 1.3,
+      "avg_pnl": 166.99,
+      "total_pnl": 53771.5,
+      "avg_winner": 1693.49,
+      "avg_loser": -963.44,
+      "max_dd": 69625.0,
+      "avg_mfe": 1.409,
+      "avg_mae": 0.631,
+      "avg_hold": 77.0
+    },
+    "blocked": {
+      "n": 1999,
+      "wr": 32.3,
+      "pf": 0.66,
+      "avg_pnl": -273.56,
+      "total_pnl": -546836.5,
+      "avg_winner": 1659.2,
+      "avg_loser": -1194.25,
+      "max_dd": 827036.0,
+      "avg_mfe": 1.125,
+      "avg_mae": 0.852,
+      "avg_hold": 92.7
+    },
+    "net_filter_value": 546836.5000000002
+  },
+  "dashboard": {
+    "status": "OK",
+    "path": "C:\\AI_Bot_Research\\reports\\research\\daily_summary.md"
+  },
+  "elapsed_s": 14.1,
+  "status": "OK"
+}
