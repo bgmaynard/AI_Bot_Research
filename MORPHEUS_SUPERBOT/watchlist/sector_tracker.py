@@ -119,6 +119,20 @@ _DEFAULT_PROFILES = {
         size_multiplier=1.0,
         notes="Tighter spreads, conservative",
     ),
+    "sector_etf": SectorParameterProfile(
+        asset_type="sector_etf", hold_s=240,
+        trail_start_pct=0.15, trail_offset_pct=0.08,
+        spread_gate_pct=0.5, hard_stop_pct=1.5,
+        size_multiplier=0.9,
+        notes="Plain sector ETFs — tighter than leveraged",
+    ),
+    "small_cap": SectorParameterProfile(
+        asset_type="small_cap", hold_s=360,
+        trail_start_pct=0.20, trail_offset_pct=0.08,
+        spread_gate_pct=0.6, hard_stop_pct=2.0,
+        size_multiplier=0.8,
+        notes="Small-cap equities — wider trails, smaller size",
+    ),
     "default": SectorParameterProfile(
         asset_type="default", hold_s=300,
         trail_start_pct=0.15, trail_offset_pct=0.10,
@@ -149,6 +163,14 @@ _DEFAULT_FILTER_THRESHOLDS = {
         vol_threshold=0.2, spread_threshold=0.4,
         ofi_threshold=-0.15, suppress_regimes={"LOW_VOLATILITY"},
     ),
+    "sector_etf": SectorFilterThresholds(
+        vol_threshold=0.2, spread_threshold=0.5,
+        ofi_threshold=-0.2, suppress_regimes={"LOW_VOLATILITY"},
+    ),
+    "small_cap": SectorFilterThresholds(
+        vol_threshold=0.25, spread_threshold=0.6,
+        ofi_threshold=-0.2, suppress_regimes={"LOW_VOLATILITY"},
+    ),
     "default": SectorFilterThresholds(
         vol_threshold=0.3, spread_threshold=0.6,
         ofi_threshold=-0.2, suppress_regimes={"LOW_VOLATILITY"},
@@ -163,9 +185,13 @@ def _resolve_profile_key(sector_classification):
     at = sector_classification.asset_type
     if at in ("inverse_etf", "leveraged_etf", "volatility_etf"):
         return at
+    if at == "sector_etf":
+        return "sector_etf"
     cap = sector_classification.cap_bucket
     if cap == "micro":
         return "micro_cap"
+    if cap == "small":
+        return "small_cap"
     if cap in ("mid", "large"):
         return "mid_large_cap"
     return "default"

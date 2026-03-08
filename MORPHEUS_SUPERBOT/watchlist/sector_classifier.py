@@ -32,6 +32,9 @@ VALID_SECTORS = {
     "bonds", "china", "emerging_markets", "europe", "japan",
     "automotive", "entertainment", "industrials", "consumer_staples",
     "small_cap", "unknown",
+    # Added 2026-03-08: new sectors from scanner trade data
+    "clean_energy", "mining", "quantum_computing", "aerospace",
+    "ai_ml", "airlines",
 }
 VALID_CAP_BUCKETS = {"micro", "small", "mid", "large", "etf", "unknown"}
 
@@ -107,13 +110,19 @@ class SectorClassifierEngine:
             self._classifications[symbol] = cls
             return cls
 
-        # Source 2: Heuristic from signal data
+        # Source 2: WeBull API (asset type + market cap)
+        wb_cls = self._classify_webull(symbol)
+        if wb_cls:
+            self._classifications[symbol] = wb_cls
+            return wb_cls
+
+        # Source 3: Heuristic from signal data
         if signal_data:
             cls = self._classify_heuristic(symbol, signal_data)
             self._classifications[symbol] = cls
             return cls
 
-        # Source 3: Unknown fallback
+        # Source 4: Unknown fallback
         cls = SectorClassification(
             symbol=symbol,
             asset_type="common_stock",
@@ -124,6 +133,40 @@ class SectorClassifierEngine:
         )
         self._classifications[symbol] = cls
         return cls
+
+    def _classify_webull(self, symbol: str) -> Optional[SectorClassification]:
+        """Classify using WeBull search + quote API.
+
+        WeBull provides asset_type and cap_bucket but NOT sector.
+        Sector remains 'unknown' and can be enriched by Yahoo fallback
+        on the /api/sector/symbol/{SYM} endpoint.
+        """
+        try:
+            from watchlist.webull_classifier import classify_symbol
+            wb = classify_symbol(symbol)
+        except Exception:
+            return None
+
+        if not wb:
+            return None
+
+        leverage = 1.0
+        inverse = wb.get("is_inverse", False)
+        if wb.get("is_leveraged", False):
+            leverage = 2.0  # conservative default
+        if inverse:
+            leverage = -leverage
+
+        return SectorClassification(
+            symbol=symbol,
+            asset_type=wb["asset_type"],
+            sector="unknown",  # WeBull doesn't provide sector
+            cap_bucket=wb["cap_bucket"],
+            leverage_factor=abs(leverage),
+            inverse=inverse,
+            confidence=wb.get("confidence", 0.7),
+            source="webull",
+        )
 
     def _classify_heuristic(self, symbol: str, data: dict) -> SectorClassification:
         """Heuristic classification from signal/classifier data."""

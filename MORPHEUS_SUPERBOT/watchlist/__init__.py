@@ -1,4 +1,4 @@
-# Watchlist Modules — A/B/C Classification, Daily Tracking, Vetted List, Sector Awareness
+# Watchlist Modules — A/B/C Classification, Daily Tracking, Vetted List, Sector Awareness, WeBull
 from .stock_classifier import (
     StockClassifierManager,
     StockClassification,

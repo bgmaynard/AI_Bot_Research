@@ -110,6 +110,19 @@ _enforce_execution_fence()
 # CONFIGURATION
 # ═══════════════════════════════════════════════════════════════════════════════
 
+
+def _get_local_ip() -> str:
+    """Detect this machine's LAN IP address."""
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return "127.0.0.1"
+
+
 PORT = 9200
 BASE_DIR = Path(__file__).parent
 UI_DIR = BASE_DIR / "ui"
@@ -399,6 +412,81 @@ VETTED = VettedListManager(CLASSIFIER, TRACKER)
 SECTOR_TRACKER = SectorPerformanceTracker(SECTOR_CLASSIFIER, TRACKER)
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# MAX_AI CONTRACT HELPERS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+_SECTOR_TITLE_MAP = {
+    "energy": "Energy", "technology": "Technology", "biotech": "Healthcare",
+    "crypto_proxy": "Crypto", "semiconductors": "Technology",
+    "materials": "Materials", "volatility": "Volatility", "broad_market": "Broad Market",
+    "financials": "Financial", "healthcare": "Healthcare", "real_estate": "Real Estate",
+    "defense": "Industrials", "transportation": "Industrials", "retail": "Consumer Cyclical",
+    "utilities": "Utilities", "bonds": "Fixed Income", "china": "China",
+    "emerging_markets": "Emerging Markets", "europe": "Europe", "japan": "Japan",
+    "automotive": "Consumer Cyclical", "entertainment": "Communication Services",
+    "industrials": "Industrials", "consumer_staples": "Consumer Defensive",
+    "small_cap": "Small Cap", "unknown": "Unknown",
+    # Added 2026-03-08: new sectors from scanner trade data
+    "clean_energy": "Clean Energy", "mining": "Materials",
+    "quantum_computing": "Technology", "aerospace": "Industrials",
+    "ai_ml": "Technology", "airlines": "Industrials",
+}
+
+# Reverse map: Yahoo Finance sector name → internal sector name
+_YAHOO_SECTOR_MAP = {
+    "technology": "technology", "healthcare": "healthcare",
+    "financial services": "financials", "energy": "energy",
+    "consumer cyclical": "retail", "consumer defensive": "consumer_staples",
+    "industrials": "industrials", "basic materials": "materials",
+    "real estate": "real_estate", "utilities": "utilities",
+    "communication services": "entertainment",
+}
+
+
+def _sector_title_case(internal_name: str) -> str:
+    """Map internal lowercase sector name to Title Case for Max_AI."""
+    return _SECTOR_TITLE_MAP.get(internal_name, internal_name.replace("_", " ").title())
+
+
+def _asset_type_for_maxai(asset_type: str) -> str:
+    """Map internal asset_type to Max_AI's simplified type."""
+    if asset_type == "common_stock":
+        return "stock"
+    if asset_type in ("leveraged_etf", "inverse_etf", "sector_etf", "volatility_etf"):
+        return "etf"
+    if asset_type == "spac":
+        return "stock"
+    return "unknown"
+
+
+def _yahoo_sector_lookup(symbol: str) -> dict:
+    """Fetch sector info from Yahoo Finance for unknown symbols.
+
+    Returns dict with keys: sector, asset_type, cap_bucket (internal names)
+    or empty dict on failure.
+    """
+    url = f"https://query1.finance.yahoo.com/v10/finance/quoteSummary/{symbol}?modules=assetProfile"
+    try:
+        req = Request(url, headers={
+            "User-Agent": "Mozilla/5.0",
+            "Accept": "application/json",
+        })
+        with urlopen(req, timeout=5) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        profile = data.get("quoteSummary", {}).get("result", [{}])[0].get("assetProfile", {})
+        yahoo_sector = profile.get("sector", "").lower()
+        internal_sector = _YAHOO_SECTOR_MAP.get(yahoo_sector, "unknown")
+        return {
+            "sector": internal_sector,
+            "asset_type": "common_stock",
+            "cap_bucket": "unknown",
+        }
+    except Exception as e:
+        print(f"[YAHOO] Lookup failed for {symbol}: {e}")
+        return {}
+
+
 def _ingest_watchlist_signals():
     """Load signal_ledger into classifier, register in tracker, auto-qualify."""
     from datetime import timezone as _tz
@@ -474,7 +562,95 @@ class ResearchLabHandler(http.server.SimpleHTTPRequestHandler):
         parsed = urlparse(self.path)
         path = parsed.path
 
-        if path == "/api/research/status":
+        if path == "/health":
+            self.send_json({
+                "status": "ok",
+                "service": "research-server",
+                "host": _get_local_ip(),
+                "port": PORT,
+                "symbols_cached": len(SECTOR_CLASSIFIER._classifications),
+                "sectors_tracked": len(SECTOR_TRACKER._heat_scores),
+                "last_update": datetime.now().isoformat(),
+                "services_endpoint": "/api/services",
+            })
+        elif path == "/api/services":
+            self.send_json({
+                "service": "morpheus-superbot-research",
+                "host": _get_local_ip(),
+                "port": PORT,
+                "version": CONFIG.get("research_lab", {}).get("version", "1.0"),
+                "health": "/health",
+                "services": {
+                    "sector_heatmap": {
+                        "endpoint": "/api/sector/heatmap",
+                        "method": "GET",
+                        "description": "Sector heat scores (0.0-1.0) for regime/context filtering",
+                        "contract": "Title Case keys, heat_score float 0.0-1.0",
+                    },
+                    "sector_classifications": {
+                        "endpoint": "/api/sector/classifications",
+                        "method": "GET",
+                        "description": "All cached symbol classifications (asset type, sector, cap bucket)",
+                    },
+                    "sector_profiles": {
+                        "endpoint": "/api/sector/profiles",
+                        "method": "GET",
+                        "description": "Per-asset-type filter thresholds (spread, vol, regime suppression)",
+                    },
+                    "sector_symbol_lookup": {
+                        "endpoint": "/api/sector/symbol/{SYMBOL}",
+                        "method": "GET",
+                        "description": "Classify a single symbol (sector, asset_type, cap_bucket)",
+                    },
+                    "sector_weights": {
+                        "endpoint": "/api/sector/weights",
+                        "method": "GET",
+                        "description": "Sector allocation weights",
+                    },
+                    "sector_override": {
+                        "endpoint": "/api/sector/override",
+                        "method": "POST",
+                        "description": "Manual sector weight override",
+                        "body": {"sector": "str", "weight": "float", "reason": "str"},
+                    },
+                    "webull_classify": {
+                        "endpoint": "/api/webull/classify/{SYMBOL}",
+                        "method": "GET",
+                        "description": "Classify symbol via WeBull API (asset type, cap bucket)",
+                    },
+                    "webull_cache": {
+                        "endpoint": "/api/webull/cache",
+                        "method": "GET",
+                        "description": "WeBull classification cache stats",
+                    },
+                    "regime_scorecard": {
+                        "endpoint": "/api/research/scorecard",
+                        "method": "GET",
+                        "description": "Regime filter validation scorecard (deployment readiness)",
+                    },
+                    "research_briefing": {
+                        "endpoint": "/api/research/briefing",
+                        "method": "GET",
+                        "description": "AI-generated plain-English research briefing",
+                    },
+                    "watchlist_classified": {
+                        "endpoint": "/api/watchlist/classified",
+                        "method": "GET",
+                        "description": "All classified symbols (A/B/C tiers)",
+                    },
+                    "watchlist_vetted": {
+                        "endpoint": "/api/watchlist/vetted",
+                        "method": "GET",
+                        "description": "Vetted symbols ready for trading",
+                    },
+                    "research_status": {
+                        "endpoint": "/api/research/status",
+                        "method": "GET",
+                        "description": "Research data ingestion status and connection health",
+                    },
+                },
+            })
+        elif path == "/api/research/status":
             self.send_json(self._get_status())
         elif path == "/api/research/replay/integrity":
             self.send_json(self._get_integrity())
@@ -535,6 +711,15 @@ class ResearchLabHandler(http.server.SimpleHTTPRequestHandler):
             from ai.research.research_assistant import generate_glossary
             self.send_json({"content": generate_glossary()})
         elif path == "/api/sector/heatmap":
+            # Max_AI contract: flat dict, Title Case keys, scores 0.0-1.0
+            raw = SECTOR_TRACKER._heat_scores
+            flat = {}
+            for sector_name, score_obj in raw.items():
+                title = _sector_title_case(sector_name)
+                flat[title] = {"heat_score": round(score_obj.heat_score / 100.0, 4)}
+            self.send_json(flat)
+        elif path == "/api/sector/state":
+            # Internal: full detailed tracker state (old heatmap response)
             self.send_json(SECTOR_TRACKER.get_state())
         elif path == "/api/sector/weights":
             weights = {}
@@ -549,28 +734,45 @@ class ResearchLabHandler(http.server.SimpleHTTPRequestHandler):
         elif path.startswith("/api/sector/symbol/"):
             sym = path.split("/")[-1].upper()
             cls = SECTOR_CLASSIFIER.get_classification(sym)
-            if cls:
-                profile = SECTOR_TRACKER.get_parameter_profile(sym)
-                thresholds = SECTOR_TRACKER.get_adjusted_filter_thresholds(sym)
-                thresholds["suppress_regimes"] = list(thresholds["suppress_regimes"])
-                self.send_json({
-                    "symbol": sym,
-                    "classification": cls.to_dict(),
-                    "profile": profile.to_dict(),
-                    "filter_thresholds": thresholds,
-                })
-            else:
-                # Classify on the fly
-                new_cls = SECTOR_CLASSIFIER.classify(sym)
-                profile = SECTOR_TRACKER.get_parameter_profile(sym)
-                thresholds = SECTOR_TRACKER.get_adjusted_filter_thresholds(sym)
-                thresholds["suppress_regimes"] = list(thresholds["suppress_regimes"])
-                self.send_json({
-                    "symbol": sym,
-                    "classification": new_cls.to_dict(),
-                    "profile": profile.to_dict(),
-                    "filter_thresholds": thresholds,
-                })
+            if not cls:
+                cls = SECTOR_CLASSIFIER.classify(sym)
+            # Yahoo Finance fallback for low-confidence symbols
+            if cls.source != "known_symbols" and cls.sector == "unknown":
+                yahoo = _yahoo_sector_lookup(sym)
+                if yahoo and yahoo.get("sector", "unknown") != "unknown":
+                    from watchlist.sector_classifier import SectorClassification
+                    cls = SectorClassification(
+                        symbol=sym,
+                        asset_type=yahoo.get("asset_type", "common_stock"),
+                        sector=yahoo["sector"],
+                        cap_bucket=yahoo.get("cap_bucket", "unknown"),
+                        confidence=0.7,
+                        source="yahoo_finance",
+                    )
+                    SECTOR_CLASSIFIER._classifications[sym] = cls
+            self.send_json({
+                "symbol": sym,
+                "sector": _sector_title_case(cls.sector),
+                "asset_type": _asset_type_for_maxai(cls.asset_type),
+                "cap_bucket": cls.cap_bucket,
+            })
+        elif path == "/api/webull/cache":
+            try:
+                from watchlist.webull_classifier import get_cache_stats
+                self.send_json(get_cache_stats())
+            except Exception as e:
+                self.send_json({"error": str(e)})
+        elif path.startswith("/api/webull/classify/"):
+            sym = path.split("/")[-1].upper()
+            try:
+                from watchlist.webull_classifier import classify_symbol
+                result = classify_symbol(sym)
+                if result:
+                    self.send_json(result)
+                else:
+                    self.send_json({"error": "not_found", "symbol": sym})
+            except Exception as e:
+                self.send_json({"error": str(e)})
         elif path.startswith("/js/"):
             self.path = "/ui" + path
             super().do_GET()
@@ -831,7 +1033,8 @@ def main():
     print("=" * 65)
     print()
 
-    with socketserver.TCPServer(("", PORT), ResearchLabHandler) as httpd:
+    socketserver.TCPServer.allow_reuse_address = True
+    with socketserver.TCPServer(("0.0.0.0", PORT), ResearchLabHandler) as httpd:
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:
