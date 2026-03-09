@@ -2471,5 +2471,95 @@
     "sector": "unknown",
     "cap_bucket": "micro",
     "leverage": 1.0
+  },
+  "ACHR": {
+    "asset_type": "common_stock",
+    "sector": "aerospace",
+    "cap_bucket": "small",
+    "leverage": 1.0
+  },
+  "HIMS": {
+    "asset_type": "common_stock",
+    "sector": "healthcare",
+    "cap_bucket": "mid",
+    "leverage": 1.0
+  },
+  "HMR": {
+    "asset_type": "common_stock",
+    "sector": "unknown",
+    "cap_bucket": "micro",
+    "leverage": 1.0
+  },
+  "ICON": {
+    "asset_type": "common_stock",
+    "sector": "healthcare",
+    "cap_bucket": "large",
+    "leverage": 1.0
+  },
+  "INDO": {
+    "asset_type": "common_stock",
+    "sector": "energy",
+    "cap_bucket": "micro",
+    "leverage": 1.0
+  },
+  "IONQ": {
+    "asset_type": "common_stock",
+    "sector": "quantum_computing",
+    "cap_bucket": "mid",
+    "leverage": 1.0
+  },
+  "KC": {
+    "asset_type": "common_stock",
+    "sector": "china",
+    "cap_bucket": "small",
+    "leverage": 1.0
+  },
+  "LNKS": {
+    "asset_type": "common_stock",
+    "sector": "unknown",
+    "cap_bucket": "micro",
+    "leverage": 1.0
+  },
+  "MRVL": {
+    "asset_type": "common_stock",
+    "sector": "semiconductors",
+    "cap_bucket": "large",
+    "leverage": 1.0
+  },
+  "MVO": {
+    "asset_type": "common_stock",
+    "sector": "energy",
+    "cap_bucket": "micro",
+    "leverage": 1.0
+  },
+  "REI": {
+    "asset_type": "common_stock",
+    "sector": "energy",
+    "cap_bucket": "small",
+    "leverage": 1.0
+  },
+  "SNAP": {
+    "asset_type": "common_stock",
+    "sector": "technology",
+    "cap_bucket": "mid",
+    "leverage": 1.0
+  },
+  "STAK": {
+    "asset_type": "common_stock",
+    "sector": "unknown",
+    "cap_bucket": "micro",
+    "leverage": 1.0
+  },
+  "UFG": {
+    "asset_type": "common_stock",
+    "sector": "financials",
+    "cap_bucket": "mid",
+    "leverage": 1.0
+  },
+  "XPEV": {
+    "asset_type": "common_stock",
+    "sector": "automotive",
+    "cap_bucket": "mid",
+    "leverage": 1.0
   }
 }

@@ -110,9 +110,23 @@ class SectorClassifierEngine:
             self._classifications[symbol] = cls
             return cls
 
-        # Source 2: WeBull API (asset type + market cap)
+        # Source 2: WeBull API (asset type + market cap) + Yahoo Finance (sector)
         wb_cls = self._classify_webull(symbol)
         if wb_cls:
+            # WeBull doesn't provide sector — try Yahoo Finance to fill it in
+            if wb_cls.sector == "unknown":
+                yahoo_sector = self._lookup_yahoo_sector(symbol)
+                if yahoo_sector:
+                    wb_cls = SectorClassification(
+                        symbol=symbol,
+                        asset_type=wb_cls.asset_type,
+                        sector=yahoo_sector,
+                        cap_bucket=wb_cls.cap_bucket,
+                        leverage_factor=wb_cls.leverage_factor,
+                        inverse=wb_cls.inverse,
+                        confidence=0.75,
+                        source="webull+yahoo",
+                    )
             self._classifications[symbol] = wb_cls
             return wb_cls
 
@@ -133,6 +147,31 @@ class SectorClassifierEngine:
         )
         self._classifications[symbol] = cls
         return cls
+
+    def _lookup_yahoo_sector(self, symbol: str) -> Optional[str]:
+        """Try Yahoo Finance to get sector for a symbol. Returns internal sector name or None."""
+        try:
+            from urllib.request import Request, urlopen
+            from urllib.error import URLError, HTTPError
+            url = f"https://query1.finance.yahoo.com/v10/finance/quoteSummary/{symbol}?modules=assetProfile"
+            req = Request(url, headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"})
+            with urlopen(req, timeout=5) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            profile = data.get("quoteSummary", {}).get("result", [{}])[0].get("assetProfile", {})
+            yahoo_sector = profile.get("sector", "").lower()
+            # Map Yahoo sector names to internal names
+            yahoo_map = {
+                "technology": "technology", "healthcare": "healthcare",
+                "financial services": "financials", "energy": "energy",
+                "consumer cyclical": "retail", "consumer defensive": "consumer_staples",
+                "industrials": "industrials", "basic materials": "materials",
+                "real estate": "real_estate", "utilities": "utilities",
+                "communication services": "entertainment",
+            }
+            internal = yahoo_map.get(yahoo_sector)
+            return internal if internal else None
+        except Exception:
+            return None
 
     def _classify_webull(self, symbol: str) -> Optional[SectorClassification]:
         """Classify using WeBull search + quote API.

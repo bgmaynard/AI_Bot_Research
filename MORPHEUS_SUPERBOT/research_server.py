@@ -712,9 +712,12 @@ class ResearchLabHandler(http.server.SimpleHTTPRequestHandler):
             self.send_json({"content": generate_glossary()})
         elif path == "/api/sector/heatmap":
             # Max_AI contract: flat dict, Title Case keys, scores 0.0-1.0
+            # Exclude "unknown" sector — Max_AI can't act on unclassified data
             raw = SECTOR_TRACKER._heat_scores
             flat = {}
             for sector_name, score_obj in raw.items():
+                if sector_name == "unknown":
+                    continue
                 title = _sector_title_case(sector_name)
                 flat[title] = {"heat_score": round(score_obj.heat_score / 100.0, 4)}
             self.send_json(flat)
@@ -750,11 +753,17 @@ class ResearchLabHandler(http.server.SimpleHTTPRequestHandler):
                         source="yahoo_finance",
                     )
                     SECTOR_CLASSIFIER._classifications[sym] = cls
+            sector_title = _sector_title_case(cls.sector)
+            # Return "skip" for unknown sectors so Max_AI doesn't choke
+            if cls.sector == "unknown":
+                sector_title = None
             self.send_json({
                 "symbol": sym,
-                "sector": _sector_title_case(cls.sector),
+                "sector": sector_title,
                 "asset_type": _asset_type_for_maxai(cls.asset_type),
                 "cap_bucket": cls.cap_bucket,
+                "confidence": cls.confidence,
+                "source": cls.source,
             })
         elif path == "/api/webull/cache":
             try:
